@@ -4,18 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "99eed2496a106f11",
+        "id": "338edcc69ac330be",
         "type": "tabs",
         "children": [
           {
-            "id": "0f22c04a80462f3b",
+            "id": "16c5338f1535cd65",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "1. Project check-list.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -147,13 +147,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0f22c04a80462f3b",
+  "active": "16c5338f1535cd65",
   "lastOpenFiles": [
-    "1. Project check-list.md",
+    "THOUGHTS v 1.0.md",
+    "Today's To-do List - Mon Jan 16 2023.md",
     "* Markdown Cheat Sheet.md",
-    "WhiteSur Icon Theme.md",
+    "1. Project check-list.md",
     "Bite-sized Project todo Tasks.md",
     "WhiteSur GTK Theme.md",
+    "WhiteSur Icon Theme.md",
     "iofr.md",
     "Untitled.canvas"
   ]
