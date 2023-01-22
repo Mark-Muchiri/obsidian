@@ -39,3 +39,5 @@ WhiteSur-kde: https://github.com/vinceliuice/WhiteSur-kde
 ## Preview
 ![1](preview.png)
 ![2](preview01.png)
+
+[WhiteSur GTK Theme](obsidian://open?vault=Notes%20and%20Tasks&file=WhiteSur%20GTK%20Theme)
