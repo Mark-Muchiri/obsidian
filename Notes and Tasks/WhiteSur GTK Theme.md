@@ -367,5 +367,4 @@ Please go read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info
 ./install.sh -l -t all -N mojave -p smaller -i manjaro --darker -HD
 ```
 
-[WhiteSur Icon Theme](obsidian://open?vault=Notes%20and%20Tasks&file=WhiteSur%20Icon%20Theme)
-[Markdown Cheat sheet](obsidian://open?vault=Notes%20and%20Tasks&file=*%20Markdown%20Cheat%20Sheet)
+[[WhiteSur Icon Theme]]

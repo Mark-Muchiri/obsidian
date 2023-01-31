@@ -4,18 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "a0a79e704cc5c85e",
+        "id": "c151669ef962965f",
         "type": "tabs",
         "children": [
           {
-            "id": "de1ca9a25ba33876",
+            "id": "a8db31a2ac01fa4a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1. Project check-list.md",
+                "file": "Axios Cheat Sheet.md",
                 "mode": "preview",
-                "source": true
+                "source": false
               }
             }
           }
@@ -86,13 +86,13 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1. Project check-list.md",
+                "file": "Axios Cheat Sheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": false,
+                "backlinkCollapsed": true,
                 "unlinkedCollapsed": true
               }
             }
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1. Project check-list.md",
+                "file": "Axios Cheat Sheet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,15 +126,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1. Project check-list.md"
+                "file": "Axios Cheat Sheet.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 418.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -147,17 +148,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "de1ca9a25ba33876",
+  "active": "a8db31a2ac01fa4a",
   "lastOpenFiles": [
+    "Axios Cheat Sheet.md",
+    "JavaScript Cheat Sheet.md",
+    "ReactJS Cheat Sheet.md",
+    "Redux Cheat Sheet.md",
+    "* Markdown Cheat Sheet.md",
+    "WhiteSur GTK Theme.md",
+    "WhiteSur Icon Theme.md",
     "Debugging.md",
     "1. Project check-list.md",
-    "WhiteSur Icon Theme.md",
-    "WhiteSur GTK Theme.md",
-    "src/other/firefox.md",
-    "* Markdown Cheat Sheet.md",
-    "THOUGHTS v 1.0.md",
-    "Today's To-do List - Mon Jan 16 2023.md",
-    "Untitled.canvas",
-    "2023-01-22.md"
+    "src/other/firefox.md"
   ]
 }

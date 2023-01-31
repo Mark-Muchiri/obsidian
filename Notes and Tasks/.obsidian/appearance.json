@@ -1,6 +1,7 @@
 {
-  "accentColor": "#351466",
+  "accentColor": "#0095b3",
   "interfaceFontFamily": "SF Pro Display",
   "textFontFamily": "SF Pro Display",
-  "cssTheme": "Obsidianite"
+  "cssTheme": "Obsidianite",
+  "theme": "obsidian"
 }

@@ -17,3 +17,5 @@ app.use(express.urlencoded({ extended: true }));
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
 ```
+
+[[1. Project check-list]]
