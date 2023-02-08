@@ -8,13 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a8db31a2ac01fa4a",
+            "id": "13d52e79cbe31867",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Axios Cheat Sheet.md",
-                "mode": "preview",
+                "file": "Linux setup/Linux.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Axios Cheat Sheet.md",
+                "file": "Linux setup/Linux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Axios Cheat Sheet.md",
+                "file": "Linux setup/Linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Axios Cheat Sheet.md"
+                "file": "Linux setup/Linux.md"
               }
             }
           }
@@ -135,7 +135,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 418.5,
+    "width": 399.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -148,17 +148,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a8db31a2ac01fa4a",
+  "active": "13d52e79cbe31867",
   "lastOpenFiles": [
-    "Axios Cheat Sheet.md",
-    "JavaScript Cheat Sheet.md",
-    "ReactJS Cheat Sheet.md",
-    "Redux Cheat Sheet.md",
-    "* Markdown Cheat Sheet.md",
-    "WhiteSur GTK Theme.md",
-    "WhiteSur Icon Theme.md",
-    "Debugging.md",
-    "1. Project check-list.md",
-    "src/other/firefox.md"
+    "Linux setup/Linux.md",
+    "Linux setup/Untitled.md",
+    "Linux setup/Linux setup 1.md",
+    "Linux setup/Linux setup.md",
+    "cheatsheets/ReactJS Cheat Sheet.md",
+    "cheatsheets/Redux Cheat Sheet.md",
+    "Project stuff/1. Project check-list.md",
+    "cheatsheets/* Markdown Cheat Sheet.md",
+    "cheatsheets/JavaScript Cheat Sheet.md",
+    "cheatsheets/Axios Cheat Sheet.md"
   ]
 }
