@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "3535cd202e075395",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linux setup/Tweaks and Extnsions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "b10ef8312f31c79b",
@@ -85,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linux setup/Apps to download.md",
+                "file": "Linux setup/Tweaks and Extnsions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Linux setup/Apps to download.md",
+                "file": "Linux setup/Tweaks and Extnsions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux setup/Apps to download.md"
+                "file": "Linux setup/Tweaks and Extnsions.md"
               }
             }
           }
@@ -147,10 +161,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fd01d3e126da8984",
+  "active": "3535cd202e075395",
   "lastOpenFiles": [
-    "Linux setup/Linux.md",
     "Linux setup/Apps to download.md",
+    "Linux setup/Linux.md",
     "Linux setup/OhMyZsh.md",
     "Untitled.md",
     "Linux setup/Linux setup 1.md",
