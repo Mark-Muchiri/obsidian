@@ -1,0 +1,16 @@
+- [ ] Microsoft Edge
+- [ ] Terminator
+- [ ] Joplin
+- [ ] Obsidian
+- [ ] Discord
+- [ ] Fragmants
+- [ ] OBS Studio
+- [ ] BleachBit
+- [ ] MongoDB Compass
+- [ ] VS code
+- [ ] WhatsApp
+- [ ] VLC media player
+- [ ] OnlyOffice
+- [ ] Tweaks
+- [ ] Extension manager
+- [ ] 
