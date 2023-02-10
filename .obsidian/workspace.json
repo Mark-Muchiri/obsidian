@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "dfb75a9c7f2e4c2c",
+    "id": "d4cf925818b5a659",
     "type": "split",
     "children": [
       {
-        "id": "c2f0151e4e9b6b8f",
+        "id": "e1653d1ee4fd8bad",
         "type": "tabs",
         "children": [
           {
-            "id": "471191e973a7faf2",
+            "id": "3a4de102a6c381f6",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -21,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "836b7e5f77f1e485",
+    "id": "ad25425b2fb23271",
     "type": "split",
     "children": [
       {
-        "id": "d553f7a743ace191",
+        "id": "94bb240fa609c49b",
         "type": "tabs",
         "children": [
           {
-            "id": "5a943820f12d910d",
+            "id": "3d7f99288ae2d779",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +39,7 @@
             }
           },
           {
-            "id": "60820d3b0491adbc",
+            "id": "862100870d45d41c",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +54,7 @@
             }
           },
           {
-            "id": "378a07ece1a04949",
+            "id": "2a030c0c9ed6d6b0",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -65,53 +65,45 @@
       }
     ],
     "direction": "horizontal",
-    "width": 281.5
+    "width": 300
   },
   "right": {
-    "id": "b10ef8312f31c79b",
+    "id": "4b2c26ee5ccb14ae",
     "type": "split",
     "children": [
       {
-        "id": "1d786b11b250d991",
+        "id": "67b0ade233386bc9",
         "type": "tabs",
-        "dimension": 65.12345679012346,
         "children": [
           {
-            "id": "751f848b6cff1693",
+            "id": "1c004e2b4699322a",
             "type": "leaf",
             "state": {
-              "type": "localgraph",
+              "type": "backlink",
               "state": {
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": true,
-                  "textFadeMultiplier": -1,
-                  "nodeSizeMultiplier": 0.774390243902439,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 0.7434183330758479,
-                  "close": true
-                }
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "68ace8e1bbe9901a",
+            "id": "5027537d409cd48e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b25cad08bdd3eb0c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,16 +112,9 @@
                 "useHierarchy": true
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "f1b3bcb7c9d189fe",
-        "type": "tabs",
-        "dimension": 34.876543209876544,
-        "children": [
+          },
           {
-            "id": "586216640ef4d575",
+            "id": "c934c4c011d1ce6a",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -140,7 +125,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 528.5
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -152,17 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5a943820f12d910d",
-  "lastOpenFiles": [
-    "Linux setup/Linux.md",
-    "Linux setup/Tweaks and Extnsions.md",
-    "Project stuff/1. Project check-list.md",
-    "Project stuff/Debugging.md",
-    "cheatsheets/Axios Cheat Sheet.md",
-    "cheatsheets/ReactJS Cheat Sheet.md",
-    "cheatsheets/JavaScript Cheat Sheet.md",
-    "cheatsheets/* Markdown Cheat Sheet.md",
-    "cheatsheets/Redux Cheat Sheet.md",
-    "Themes/WhiteSur GTK Theme.md"
-  ]
+  "active": "3a4de102a6c381f6",
+  "lastOpenFiles": []
 }

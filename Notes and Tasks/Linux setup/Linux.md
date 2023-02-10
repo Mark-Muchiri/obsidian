@@ -186,3 +186,8 @@ alias sellmern="cd /home/mark/Documents/database/sellmern"
 
 [Apps to download](obsidian://open?vault=Notes%20and%20Tasks&file=Linux%20setup%2FApps%20to%20download)
 And set up git-credentials
+
+##### `Linked notes`
+[[OhMyZsh]]
+[[Tweaks and Extnsions]]
+[[Apps to download]]

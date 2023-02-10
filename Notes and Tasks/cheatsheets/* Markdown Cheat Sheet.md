@@ -124,4 +124,6 @@ I think this is meant to be for underlining text
 
 ++insert++
 
+#### `Linked notes`
+
 [[JavaScript Cheat Sheet]]

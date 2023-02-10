@@ -18,4 +18,3 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: true }));
 ```
 
-[[1. Project check-list]]

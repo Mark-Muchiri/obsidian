@@ -696,3 +696,8 @@ function userReducer(state = initialState, action) {
 ```
 
 **[⬆ Go to top](#table-of-contents)**
+
+#### `Linked notes`
+
+[[Axios Cheat Sheet]]
+[[Redux Cheat Sheet]]

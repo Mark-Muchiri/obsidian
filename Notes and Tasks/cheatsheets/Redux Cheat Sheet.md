@@ -265,4 +265,3 @@ Meet some of the outstanding companies that made it possible:
 
 [MIT](LICENSE.md)
 
-[[ReactJS Cheat Sheet]]

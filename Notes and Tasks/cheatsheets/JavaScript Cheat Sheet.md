@@ -1842,6 +1842,8 @@ A variable is said to be *immutable* if it can't be mutated.
 
 [Check MDN Mutable article](https://developer.mozilla.org/en-US/docs/Glossary/Mutable) for more details.
 
-[[ReactJS Cheat Sheet]]
-[[* Markdown Cheat Sheet]]
+#### `Linked notes`
 
+[[ReactJS Cheat Sheet]]
+[[Redux Cheat Sheet]]
+[[Axios Cheat Sheet]]
