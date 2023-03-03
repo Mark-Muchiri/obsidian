@@ -12,17 +12,20 @@
 
 <br>
 ### `Configurations :`
-1. Blur my shell :
+##### 1. Blur my shell :
 
 ![[Pasted image 20230208083733.png]]
 
-2. Forge :
+#### 2. Forge :
 
 ![[Pasted image 20230208083901.png]]
 All colors Purple
 ![[Pasted image 20230208084156.png]]
 
-3. Just Perfection :
+Shortcut for turning Forge  on and off
+![[Screenshot from 2023-03-02 23-56-41.png]]
+
+#### 3. Just Perfection :
 
 ![[Screenshot from 2023-02-08 08-46-23.png]]
 
@@ -32,18 +35,22 @@ All colors Purple
 ![[Pasted image 20230208084955.png]]
 ![[Pasted image 20230208085053.png]]
 
-4. Rounded corners :
+#### 4. Rounded corners :
 
 ![[Pasted image 20230208085239.png]]
 ![[Pasted image 20230208085246.png]]
 ![[Pasted image 20230208085252.png]]
 
-5. Unite :
+#### 5. Unite :
 
 ![[Pasted image 20230208085351.png]]
 ![[Pasted image 20230208085357.png]]
 
-6. Vitals :
+#### 6. Vitals :
 
 ![[Pasted image 20230208085436.png]]
+
+## How to reset any extention individually
+
+![[Pasted image 20230303000225.png]]
 
