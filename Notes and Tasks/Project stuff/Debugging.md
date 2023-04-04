@@ -1,9 +1,9 @@
 # Things to change
 ### `SignupCard.js`
-- [ ] Change the nesting object data in `const [formData, setFormData] = useState ...` and change it to simple data entry format
-- [ ] Change the object data in `const { ... } = formData` to simple data
-- [ ] Change the names in the html code below.
-- [ ] Checkout this ( 👇 ) express code and see how it's stopping the code from posting data to the database. Also check the error that it causes in the browser `console >_`
+- [x] Change the nesting object data in `const [formData, setFormData] = useState ...` and change it to simple data entry format
+- [x] Change the object data in `const { ... } = formData` to simple data
+- [x] Change the names in the html code below.
+- [x] Checkout this ( 👇 ) express code and see how it's stopping the code from posting data to the database. Also check the error that it causes in the browser `console >_`
 ```js
 /**
  * Express set ups

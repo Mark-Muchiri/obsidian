@@ -1,15 +1,15 @@
-- [x]  Microsoft Edge
-- [x]  Terminator
-- [x]  Joplin
-- [x]  Obsidian
-- [x]  Discord
-- [x]  Fragmants
-- [x]  OBS Studio
-- [x]  BleachBit
-- [x]  MongoDB Compass
-- [x]  VS code
-- [x]  WhatsApp
-- [x]  VLC media player
+- [ ]  Microsoft Edge
+- [ ]  Terminator
+- [ ]  Joplin
+- [ ]  Obsidian
+- [ ]  Discord
+- [ ]  Fragmants
+- [ ]  OBS Studio
+- [ ]  BleachBit
+- [ ]  MongoDB Compass
+- [ ]  VS code
+- [ ]  WhatsApp
+- [ ]  VLC media player
 - [ ]  OnlyOffice
-- [x]  Tweaks
-- [x]  Extension manager
+- [ ]  Tweaks
+- [ ]  Extension manager

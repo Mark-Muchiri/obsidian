@@ -11,7 +11,9 @@
 ![[Pasted image 20230208083626.png]]
 
 <br>
+
 ### `Configurations :`
+
 ##### 1. Blur my shell :
 
 ![[Pasted image 20230208083733.png]]
