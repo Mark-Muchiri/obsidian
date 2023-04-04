@@ -67,7 +67,7 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 
 ### Fenced Code Block
 
-```
+```json
 {
   "firstName": "John",
   "lastName": "Smith",
@@ -120,9 +120,11 @@ X^2^
 
 ### Insert
 
-I think this is meant to be for underlining text
-
 ++insert++
+
+### Underline
+
+<u>underlined words</u>
 
 #### `Linked notes`
 

@@ -6,33 +6,40 @@
       {
         "id": "e1653d1ee4fd8bad",
         "type": "tabs",
+        "dimension": 64.51342281879194,
         "children": [
           {
-            "id": "3a4de102a6c381f6",
+            "id": "396284f386f92f97",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes and Tasks/Project stuff/Debugging.md",
-                "mode": "preview",
+                "file": "Notes and Tasks/Research/Fintech.md",
+                "mode": "source",
                 "source": false
               }
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "ba59abe3729f1578",
+        "type": "tabs",
+        "dimension": 35.48657718120805,
+        "children": [
           {
-            "id": "031d9060d925b1d2",
+            "id": "291c87ff04d10e04",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "True Worship.md",
+                "file": "Notes and Tasks/cheatsheets/* Markdown Cheat Sheet.md",
                 "mode": "preview",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "True Worship.md",
+                "file": "Notes and Tasks/Research/Fintech.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "True Worship.md",
+                "file": "Notes and Tasks/Research/Fintech.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "True Worship.md"
+                "file": "Notes and Tasks/Research/Fintech.md"
               }
             }
           }
@@ -161,19 +168,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "031d9060d925b1d2",
+  "active": "396284f386f92f97",
   "lastOpenFiles": [
     "Notes and Tasks/cheatsheets/* Markdown Cheat Sheet.md",
-    "True Worship.md",
+    "Notes and Tasks/Research/Fintech.md",
+    "Notes and Tasks/Conviction/True Worship.md",
+    "Notes and Tasks/Research",
+    "Notes and Tasks/Conviction",
+    "Notes and Tasks/cheatsheets/JavaScript Cheat Sheet.md",
+    "Notes and Tasks/cheatsheets/Redux Cheat Sheet.md",
+    "Notes and Tasks/Linux setup/Tweaks and Extnsions.md",
+    "Notes and Tasks/Linux setup/OhMyZsh.md",
+    "Notes and Tasks/Linux setup/Linux.md",
     "Notes and Tasks/Project stuff/Debugging.md",
     "Notes and Tasks/Project stuff/1. Project check-list.md",
-    "Notes and Tasks/cheatsheets/JavaScript Cheat Sheet.md",
     "Notes and Tasks/Themes/WhiteSur GTK Theme.md",
     "Notes and Tasks/Themes/WhiteSur Icon Theme.md",
-    "Notes and Tasks/Linux setup/Tweaks and Extnsions.md",
     "Notes and Tasks/Linux setup/Apps to download.md",
-    "Notes and Tasks/Linux setup/Linux.md",
-    "Notes and Tasks/Linux setup/OhMyZsh.md",
     "Notes and Tasks/Attachments/Pasted image 20230303000225.png",
     "Notes and Tasks/Attachments/Screenshot from 2023-03-02 23-56-41.png"
   ]
