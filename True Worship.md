@@ -27,5 +27,5 @@ John 4: 23, 24
 - Jesus said to His Father *`"Thy word is truth"`* (`John 17:17`). `Psalm 119` says, *`"Thy law is truth"`* and *`"Thy word is true"`*
 - To truly worship God we must understand who He is and what He has done. And one of the reliable places He has revealed Himself is in the Bible.
 - Worship is an expression of praise from the depth of our hearts towards a God who is understood through His word. We know about Him in His Word. We know Him by doing what He says. (`John 15:14`) *`"You are my friends if you do what I command you"`*
-- (`Matthew 25:12`) *`"But he answered, ‘Truly I say to you, I do not know you.’"`* Parable of the ten virgins.
+- (`Matthew 25:12`) *`"But he answered, ‘Truly I say to you, I do not know you.’"`* Parable of the ten virgins. Here we see that If we don't know Jesus, we won't enter the Kindom of Heaven.
 - And if we do not have the truth of the bible, we do not know God and we cannot be truly worshipers.
