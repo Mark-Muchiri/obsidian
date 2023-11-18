@@ -1,4 +1,3 @@
-```bash
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -119,14 +118,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dnf="sudo dnf"
+alias dnf="sudo dnf5"
 alias c="clear"
 alias rm="trash"
-alias psh="nano ~/.zshrc"
-alias pr="exec zsh"
+alias zshrc="nano ~/.zshrc"
+alias refresh="exec zsh"
 alias f=". ranger"
 alias pk="p10k configure"
-alias code="code ."
 alias subl="subl ."
 alias cpu="sudo bpytop"
 alias gtk3="cd .config/gtk-3.0 && sudo nano gtk.css"
@@ -134,23 +132,29 @@ alias gtk4="cd .config/gtk-4.0 && sudo nano gtk.css"
 alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
 alias commit="git add . && git commit"
 alias add="git add ."
-alias sync="git add . && git commit && git push  && log"
+alias sync="git add . && git commit && git push"
 alias start="npm start"
 alias diff="git diff"
 alias push="git push"
-alias l="ls -1"
-alias la="ls -a -1"
-#alias ls="ls -1"
+alias clone="git clone"
+alias l="lsd -hX"
+alias la="lsd -hXa"
+alias ls="lsd -hX -1"
 alias list="npm list"
 alias vi="nvim"
-alias X="exit"
-alias dnfu="sudo dnf update"
-alias dnfi="sudo dnf install"
-alias dnfr="sudo dnf remove"
-alias dnfs="sudo dnf search"
-alias mern="cd /home/mark/Documents/coding/mongotest/mern-tutorial"
-alias sellme="cd /home/mark/Documents/coding/PROJECT/mac/sellme"
-alias sellmern="cd /home/mark/Documents/database/sellmern"
+alias x="exit"
+alias update="sudo dnf5 update"
+alias install="sudo dnf5 install -y"
+alias remove="sudo dnf5 remove -y"
+alias search="sudo dnf5 search"
+alias p="pnpm"
+alias cht="cht.sh"
+alias attach="tmux attach"
+alias lt="lsd --tree"
+
+
+# Code Projects
+alias vanlife="cd ~/Desktop/Vanlife"
 
 eval "$(mcfly init zsh)"
 export MCFLY_FUZZY=5
@@ -164,55 +168,23 @@ export MCFLY_RESULTS_SORT=LAST_RUN
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# pnpm
+export PNPM_HOME="/home/mark/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
+# bun completions
+[ -s "/home/mark/.bun/_bun" ] && source "/home/mark/.bun/_bun"
 
-# study stream aliases
-# Requires https://github.com/caarlos0/timer to be installed. spd-say should ship with your distro
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# How to use `doro` and `cp`:
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Start pomodoro and set loops: `doro Ñ` (If you type `doro` without specifying a number, it will perform the default number of loops that are set in the script.).
-# Change work time: `cp work Ñ`
-#Change break time: `cp break Ñ`
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-declare -A pomo_options
-pomo_options["work"]="45"
-pomo_options["break"]="10"
-
-pomodoro() {
-  val=$1
-  echo $val | lolcat
-  timer ${pomo_options["$val"]}m
-  spd-say "'$val' session done"
-  notify-send --app-name=Pomodoro🍅 "'$val' session done 🍅"
-}
-
-start_pomodoro() {
-  # Number of times to repeat the loop, default is 2
-  if [ -n "$1" ] && [ "$1" -eq "$1" ] 2>/dev/null; then
-    num_loops=$1
-  else
-   # Default loops
-    num_loops=2
-  fi
-
-  for i in $(seq 1 $num_loops); do
-    pomodoro "work"
-    pomodoro "break"
-  done
-}
-change_pomo() {
-  if [ -n "$1" ] && [ -n "$2" ]; then
-    pomo_options["$1"]="$2"
-    echo "The $1 time has been changed to $2 minutes"
-  else
-    echo "Please provide valid parameters: change_pomo [work/break] [time_in_minutes]"
-  fi
-}
-
-alias promodoro=start_pomodoro
-alias work="pomodoro 'work'"
-alias break="pomodoro 'break'"
-alias changepromodoro=change_pomo
-
-```
+eval $(thefuck --alias)
