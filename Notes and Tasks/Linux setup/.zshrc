@@ -82,10 +82,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git
-node
-git
-sublime
+sudo
 zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-history-substring-search
@@ -122,7 +119,7 @@ alias dnf="sudo dnf5"
 alias c="clear"
 alias rm="trash"
 alias zshrc="nano ~/.zshrc"
-alias refresh="exec zsh"
+alias src="source ~/.zshrc"
 alias f=". ranger"
 alias pk="p10k configure"
 alias subl="subl ."
