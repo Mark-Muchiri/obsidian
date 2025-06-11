@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias /="cd ~"
 alias dnf="sudo dnf5"
 alias c="clear"
@@ -122,6 +123,9 @@ alias rm="trash"
 alias zshrc="nano ~/.zshrc"
 alias src="source ~/.zshrc"
 alias f=". ranger"
+alias fzf="fzf --reverse --height 50%"
+alias fin="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 50% --preview 'tree -C {}')"
+alias finf="\$(find ~/ -type f -print |fzf --reverse --height 50% --preview='bat {}')"
 alias pk="p10k configure"
 alias subl="subl ."
 alias cpu="sudo bpytop"
@@ -149,6 +153,8 @@ alias p="pnpm"
 alias cht="cht.sh"
 alias attach="tmux attach"
 alias lt="lsd --tree"
+alias root="sudo -i"
+alias tr="wine terminal64.exe"
 
 
 # Code Projects
@@ -186,3 +192,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval $(thefuck --alias)
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
