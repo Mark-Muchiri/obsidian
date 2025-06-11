@@ -123,9 +123,9 @@ alias rm="trash"
 alias zshrc="nano ~/.zshrc"
 alias src="source ~/.zshrc"
 alias f=". ranger"
-alias fzf="fzf --reverse --height 50%"
-alias fin="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 50% --preview 'tree -C {}')"
-alias finf="\$(find ~/ -type f -print |fzf --reverse --height 50% --preview='bat {}')"
+alias fzf="fzf --reverse --height 75%"
+alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview 'tree -C {}')"
+alias files="find ~/ -type f -print |fzf --reverse --height 75% --preview='bat --color=always {}'"
 alias pk="p10k configure"
 alias subl="subl ."
 alias cpu="sudo bpytop"
@@ -155,10 +155,7 @@ alias attach="tmux attach"
 alias lt="lsd --tree"
 alias root="sudo -i"
 alias tr="wine terminal64.exe"
-
-
-# Code Projects
-alias vanlife="cd ~/Desktop/Vanlife"
+alias ghost="nano ~/.config/ghostty/config"
 
 eval "$(mcfly init zsh)"
 export MCFLY_FUZZY=5
