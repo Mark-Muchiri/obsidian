@@ -1,6 +1,5 @@
 font-family = JetBrainsMono Nerd Font Propo
-font-size = 14
-#theme = GitHub-Dark-Default
+font-size = 15
 theme = ayu
 gtk-titlebar = false
 gtk-tabs-location = bottom
