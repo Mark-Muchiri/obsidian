@@ -210,3 +210,13 @@ source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring
 # bun end
 
 ##############################################################################################
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# zoxide install script
+# brew install zoxide
+# or
+# sudo dnf5 install zoxide
+
+##############################################################################################
