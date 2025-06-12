@@ -1,3 +1,4 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -128,7 +129,7 @@ alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% 
 alias files="find ~/ -type f -print |fzf --reverse --height 75% --preview='bat --color=always {}'"
 alias pk="p10k configure"
 alias subl="subl ."
-alias cpu="sudo bpytop"
+alias cpu="sudo btop"
 alias gtk3="cd .config/gtk-3.0 && sudo nano gtk.css"
 alias gtk4="cd .config/gtk-4.0 && sudo nano gtk.css"
 alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
@@ -155,9 +156,11 @@ alias attach="tmux attach"
 alias lt="lsd --tree"
 alias root="sudo -i"
 alias tr="wine terminal64.exe"
-alias ghost="nano ~/.config/ghostty/config"
+alias gh="nano ~/.config/ghostty/config"
 
 eval "$(mcfly init zsh)"
+# install script
+# curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
 export MCFLY_FUZZY=5
 export MCFLY_RESULTS=35
 export MCFLY_INTERFACE_VIEW=TOP
@@ -190,4 +193,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval $(thefuck --alias)
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 
