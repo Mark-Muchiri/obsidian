@@ -144,7 +144,7 @@ alias zshrc="nano ~/.zshrc"
 alias src="source ~/.zshrc"
 
 # fzf controls
-alias sh="bat ~/.zshrc | fzf --reverse --height 75%"
+alias shortcuts="bat ~/.zshrc | fzf --reverse --height 75%"
 alias fzf="fzf --reverse --height 75%"
 alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview 'tree -C {}')"
 alias files="find ~/ -type f -print |fzf --reverse --height 75% --preview='bat --color=always {}'"
