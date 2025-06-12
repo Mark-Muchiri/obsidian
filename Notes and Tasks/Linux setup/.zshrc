@@ -1,10 +1,12 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -16,11 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="xiong-chiamiov-plus"
-#ZSH_THEME="simonoff"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="murilasso"
-#ZSH_THEME="mortalscumbag"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -88,7 +86,6 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-history-substring-search
 )
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -117,46 +114,54 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias /="cd ~"
-alias dnf="sudo dnf5"
+# daily commands
 alias c="clear"
-alias rm="trash"
-alias zshrc="nano ~/.zshrc"
-alias src="source ~/.zshrc"
-alias f=". ranger"
-alias fzf="fzf --reverse --height 75%"
-alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview 'tree -C {}')"
-alias files="find ~/ -type f -print |fzf --reverse --height 75% --preview='bat --color=always {}'"
-alias pk="p10k configure"
-alias subl="subl ."
+alias x="exit"
 alias cpu="sudo btop"
-alias gtk3="cd .config/gtk-3.0 && sudo nano gtk.css"
-alias gtk4="cd .config/gtk-4.0 && sudo nano gtk.css"
-alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
-alias commit="git add . && git commit"
-alias add="git add ."
-alias sync="git add . && git commit && git push"
-alias start="npm start"
-alias diff="git diff"
-alias push="git push"
-alias clone="git clone"
+alias /="cd ~"
+alias rm="trash"
+alias root="sudo -i"
+
+# folder navigation
+alias f=". ranger"
 alias l="lsd -hX"
 alias la="lsd -hXa"
 alias ls="lsd -hX -1"
-alias list="npm list"
-alias vi="nvim"
-alias x="exit"
+alias lt="lsd --tree"
+
+# p10K wizard
+alias pk="p10k configure"
+
+# Ghostty config
+alias gh="nano ~/.config/ghostty/config"
+
+# zshrc commands
+alias zshrc="nano ~/.zshrc"
+alias src="source ~/.zshrc"
+
+# fzf controls
+alias sh="bat ~/.zshrc | fzf --reverse --height 75%"
+alias fzf="fzf --reverse --height 75%"
+alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview 'tree -C {}')"
+alias files="find ~/ -type f -print |fzf --reverse --height 75% --preview='bat --color=always {}'"
+
+# dnf commands
+alias dnf="sudo dnf5"
 alias update="sudo dnf5 update"
 alias install="sudo dnf5 install -y"
 alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
-alias p="pnpm"
-alias cht="cht.sh"
-alias attach="tmux attach"
-alias lt="lsd --tree"
-alias root="sudo -i"
-alias tr="wine terminal64.exe"
-alias gh="nano ~/.config/ghostty/config"
+
+# Git command alias
+alias clone="git clone"
+# alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
+# alias commit="git add . && git commit"
+# alias add="git add ."
+# alias sync="git add . && git commit && git push"
+# alias diff="git diff"
+# alias push="git push"
+
+##############################################################################################
 
 eval "$(mcfly init zsh)"
 # install script
@@ -166,11 +171,7 @@ export MCFLY_RESULTS=35
 export MCFLY_INTERFACE_VIEW=TOP
 export MCFLY_RESULTS_SORT=LAST_RUN
 
-#For post command spacing
-#precmd() { print "" }
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+##############################################################################################
 
 # pnpm
 export PNPM_HOME="/home/mark/.local/share/pnpm"
@@ -179,6 +180,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+##############################################################################################
 
 # bun completions
 [ -s "/home/mark/.bun/_bun" ] && source "/home/mark/.bun/_bun"
@@ -193,5 +196,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval $(thefuck --alias)
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+# bun end
 
-
+##############################################################################################
