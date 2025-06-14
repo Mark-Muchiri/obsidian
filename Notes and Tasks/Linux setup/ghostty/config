@@ -1,11 +1,11 @@
+theme = Aura
+font-size = 16
 font-family = JetBrainsMono Nerd Font Propo
-font-size = 15
-theme = ayu
 gtk-titlebar = false
 gtk-tabs-location = bottom
 cursor-style = bar
-window-padding-x = 14
-window-padding-y = 16
+window-padding-x = 20
+window-padding-y = 0
 
 # This is the configuration file for Ghostty.
 #
