@@ -232,3 +232,11 @@ eval "$(starship init zsh)"
 # curl -sS https://starship.rs/install.sh | sh
 
 ##############################################################################################
+
+# Saving Gnome-extensions setup
+# dconf dump /org/gnome/shell/extensions/ > some-file.txt
+
+# Loading the saved Gnome-extensions setup
+# dconf load /org/gnome/shell/extensions/ < some-file.txt
+
+##############################################################################################
