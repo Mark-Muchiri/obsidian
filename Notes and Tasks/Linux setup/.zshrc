@@ -228,4 +228,7 @@ eval "$(zoxide init --cmd cd zsh)"
 # starship
 eval "$(starship init zsh)"
 
+# install script
+# curl -sS https://starship.rs/install.sh | sh
+
 ##############################################################################################
