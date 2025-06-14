@@ -1,12 +1,13 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay .close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # p10k install script
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
@@ -21,7 +22,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -38,11 +39,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+ zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
- zstyle ':omz:update' frequency  1
+# zstyle ':omz:update' frequency  1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -148,13 +149,16 @@ alias gh="nano ~/.config/ghostty/config"
 
 # zshrc commands
 alias zshrc="nano ~/.zshrc"
-alias src="source ~/.zshrc"
+alias src="exec zsh"
+
+# bat theme
+alias bat="bat --theme=base16"
 
 # fzf controls
-alias shortcuts="bat ~/.zshrc | fzf --reverse --height 75%"
+alias shortcuts="bat --theme=base16 ~/.zshrc | fzf --reverse --height 75%"
 alias fzf="fzf --reverse --height 75%"
 alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview='tree -C {}')"
-alias files="find ~/ -type f -print | fzf --reverse --height 75% --preview='bat --color=always {}'"
+alias files="find ~/ -type f -print | fzf --reverse --height 75% --preview='bat --theme=base16 --color=always {}'"
 
 # dnf commands
 alias dnf="sudo dnf5"
@@ -165,12 +169,12 @@ alias search="sudo dnf5 search"
 
 # Git command alias
 alias clone="git clone"
-# alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
-# alias commit="git add . && git commit"
-# alias add="git add ."
-# alias sync="git add . && git commit && git push"
-# alias diff="git diff"
-# alias push="git push"
+alias log="git log --graph --pretty='%C(bold) %s' --decorate --all"
+alias commit="git add . && git commit"
+alias add="git add ."
+alias sync="git add . && git commit && git push"
+alias diff="git diff"
+alias push="git push"
 
 ##############################################################################################
 
@@ -218,5 +222,10 @@ eval "$(zoxide init --cmd cd zsh)"
 # brew install zoxide
 # or
 # sudo dnf5 install zoxide
+
+##############################################################################################
+
+# starship
+eval "$(starship init zsh)"
 
 ##############################################################################################
