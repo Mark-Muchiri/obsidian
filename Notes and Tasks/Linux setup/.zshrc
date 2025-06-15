@@ -92,7 +92,7 @@ zsh-history-substring-search
 )
 source $ZSH/oh-my-zsh.sh
 # install script using `brew`
-# brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf
+# brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf mcfly
 
 # Homebrew install script
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
