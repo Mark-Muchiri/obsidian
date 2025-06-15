@@ -205,11 +205,6 @@ esac
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-eval $(thefuck --alias)
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 # bun end
 
@@ -230,6 +225,16 @@ eval "$(starship init zsh)"
 
 # install script
 # curl -sS https://starship.rs/install.sh | sh
+
+##############################################################################################
+
+# thefuck
+eval $(thefuck --alias)
+
+##############################################################################################
+
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ##############################################################################################
 
