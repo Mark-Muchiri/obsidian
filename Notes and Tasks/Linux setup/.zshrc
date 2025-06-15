@@ -92,7 +92,7 @@ zsh-history-substring-search
 )
 source $ZSH/oh-my-zsh.sh
 # install script using `brew`
-# brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf mcfly
+# brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf
 
 # Homebrew install script
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -155,10 +155,10 @@ alias src="exec zsh"
 alias bat="bat --theme=base16"
 
 # fzf controls
-alias shortcuts="bat --theme=base16 ~/.zshrc | fzf --reverse --height 75%"
-alias fzf="fzf --reverse --height 75%"
-alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --height 75% --preview='tree -C {}')"
-alias files="find ~/ -type f -print | fzf --reverse --height 75% --preview='bat --theme=base16 --color=always {}'"
+alias shortcuts="bat --theme=base16 ~/.zshrc | fzf --reverse --style full --height 75%"
+alias fzf="fzf --reverse --style full --height 75%"
+alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --style full --height 75% --preview='tree -C {}')"
+alias files="find ~/ -type f -print | fzf --reverse --style full --height 75% --preview='bat --theme=base16 --color=always {}'"
 
 # dnf commands
 alias dnf="sudo dnf5"
@@ -181,6 +181,8 @@ alias push="git push"
 eval "$(mcfly init zsh)"
 # install script
 # curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
+export MCFLY_PROMPT="❯"
+export MCFLY_DISABLE_MENU=TRUE
 export MCFLY_FUZZY=5
 export MCFLY_RESULTS=35
 export MCFLY_INTERFACE_VIEW=TOP
@@ -205,7 +207,6 @@ esac
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 # bun end
 
 ##############################################################################################
@@ -235,6 +236,7 @@ eval $(thefuck --alias)
 
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/usr/local/bin:$PATH"
 
 ##############################################################################################
 
