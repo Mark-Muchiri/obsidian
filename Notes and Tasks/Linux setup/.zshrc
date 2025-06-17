@@ -239,9 +239,15 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
 
 ##############################################################################################
+
 # read man pages using `bat`
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme= --color=always'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
 export MANROFFOPT="-c"
+
+# or use less (with dynamic colors form your wallpaper)
+# This is better cuz it just uses system recources
+# export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
 ##############################################################################################
 
 # Saving Gnome-extensions setup
