@@ -158,7 +158,7 @@ alias bat="bat --theme=base16"
 alias shortcuts="bat --theme=base16 ~/.zshrc | fzf --reverse --style full --height 75%"
 alias fzf="fzf --reverse --style full --height 75%"
 alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --style full --height 75% --preview='tree -C {}')"
-alias files="find ~/ -type f -print | fzf --reverse --style full --height 75% --preview='bat --theme=base16 --color=always {}'"
+alias files="find ~/ -type f -print | fzf --reverse --style full --height 75% --preview='bat --style=numbers --theme=base16 --color=always {}'"
 
 # dnf commands
 alias dnf="sudo dnf5"
@@ -239,11 +239,21 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
 
 ##############################################################################################
+# read man pages using `bat`
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=Monokai\ Extended\ Origin --color=always'"
+export MANROFFOPT="-c"
+##############################################################################################
 
 # Saving Gnome-extensions setup
 # dconf dump /org/gnome/shell/extensions/ > some-file.txt
 
 # Loading the saved Gnome-extensions setup
 # dconf load /org/gnome/shell/extensions/ < some-file.txt
+
+##############################################################################################
+
+# Install Unity gnome extension
+# sudo dnf install gnome-browser-connector
+# gsettings set org.gnome.shell disable-extension-version-validation true
 
 ##############################################################################################
