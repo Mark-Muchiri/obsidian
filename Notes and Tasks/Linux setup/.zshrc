@@ -240,7 +240,7 @@ export PATH="/usr/local/bin:$PATH"
 
 ##############################################################################################
 # read man pages using `bat`
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=Monokai\ Extended\ Origin --color=always'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme= --color=always'"
 export MANROFFOPT="-c"
 ##############################################################################################
 
