@@ -107,9 +107,12 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nano'
-# else
-#   export EDITOR='nano'
+ else
+   export EDITOR='nano'
  fi
+
+# In your .zshrc/.bashrc
+export VISUAL="$EDITOR"  # Needed by some applications
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -135,7 +138,7 @@ alias rm="trash"
 alias root="sudo -i"
 
 # folder navigation
-alias f=". ranger"
+#alias f=". ranger"
 alias l="lsd -hX"
 alias la="lsd -hXa"
 alias ls="lsd -hX -1"
@@ -154,12 +157,6 @@ alias src="exec zsh"
 # bat theme
 alias bat="bat --theme=base16"
 
-# fzf controls
-alias shortcuts="bat --theme=base16 ~/.zshrc | fzf --reverse --style full --height 75%"
-alias fzf="fzf --reverse --style full --height 75%"
-alias folder="cd ~ && cd \$(find ~/ -type d -print | fzf --reverse --style full --height 75% --preview='tree -C {}')"
-alias files="find ~/ -type f -print | fzf --reverse --style full --height 75% --preview='bat --style=numbers --theme=base16 --color=always {}'"
-
 # dnf commands
 alias dnf="sudo dnf5"
 alias update="sudo dnf5 update"
@@ -175,6 +172,50 @@ alias add="git add ."
 alias sync="git add . && git commit && git push"
 alias diff="git diff"
 alias push="git push"
+
+##############################################################################################
+
+# ===== fzf configuration =====
+# Set default fzf options globally (safer than aliasing fzf)
+export FZF_DEFAULT_OPTS='--reverse --height 75% --border'
+
+# ===== File Search Utilities =====
+# View shortcuts interactively
+shortcuts() {
+  bat --theme=base16 --style=numbers ~/.zshrc | fzf --preview-window='right:60%' --preview='echo {}'
+}
+
+# Search directories with preview
+fdir() {
+  local dir
+  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null | \
+    fzf --preview='tree -C -L 2 {}')
+
+  [[ -n "$dir" ]] && cd "$dir"
+}
+
+# Search files with preview
+ffile() {
+  local file
+  file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null | \
+    fzf --preview="bat --style=plain --theme=base16 --color=always {}")
+
+  [[ -n "$file" ]] && echo "$file"
+}
+
+# Edit selected file
+edf() {
+  local file
+  file=$(ffile)  # Reuse our file search function
+  [[ -n "$file" ]] && ${EDITOR:-nano} "$file"
+}
+
+# Change to directory of selected file
+cdf() {
+  local file
+  file=$(ffile)  # Reuse file search function
+  [[ -n "$file" ]] && cd "$(dirname "$file")"
+}
 
 ##############################################################################################
 
@@ -250,6 +291,17 @@ export MANROFFOPT="-c"
 
 ##############################################################################################
 
+# yazi
+function f() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+##############################################################################################
+
 # Saving Gnome-extensions setup
 # dconf dump /org/gnome/shell/extensions/ > some-file.txt
 
@@ -262,4 +314,11 @@ export MANROFFOPT="-c"
 # sudo dnf install gnome-browser-connector
 # gsettings set org.gnome.shell disable-extension-version-validation true
 
+# Then run this command
+
+# wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
+# gnome-extensions install --force unite-v82.zip
 ##############################################################################################
+
+# export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=i965
