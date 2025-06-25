@@ -320,5 +320,5 @@ function f() {
 # gnome-extensions install --force unite-v82.zip
 ##############################################################################################
 
-export LIBVA_DRIVER_NAME=iHD
+# export LIBVA_DRIVER_NAME=iHD
 # export LIBVA_DRIVER_NAME=i965
