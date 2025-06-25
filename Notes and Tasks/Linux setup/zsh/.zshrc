@@ -39,7 +39,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
- zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -85,10 +85,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-sudo
-zsh-autosuggestions
-zsh-syntax-highlighting
-zsh-history-substring-search
+  sudo
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-history-substring-search
 )
 source $ZSH/oh-my-zsh.sh
 # install script using `brew`
@@ -105,14 +105,14 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nano'
- else
-   export EDITOR='nano'
- fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nano'
+else
+  export EDITOR='code'
+fi
 
 # In your .zshrc/.bashrc
-export VISUAL="$EDITOR"  # Needed by some applications
+export VISUAL="$EDITOR" # Needed by some applications
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -148,10 +148,10 @@ alias lt="lsd --tree"
 alias pk="p10k configure"
 
 # Ghostty config
-alias gh="nano ~/.config/ghostty/config"
+alias gh="code ~/.config/ghostty/config"
 
 # zshrc commands
-alias zshrc="nano ~/.zshrc"
+alias zshrc="code ~/.zshrc"
 alias src="exec zsh"
 
 # bat theme
@@ -188,7 +188,7 @@ shortcuts() {
 # Search directories with preview
 fdir() {
   local dir
-  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null | \
+  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
     fzf --preview='tree -C -L 2 {}')
 
   [[ -n "$dir" ]] && cd "$dir"
@@ -197,23 +197,23 @@ fdir() {
 # Search files with preview
 ffile() {
   local file
-  file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null | \
+  file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
     fzf --preview="bat --style=plain --theme=base16 --color=always {}")
 
   [[ -n "$file" ]] && echo "$file"
 }
 
 # Edit selected file
-edf() {
+ed() {
   local file
-  file=$(ffile)  # Reuse our file search function
+  file=$(ffile) # Reuse our file search function
   [[ -n "$file" ]] && ${EDITOR:-nano} "$file"
 }
 
 # Change to directory of selected file
 cdf() {
   local file
-  file=$(ffile)  # Reuse file search function
+  file=$(ffile) # Reuse file search function
   [[ -n "$file" ]] && cd "$(dirname "$file")"
 }
 
@@ -234,8 +234,8 @@ export MCFLY_RESULTS_SORT=LAST_RUN
 # pnpm
 export PNPM_HOME="/home/mark/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -293,11 +293,11 @@ export MANROFFOPT="-c"
 
 # yazi
 function f() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
 }
 
 ##############################################################################################
@@ -320,5 +320,5 @@ function f() {
 # gnome-extensions install --force unite-v82.zip
 ##############################################################################################
 
-# export LIBVA_DRIVER_NAME=iHD
-export LIBVA_DRIVER_NAME=i965
+export LIBVA_DRIVER_NAME=iHD
+# export LIBVA_DRIVER_NAME=i965
