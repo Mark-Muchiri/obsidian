@@ -319,6 +319,3 @@ function f() {
 # wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
 # gnome-extensions install --force unite-v82.zip
 ##############################################################################################
-
-# export LIBVA_DRIVER_NAME=iHD
-# export LIBVA_DRIVER_NAME=i965
