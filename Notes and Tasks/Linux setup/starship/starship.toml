@@ -5,7 +5,7 @@ add_newline = false
 
 [directory]
 home_symbol = '󱄫 '
-style = 'purple'
+style = 'cyan'
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character]
