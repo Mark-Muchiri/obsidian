@@ -205,11 +205,12 @@ eval $(thefuck --alias)
 ##############################################################################################
 
 # Homebrew
-# Homebrew install script
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
-# Proper directories for brew to work
+
+# Homebrew install script
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# brew execution & PATH setup
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # export PATH="/usr/local/bin:$PATH"
 
