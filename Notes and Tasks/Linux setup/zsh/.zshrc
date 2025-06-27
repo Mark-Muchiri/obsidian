@@ -13,10 +13,8 @@ plugins=(
   zsh-history-substring-search
 )
 source $ZSH/oh-my-zsh.sh
-# install script using `brew`
+# install dep using `brew`
 # brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf
-# Homebrew install script
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -207,6 +205,8 @@ eval $(thefuck --alias)
 ##############################################################################################
 
 # Homebrew
+# Homebrew install script
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
 # Proper directories for brew to work
