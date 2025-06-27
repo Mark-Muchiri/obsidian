@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nano'
 else
-  export EDITOR='code'
+  export EDITOR='nano'
 fi
 
 # In your .zshrc/.bashrc
@@ -278,6 +278,9 @@ eval $(thefuck --alias)
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
+# Proper directories for brew to work
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# export PATH="/usr/local/bin:$PATH"
 
 ##############################################################################################
 
@@ -319,3 +322,6 @@ function f() {
 # wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
 # gnome-extensions install --force unite-v82.zip
 ##############################################################################################
+
+# export LIBVA_DRIVER_NAME=iHD
+# export LIBVA_DRIVER_NAME=i965
