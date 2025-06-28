@@ -89,7 +89,7 @@ gss() { git fetch --all --prune && git rebase && git push }  # Smart sync
 gclean() { git clean -fd && git reset --hard }  # Deep clean
 
 # ===== FZF Configuration =====
-export FZF_DEFAULT_OPTS='--reverse --height 75% --border'
+export FZF_DEFAULT_OPTS='--reverse --height 85% --border rounded --preview-window bottom:75%'
 
 ## File Search Utilities
 ffile() {  # File search with preview
@@ -120,7 +120,7 @@ cdf() {  # Change to file's directory
 
 shortcuts() {  # Browse .zshrc
   bat --theme=base16 --style=numbers ~/.zshrc | 
-    fzf --preview-window='right:60%' --preview='echo {}'
+    fzf --preview='echo {}'
 }
 
 # ===== Terminal Enhancements =====
