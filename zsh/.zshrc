@@ -84,8 +84,8 @@ alias grh='git reset --hard'      # Hard reset
 alias gfp='git push --force-with-lease' # Safer force push
 
 ## Git Functions
-gacp() { git add -A && git commit -v && git push }  # Add/commit/push
-gss() { git fetch --all --prune && git rebase && git push }  # Smart sync
+gsync() { git add -A && git commit -v && git push }  # Add/commit/push
+gsmartsync() { git fetch --all --prune && git rebase && git push }  # Smart sync
 gclean() { git clean -fd && git reset --hard }  # Deep clean
 
 # ===== FZF Configuration =====
@@ -160,7 +160,7 @@ export MANROFFOPT="-c"
 # export LIBVA_DRIVER_NAME=iHD    # Intel modern
 # export LIBVA_DRIVER_NAME=i965   # Intel legacy
 
-## GNOME Shell Notes
+## Unite extension
 # sudo dnf install gnome-browser-connector
 # gsettings set org.gnome.shell disable-extension-version-validation true
 # wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
