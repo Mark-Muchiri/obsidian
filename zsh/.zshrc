@@ -1,11 +1,8 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# ===== Core Shell Configuration =====
+export ZSH="$HOME/.oh-my-zsh"  # Oh My Zsh installation path
+zstyle ':omz:update' mode auto  # Automatic updates
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
+# Plugins
 plugins=(
   sudo
   zsh-autosuggestions
@@ -13,144 +10,131 @@ plugins=(
   zsh-history-substring-search
 )
 source $ZSH/oh-my-zsh.sh
-# install dep using `brew`
-# brew install zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fzf
 
-# Preferred editor for local and remote sessions
+# ===== Editor Configuration =====
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'
+  export EDITOR='nano'   # Remote editor
 else
-  export EDITOR='micro'
+  export EDITOR='micro'  # Local editor
 fi
+export VISUAL="$EDITOR"   # GUI applications
 
-# In your .zshrc/.bashrc
-export VISUAL="$EDITOR" # Needed by some applications
+# ===== Path Configuration =====
+# PNPM
+export PNPM_HOME="$HOME/.local/share/pnpm"
+[[ ":$PATH:" != *":$PNPM_HOME:"* ]] && export PATH="$PNPM_HOME:$PATH"
 
-##############################################################################################
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# daily commands
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/usr/local/bin:$PATH"
+
+# ===== Aliases =====
+## System Utilities
 alias c="clear"
 alias x="exit"
 alias cpu="sudo btop"
 alias /="cd ~"
-alias rm="trash"
-alias root="sudo -i"
+alias rm="trash"      # Safer alternative to rm
+alias root="sudo -i"  # Get root shell
 
-# folder navigation
-alias l="lsd -hX"
-alias la="lsd -hXa"
-alias ls="lsd -hX -1"
-alias lt="lsd --tree"
+## Navigation
+alias l="lsd -hX"      # List sorted by extension
+alias la="lsd -hXa"    # List all including hidden
+alias ls="lsd -hX -1"  # Single column list
+alias lt="lsd --tree"  # Tree view
 
-# p10K wizard
-alias pk="p10k configure"
+## Configuration Files
+alias zshrc="$EDITOR ~/.zshrc"
+alias src="exec zsh"   # Reload zsh config
+alias gh="$EDITOR ~/.config/ghostty/config"
 
-# Ghostty config
-alias gh="code ~/.config/ghostty/config"
-
-# zshrc commands
-alias zshrc="code ~/.zshrc"
-alias src="exec zsh"
-
-# bat theme
-alias bat="bat --theme=base16"
-
-# dnf commands
+## Package Management (DNF)
 alias dnf="sudo dnf5"
 alias update="sudo dnf5 update"
 alias install="sudo dnf5 install -y"
 alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
 
-#=============================================================================================
+## Bat Enhancements
+alias bat="bat --theme=base16"
 
-# ===== Git Aliases =====
-# Core commands
+# ===== Git Configuration =====
+## Core Commands
 alias gcl='git clone'
 alias gco='git checkout'
-alias gc='git commit -v' # -v shows diff in editor
+alias gc='git commit -v'          # Commit with diff preview
 alias ga='git add'
 alias gps='git push'
 alias gpl='git pull --rebase'     # Rebase instead of merge
-alias gst='git status -sb'        # Short format + branch info
+alias gst='git status -sb'        # Short status with branch info
 alias gd='git diff --color-words' # Word-level diff
 
-# Improved logging
+## Enhanced Logging
 alias gl='git log --graph --pretty="%C(bold)%h%Creset - %C(yellow)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset" --all'
 
-# Safety-enhanced commands
-alias gap='git add -p'                  # Interactive add
-alias gca='git commit -v --amend'       # Amend last commit
-alias grh='git reset --hard'            # Explicit reset
+## Safe Operations
+alias gap='git add -p'            # Interactive staging
+alias gca='git commit -v --amend' # Amend commit
+alias grh='git reset --hard'      # Hard reset
 alias gfp='git push --force-with-lease' # Safer force push
 
-# Utility functions
-gacp() { # Add, commit, push
-  git add -A &&
-    git commit -v &&
-    git push
-}
+## Git Functions
+gacp() { git add -A && git commit -v && git push }  # Add/commit/push
+gss() { git fetch --all --prune && git rebase && git push }  # Smart sync
+gclean() { git clean -fd && git reset --hard }  # Deep clean
 
-gss() { # Smart sync (fetch + rebase + push)
-  git fetch --all --prune &&
-    git rebase &&
-    git push
-}
-
-gclean() { # Deep clean
-  git clean -fd &&
-    git reset --hard
-}
-
-#=============================================================================================
-
-# ===== fzf configuration =====
-# Set default fzf options globally (safer than aliasing fzf)
+# ===== FZF Configuration =====
 export FZF_DEFAULT_OPTS='--reverse --height 75% --border'
 
-# ===== File Search Utilities =====
-# View shortcuts interactively
-shortcuts() {
-  bat --theme=base16 --style=numbers ~/.zshrc | fzf --preview-window='right:60%' --preview='echo {}'
-}
-
-# Search directories with preview
-fdir() {
-  local dir
-  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
-    fzf --preview='tree -C -L 2 {}')
-
-  [[ -n "$dir" ]] && cd "$dir"
-}
-
-# Search files with preview
-ffile() {
+## File Search Utilities
+ffile() {  # File search with preview
   local file
   file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
     fzf --preview="bat --style=plain --theme=base16 --color=always {}")
-
   [[ -n "$file" ]] && echo "$file"
 }
 
-# Edit selected file
-ed() {
-  local file
-  file=$(ffile) # Reuse our file search function
-  [[ -n "$file" ]] && ${EDITOR:-nano} "$file"
+fdir() {  # Directory search
+  local dir
+  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
+    fzf --preview='tree -C -L 2 {}')
+  [[ -n "$dir" ]] && cd "$dir"
 }
 
-# Change to directory of selected file
-cdf() {
+ed() {  # Edit selected file
   local file
-  file=$(ffile) # Reuse file search function
+  file=$(ffile)
+  [[ -n "$file" ]] && $EDITOR "$file"
+}
+
+cdf() {  # Change to file's directory
+  local file
+  file=$(ffile)
   [[ -n "$file" ]] && cd "$(dirname "$file")"
 }
 
-##############################################################################################
+shortcuts() {  # Browse .zshrc
+  bat --theme=base16 --style=numbers ~/.zshrc | 
+    fzf --preview-window='right:60%' --preview='echo {}'
+}
 
+# ===== Terminal Enhancements =====
+## Zoxide (Smarter cd)
+eval "$(zoxide init --cmd cd zsh)"
+
+## Starship Prompt
+eval "$(starship init zsh)"
+
+## The Fuck (Correct previous command)
+eval $(thefuck --alias)
+
+## McFly (Better history search)
 eval "$(mcfly init zsh)"
-# install script
-# curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
 export MCFLY_PROMPT="❯"
 export MCFLY_DISABLE_MENU=TRUE
 export MCFLY_FUZZY=5
@@ -158,102 +142,36 @@ export MCFLY_RESULTS=35
 export MCFLY_INTERFACE_VIEW=TOP
 export MCFLY_RESULTS_SORT=LAST_RUN
 
-##############################################################################################
-
-# pnpm
-export PNPM_HOME="/home/mark/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-##############################################################################################
-
-# bun completions
-[ -s "/home/mark/.bun/_bun" ] && source "/home/mark/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# bun end
-
-##############################################################################################
-
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
-# zoxide install script
-# brew install zoxide
-# or
-# sudo dnf5 install zoxide
-
-##############################################################################################
-
-# starship
-eval "$(starship init zsh)"
-
-# install script
-# curl -sS https://starship.rs/install.sh | sh
-
-##############################################################################################
-
-# thefuck
-eval $(thefuck --alias)
-
-##############################################################################################
-
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PATH="/usr/local/bin:$PATH"
-
-# Homebrew install script
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# brew execution & PATH setup
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# export PATH="/usr/local/bin:$PATH"
-
-##############################################################################################
-
-# read man pages using `bat`
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
-export MANROFFOPT="-c"
-
-# or use less (with dynamic colors form your wallpaper)
-# This is better cuz it just uses system recources
-# export MANPAGER="less -R --use-color -Dd+r -Du+b"
-
-##############################################################################################
-
-# yazi
-function f() {
+## Yazi Terminal File Manager
+f() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   yazi "$@" --cwd-file="$tmp"
   IFS= read -r -d '' cwd <"$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-  rm -f -- "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd "$cwd"
+  rm -f "$tmp"
 }
 
-##############################################################################################
+# ===== System Tweaks =====
+## Manual Page Viewer
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
+export MANROFFOPT="-c"
 
-# Saving Gnome-extensions setup
-# dconf dump /org/gnome/shell/extensions/ > some-file.txt
+## Graphics Drivers (Uncomment one)
+# export LIBVA_DRIVER_NAME=iHD    # Intel modern
+# export LIBVA_DRIVER_NAME=i965   # Intel legacy
 
-# Loading the saved Gnome-extensions setup
-# dconf load /org/gnome/shell/extensions/ < some-file.txt
-
-##############################################################################################
-
-# Install Unity gnome extension
+## GNOME Shell Notes
 # sudo dnf install gnome-browser-connector
 # gsettings set org.gnome.shell disable-extension-version-validation true
-
-# Then run this command
-
 # wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
 # gnome-extensions install --force unite-v82.zip
-##############################################################################################
 
-# export LIBVA_DRIVER_NAME=iHD
-# export LIBVA_DRIVER_NAME=i965
+## Gnome Extension Backup/Restore
+# dconf dump /org/gnome/shell/extensions/ > gnome-extensions-backup.txt
+# dconf load /org/gnome/shell/extensions/ < gnome-extensions-backup.txt
+
+# Core utilities
+# sudo dnf install lsd bat fd-find tree trash-cli
+
+# Terminal enhancements
+# brew install zoxide starship mcfly thefuck

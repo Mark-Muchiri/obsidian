@@ -1,0 +1,11 @@
+{
+  "colorscheme": "geany",
+  "wordwrap": true,
+  "softwrap": true,
+  "pluginrepos": [
+    "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
+  ]
+}
+
+// install prettier for micro
+// sudo npm install --global prettier
