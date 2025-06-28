@@ -20,5 +20,5 @@ vimcmd_symbol = '[ V](bold purple)'
 full_symbol = '🔋'
 
 [[battery.display]]
-threshold = 25
+threshold = 20
 style = 'red'
