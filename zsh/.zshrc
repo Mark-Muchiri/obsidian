@@ -1,6 +1,6 @@
 # ===== Core Shell Configuration =====
 export ZSH="$HOME/.oh-my-zsh"  # Oh My Zsh installation path
-zstyle ':omz:update' mode auto  # Automatic updates
+zstyle ':omz:update' mode auto # Automatic updates
 
 # Plugins
 plugins=(
@@ -13,11 +13,11 @@ source $ZSH/oh-my-zsh.sh
 
 # ===== Editor Configuration =====
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'   # Remote editor
+  export EDITOR='nano' # Remote editor
 else
-  export EDITOR='micro'  # Local editor
+  export EDITOR='micro' # Local editor
 fi
-export VISUAL="$EDITOR"   # GUI applications
+export VISUAL="$EDITOR" # GUI applications
 
 # ===== Path Configuration =====
 # PNPM
@@ -39,18 +39,18 @@ alias c="clear"
 alias x="exit"
 alias cpu="sudo btop"
 alias /="cd ~"
-alias rm="trash"      # Safer alternative to rm
-alias root="sudo -i"  # Get root shell
+alias rm="trash"     # Safer alternative to rm
+alias root="sudo -i" # Get root shell
 
 ## Navigation
-alias l="lsd -hX"      # List sorted by extension
-alias la="lsd -hXa"    # List all including hidden
-alias ls="lsd -hX -1"  # Single column list
-alias lt="lsd --tree"  # Tree view
+alias l="lsd -hX"     # List sorted by extension
+alias la="lsd -hXa"   # List all including hidden
+alias ls="lsd -hX -1" # Single column list
+alias lt="lsd --tree" # Tree view
 
 ## Configuration Files
 alias zshrc="$EDITOR ~/.zshrc"
-alias src="exec zsh"   # Reload zsh config
+alias src="exec zsh" # Reload zsh config
 alias gh="$EDITOR ~/.config/ghostty/config"
 
 ## Package Management (DNF)
@@ -67,7 +67,7 @@ alias bat="bat --theme=base16"
 ## Core Commands
 alias gcl='git clone'
 alias gco='git checkout'
-alias gc='git commit -v'          # Commit with diff preview
+alias gc='git commit -v' # Commit with diff preview
 alias ga='git add'
 alias gps='git push'
 alias gpl='git pull --rebase'     # Rebase instead of merge
@@ -78,48 +78,59 @@ alias gd='git diff --color-words' # Word-level diff
 alias gl='git log --graph --pretty="%C(bold)%h%Creset - %C(yellow)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset" --all'
 
 ## Safe Operations
-alias gap='git add -p'            # Interactive staging
-alias gca='git commit -v --amend' # Amend commit
-alias grh='git reset --hard'      # Hard reset
+alias gap='git add -p'                  # Interactive staging
+alias gca='git commit -v --amend'       # Amend commit
+alias grh='git reset --hard'            # Hard reset
 alias gfp='git push --force-with-lease' # Safer force push
 
 ## Git Functions
-gsync() { git add -A && git commit -v && git push }  # Add/commit/push
-gsmartsync() { git fetch --all --prune && git rebase && git push }  # Smart sync
-gclean() { git clean -fd && git reset --hard }  # Deep clean
+gsync() {
+  git add -A && git commit -v && git push # Add/commit/push
+}
+gsmartsync() {
+  git fetch --all --prune && git rebase && git push # Smart sync
+}
+gclean() {
+  git clean -fd && git reset --hard # Deep clean
+}
 
 # ===== FZF Configuration =====
-export FZF_DEFAULT_OPTS='--reverse --height 85% --border rounded --preview-window bottom:75%'
+export FZF_DEFAULT_OPTS='
+  --reverse
+  --height 85%
+  --border=rounded
+  --preview-window bottom:75%
+  '
 
 ## File Search Utilities
-ffile() {  # File search with preview
+ffile() { # File search with preview
   local file
   file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
     fzf --preview="bat --style=plain --theme=base16 --color=always {}")
   [[ -n "$file" ]] && echo "$file"
 }
 
-fdir() {  # Directory search
+fdir() { # Directory search
   local dir
   dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
     fzf --preview='tree -C -L 2 {}')
   [[ -n "$dir" ]] && cd "$dir"
 }
 
-ed() {  # Edit selected file
+ed() { # Edit selected file
   local file
   file=$(ffile)
   [[ -n "$file" ]] && $EDITOR "$file"
 }
 
-cdf() {  # Change to file's directory
+cdf() { # Change to file's directory
   local file
   file=$(ffile)
   [[ -n "$file" ]] && cd "$(dirname "$file")"
 }
 
-shortcuts() {  # Browse .zshrc
-  bat --theme=base16 --style=numbers ~/.zshrc | 
+shortcuts() { # Browse .zshrc
+  bat --theme=base16 --style=numbers ~/.zshrc |
     fzf --preview='echo {}'
 }
 
