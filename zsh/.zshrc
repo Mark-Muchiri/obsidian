@@ -49,7 +49,8 @@ alias ls="lsd -hX -1" # Single column list
 alias lt="lsd --tree" # Tree view
 
 ## Configuration Files
-alias zshrc="$EDITOR ~/.zshrc"
+alias edrc="$EDITOR ~/.zshrc"
+alias rc="bat ~/.zshrc"
 alias src="exec zsh" # Reload zsh config
 alias gh="$EDITOR ~/.config/ghostty/config"
 
@@ -61,7 +62,7 @@ alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
 
 ## Bat Enhancements
-alias bat="bat --theme=base16"
+alias bat="bat -n --theme=base16"
 
 # ===== Git Configuration =====
 ## Core Commands
