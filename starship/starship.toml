@@ -1,25 +1,166 @@
-# Saved 󱄫 /.config/starship.toml
-# Starship config
+# ===== CORE SETTINGS =====
 add_newline = false
 scan_timeout = 3600
 command_timeout = 3600
 
+# ===== MODULE CONFIGURATION =====
 [directory]
-home_symbol = ' '
+home_symbol = '󱄫 ' # Custom home directory icon
+style = 'cyan'     # Cyan color styling
+read_only = " 󰌾"   # Read-only indicator
 # home_symbol = '󱄫 '
+# home_symbol = ' '
 # home_symbol = '🪴 '
-style = 'cyan'
 
-# Replace the '❯' symbol in the prompt with '➜'
 [character]
-success_symbol = '[➜](bold purple)'
+success_symbol = '[➜](bold purple)' # Prompt symbol for successful commands
+error_symbol = '[✗](bold red)'      # Prompt symbol for failed commands
+vimcmd_symbol = '[V](bold purple)'  # Symbol when in Vim mode
 # success_symbol = '[󱞩](bold purple)'
-error_symbol = '[✗](bold red)'
-vimcmd_symbol = '[V](bold purple)'
 
 [battery]
-full_symbol = '🔋'
-
-[[battery.display]]
+[[battery.display]] # Low battery indicator
 threshold = 20
 style = 'red'
+
+# ===== RUNTIME MODULES (NO VERSION DISPLAY) =====
+# These modules only show their symbols without version numbers
+# Nerd Font symbols REMOVED from version indicators
+[bun]
+format = 'via [$symbol]($style)'
+
+[buf]
+format = 'via [$symbol]($style)'
+
+[cmake]
+format = 'via [$symbol]($style)'
+
+[cobol]
+format = 'via [$symbol]($style)'
+
+[crystal]
+format = 'via [$symbol]($style)'
+
+[daml]
+format = 'via [$symbol]($style)'
+
+[dart]
+format = 'via [$symbol]($style)'
+
+[deno]
+format = 'via [$symbol]($style)'
+
+[elixir]
+format = 'via [$symbol]($style)'
+
+[elm]
+format = 'via [$symbol]($style)'
+
+[erlang]
+format = 'via [$symbol]($style)'
+
+[fennel]
+format = 'via [$symbol]($style)'
+
+[gleam]
+format = 'via [$symbol]($style)'
+
+[golang]
+format = 'via [$symbol]($style)'
+
+[gradle]
+format = 'via [$symbol]($style)'
+
+[haxe]
+format = 'via [$symbol]($style)'
+
+[helm]
+format = 'via [$symbol]($style)'
+
+[java]
+format = 'via [$symbol]($style)'
+
+[julia]
+format = 'via [$symbol]($style)'
+
+[kotlin]
+format = 'via [$symbol]($style)'
+
+[lua]
+format = 'via [$symbol]($style)'
+
+[meson]
+format = 'via [$symbol]($style)'
+
+[nim]
+format = 'via [$symbol]($style)'
+
+[nodejs]
+format = 'via [$symbol]($style)'
+
+[opa]
+format = 'via [$symbol]($style)'
+
+[perl]
+format = 'via [$symbol]($style)'
+
+[php]
+format = 'via [$symbol]($style)'
+
+[purescript]
+format = 'via [$symbol]($style)'
+
+[python]
+format = 'via [$symbol]($style)'
+
+[quarto]
+format = 'via [$symbol]($style)'
+
+[raku]
+format = 'via [$symbol]($style)'
+
+[red]
+format = 'via [$symbol]($style)'
+
+[rlang]
+format = 'via [$symbol]($style)'
+
+[ruby]
+format = 'via [$symbol]($style)'
+
+[rust]
+format = 'via [$symbol]($style)'
+
+[solidity]
+format = 'via [$symbol]($style)'
+
+[swift]
+format = 'via [$symbol]($style)'
+
+[typst]
+format = 'via [$symbol]($style)'
+
+[vagrant]
+format = 'via [$symbol]($style)'
+
+[vlang]
+format = 'via [$symbol]($style)'
+
+[zig]
+format = 'via [$symbol]($style)'
+
+# Special case for dotnet with target framework
+[dotnet]
+format = '[$symbol(🎯 $tfm )]($style)'
+
+# Special case for OCaml with switch indicator
+[ocaml]
+format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
+
+# Special case for pixi with environment
+[pixi]
+format = 'via [$symbol($environment )]($style)'
+
+# Special case for pulumi with stack
+[pulumi]
+format = 'via [$symbol$stack]($style)'
