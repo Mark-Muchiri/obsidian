@@ -7,7 +7,6 @@ command_timeout = 3600
 [directory]
 home_symbol = '󱄫 ' # Custom home directory icon
 style = 'cyan'     # Cyan color styling
-read_only = " 󰌾"   # Read-only indicator
 # home_symbol = '󱄫 '
 # home_symbol = ' '
 # home_symbol = '🪴 '

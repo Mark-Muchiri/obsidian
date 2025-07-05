@@ -1,6 +1,6 @@
 theme = duckbones
-font-size = 13
-font-family = JetBrainsMono Nerd Font Propo
+font-size = 14
+font-family = VictorMono Nerd Font
 gtk-titlebar = false
 gtk-tabs-location = bottom
 cursor-style = bar

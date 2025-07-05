@@ -39,6 +39,7 @@ alias c="clear"
 alias x="exit"
 alias cpu="sudo btop"
 alias /="cd ~"
+alias vi="nvim"
 alias rm="trash"     # Safer alternative to rm
 alias root="sudo -i" # Get root shell
 
@@ -96,6 +97,7 @@ gclean() {
 }
 
 # ===== FZF Configuration =====
+## Custom fzf configurations
 export FZF_DEFAULT_OPTS='
   --reverse
   --height 85%
@@ -130,11 +132,6 @@ cdf() { # Change to file's directory
   [[ -n "$file" ]] && cd "$(dirname "$file")"
 }
 
-shortcuts() { # Browse .zshrc
-  bat --theme=base16 --style=numbers ~/.zshrc |
-    fzf --preview='echo {}'
-}
-
 # ===== Terminal Enhancements =====
 ## Zoxide (Smarter cd)
 eval "$(zoxide init --cmd cd zsh)"
@@ -153,6 +150,7 @@ export MCFLY_FUZZY=5
 export MCFLY_RESULTS=35
 export MCFLY_INTERFACE_VIEW=TOP
 export MCFLY_RESULTS_SORT=LAST_RUN
+export MCFLY_LIGHT=FALSE
 
 ## Yazi Terminal File Manager
 f() {
