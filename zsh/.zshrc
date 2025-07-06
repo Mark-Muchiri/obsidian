@@ -117,7 +117,7 @@ ffile() { # File search with preview
 fdir() { # Directory search
   local dir
   dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
-    fzf --preview='tree -C -L 2 {}')
+    fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 {}')
   [[ -n "$dir" ]] && cd "$dir"
 }
 
