@@ -44,10 +44,11 @@ alias rm="trash"     # Safer alternative to rm
 alias root="sudo -i" # Get root shell
 
 ## Navigation
-alias l="lsd -hX"     # List sorted by extension
-alias la="lsd -hXa"   # List all including hidden
-alias ls="lsd -hX -1" # Single column list
-alias lt="lsd --tree" # Tree view
+alias l="eza --color='always' --icons='always' --sort='type'"
+alias la="eza --color='always' --icons='always' --sort='type' -A -X"
+alias ls="eza --color='always' --icons='always' --sort='type' -l"
+alias lt="eza --tree --icons='always' --sort='type' --git-ignore"
+alias lta="eza --tree --icons='always' --sort='type' --git-ignore -A"
 
 ## Configuration Files
 alias edrc="$EDITOR ~/.zshrc"
