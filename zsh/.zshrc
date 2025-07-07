@@ -134,16 +134,6 @@ cdf() { # Change to file's directory
 }
 
 # ===== Terminal Enhancements =====
-## McFly (Better history search)
-eval "$(mcfly init zsh)"
-export MCFLY_PROMPT="❯"
-export MCFLY_DISABLE_MENU=TRUE
-export MCFLY_FUZZY=5
-export MCFLY_RESULTS=35
-export MCFLY_INTERFACE_VIEW=TOP
-export MCFLY_RESULTS_SORT=LAST_RUN
-export MCFLY_LIGHT=FALSE
-
 ## Yazi Terminal File Manager
 f() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -169,23 +159,3 @@ source <(fzf --zsh)
 ## Manual Page Viewer
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
 export MANROFFOPT="-c"
-
-## Graphics Drivers (Uncomment one)
-# export LIBVA_DRIVER_NAME=iHD    # Intel modern
-# export LIBVA_DRIVER_NAME=i965   # Intel legacy
-
-## Unite extension
-# sudo dnf install gnome-browser-connector
-# gsettings set org.gnome.shell disable-extension-version-validation true
-# wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
-# gnome-extensions install --force unite-v82.zip
-
-## Gnome Extension Backup/Restore
-# dconf dump /org/gnome/shell/extensions/ > gnome-extensions-backup.txt
-# dconf load /org/gnome/shell/extensions/ < gnome-extensions-backup.txt
-
-# Core utilities
-# sudo dnf install lsd bat fd-find tree trash-cli
-
-# Terminal enhancements
-# brew install zoxide starship mcfly thefuck
