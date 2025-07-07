@@ -105,29 +105,35 @@ export FZF_DEFAULT_OPTS='
   --border=rounded
   --preview-window bottom:75%
   '
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
 
 ## File Search Utilities
-ffile() { # File search with preview
+# File search with preview
+ffile() { 
   local file
-  file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
+  file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
     fzf --preview="bat --style=plain --theme=base16 --color=always {}")
   [[ -n "$file" ]] && echo "$file"
 }
 
-fdir() { # Directory search
+# Directory search
+fdir() { 
   local dir
-  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
+  dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
     fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 -A {}')
   [[ -n "$dir" ]] && cd "$dir"
 }
 
-ed() { # Edit selected file
+# Edit selected file
+ed() { 
   local file
   file=$(ffile)
   [[ -n "$file" ]] && $EDITOR "$file"
 }
 
-cdf() { # Change to file's directory
+# Change to file's directory
+cdf() { 
   local file
   file=$(ffile)
   [[ -n "$file" ]] && cd "$(dirname "$file")"
