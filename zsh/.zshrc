@@ -117,7 +117,7 @@ ffile() { # File search with preview
 fdir() { # Directory search
   local dir
   dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache} . ~/ 2>/dev/null |
-    fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 {}')
+    fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 -A {}')
   [[ -n "$dir" ]] && cd "$dir"
 }
 
@@ -142,6 +142,9 @@ eval "$(starship init zsh)"
 
 ## The Fuck (Correct previous command)
 eval $(thefuck --alias)
+
+## Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 ## McFly (Better history search)
 eval "$(mcfly init zsh)"
