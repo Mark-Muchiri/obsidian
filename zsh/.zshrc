@@ -134,18 +134,6 @@ cdf() { # Change to file's directory
 }
 
 # ===== Terminal Enhancements =====
-## Zoxide (Smarter cd)
-eval "$(zoxide init --cmd cd zsh)"
-
-## Starship Prompt
-eval "$(starship init zsh)"
-
-## The Fuck (Correct previous command)
-eval $(thefuck --alias)
-
-## Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 ## McFly (Better history search)
 eval "$(mcfly init zsh)"
 export MCFLY_PROMPT="❯"
@@ -164,6 +152,18 @@ f() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd "$cwd"
   rm -f "$tmp"
 }
+
+## Zoxide (Smarter cd)
+eval "$(zoxide init --cmd cd zsh)"
+
+## Starship Prompt
+eval "$(starship init zsh)"
+
+## The Fuck (Correct previous command)
+eval $(thefuck --alias)
+
+## Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # ===== System Tweaks =====
 ## Manual Page Viewer
