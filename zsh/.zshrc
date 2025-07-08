@@ -47,8 +47,7 @@ alias root="sudo -i" # Get root shell
 alias l="eza --color='always' --icons='always' --sort='type'"
 alias la="eza --color='always' --icons='always' --sort='type' -A -X"
 alias ls="eza --color='always' --icons='always' --sort='type' -l"
-alias lt="eza --tree --icons='always' --sort='type' --git-ignore"
-alias lta="eza --tree --icons='always' --sort='type' --git-ignore -A"
+alias lt="eza --tree --icons='always' --sort='type' --git-ignore -A"
 
 ## Configuration Files
 alias edrc="$EDITOR ~/.zshrc"
