@@ -5,6 +5,8 @@ zstyle ':omz:update' mode auto # Automatic updates
 # Plugins
 plugins=(
   sudo
+  git
+  fast-syntax-highlighting
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-history-substring-search
@@ -86,15 +88,10 @@ alias grh='git reset --hard'            # Hard reset
 alias gfp='git push --force-with-lease' # Safer force push
 
 ## Git Functions
-gsync() {
-  git add -A && git commit -v && git push # Add/commit/push
-}
-gsmartsync() {
-  git fetch --all --prune && git rebase && git push # Smart sync
-}
-gclean() {
-  git clean -fd && git reset --hard # Deep clean
-}
+alias gsync='git add -A && git commit -v && git push'
+alias gsmartsync='git fetch --all --prune && git rebase && git push'
+alias gclean='git clean -fd && git reset --hard'
+
 
 # ===== FZF Configuration =====
 ## Custom fzf configurations

@@ -1,0 +1,63 @@
+# Core utilities
+```zsh
+sudo dnf group install development-tools
+sudo dnf5 install procps-ng curl file
+sudo dnf5 install bat fd-find tree trash-cli btop
+```
+
+## zsh plugins
+```zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions;
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting;
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting;
+```
+
+## HOMEBREW INSTALL INSTRUCTIONS
+## website link for proper instructions
+🖙  https://docs.brew.sh/Homebrew-on-Linux
+# 1. install script 🖟 
+🖙  ```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+# 2. add to path 🖟 
+```zsh
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
+```
+# 3. test brew
+# installing your first package will also install a recent version of glibc and gcc
+```zsh
+brew install hello
+```
+# Once you're done
+# Install (gcc & glibc) 1st, then 🖟 
+```zsh
+brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch
+brew install --cask font-jetbrains-mono-nerd-font
+alias --save ls eza
+```
+
+## Unite extension
+```zsh
+sudo dnf5 install gnome-browser-connector xprop
+sudo gsettings set org.gnome.shell disable-extension-version-validation true
+wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
+gnome-extensions install --force unite-v82.zip
+```
+
+## Gnome Extension Backup/Restore
+```zsh
+dconf dump /org/gnome/shell/extensions/ > gnome-extensions-backup.txt
+dconf load /org/gnome/shell/extensions/ < gnome-extensions-backup.txt
+```
+
+## Install Ghostty and Wezterm
+```zsh
+dnf copr enable pgdev/ghostty
+dnf install ghostty
+```
+```zsh
+dnf copr enable wezfurlong/wezterm-nightly
+dnf install wezterm
+```
