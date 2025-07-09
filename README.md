@@ -52,11 +52,7 @@ dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
 dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
 ```
 
-## Install Ghostty and Wezterm
-```zsh
-dnf copr enable pgdev/ghostty
-dnf install ghostty
-```
+## Install Wezterm
 ```zsh
 dnf copr enable wezfurlong/wezterm-nightly
 dnf install wezterm
