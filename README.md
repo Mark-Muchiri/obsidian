@@ -33,7 +33,7 @@ brew install hello
 # Once you're done
 # Install (gcc & glibc) 1st, then 🖟 
 ```zsh
-brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch
+brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch btop
 brew install --cask font-jetbrains-mono-nerd-font
 alias --save ls eza
 ```
