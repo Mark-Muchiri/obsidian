@@ -33,7 +33,7 @@ brew install hello
 # Once you're done
 # Install (gcc & glibc) 1st, then 🖟 
 ```zsh
-brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch btop
+brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch 
 brew install --cask font-jetbrains-mono-nerd-font
 alias --save ls eza
 ```
@@ -56,4 +56,15 @@ dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.tx
 ```zsh
 dnf copr enable wezfurlong/wezterm-nightly
 dnf install wezterm
+```
+
+## loading the backup files
+```zsh
+cp ~/repo/obsidian/micro/settings.json ~/.config/micro/settings.json
+sudo cp ~/repo/obsidian/nano/nanorc /etc/nanorc
+dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
+cp ~/repo/obsidian/starship/starship.toml ~/.config/starship.toml
+cp ~/repo/obsidian/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+cp ~/repo/obsidian/yazi/yazi.toml ~/.config/yazi/yazi.toml
+cp ~/repo/obsidian/zsh/.zshrc ~/.zshrc
 ```
