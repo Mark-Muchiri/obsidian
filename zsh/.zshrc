@@ -78,7 +78,7 @@ alias gst='git status -sb'        # Short status with branch info
 alias gd='git diff --color-words' # Word-level diff
 
 ## Enhanced Logging
-alias gl='git log --graph --pretty="%C(bold)%h%Creset%C(yellow)%d%Creset%n %C(bold blue)(%an)%Creset%C(cyan)(%cr)%n %s%n" --all'
+alias gl='git log --graph --pretty="%C(bold)%h%Creset%C(yellow)%d%Creset%n%C(bold blue)(%an)%Creset%C(cyan)(%cr)%n%w(0,0,0)%B" --all'
 
 ## Safe Operations
 alias gap='git add -p'                  # Interactive staging
