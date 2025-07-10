@@ -5,7 +5,6 @@ zstyle ':omz:update' mode auto # Automatic updates
 # Plugins
 plugins=(
   sudo
-  git
   fast-syntax-highlighting
   zsh-autosuggestions
   zsh-syntax-highlighting

@@ -2,7 +2,8 @@
 ```zsh
 sudo dnf group install development-tools
 sudo dnf5 install procps-ng curl file
-sudo dnf5 install bat fd-find tree trash-cli btop
+sudo dnf5 install bat fd-find tree trash-cli btop node
+sudo npm install --global prettier
 ```
 
 ## zsh plugins
