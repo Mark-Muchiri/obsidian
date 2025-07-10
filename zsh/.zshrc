@@ -4,7 +4,7 @@ zstyle ':omz:update' mode auto # Automatic updates
 
 # Plugins
 plugins=(
-  sudo
+ sudo
   fast-syntax-highlighting
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -64,7 +64,7 @@ alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
 
 ## Bat Enhancements
-alias bat="bat -n --theme=base16"
+alias bat="bat --theme=base16"
 
 # ===== Git Configuration =====
 ## Core Commands
