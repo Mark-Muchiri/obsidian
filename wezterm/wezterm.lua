@@ -14,8 +14,13 @@ config.cursor_blink_rate = 700
 config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
 config.pane_focus_follows_mouse = true
-config.color_scheme = "Aura (Gogh)"
 config.front_end = "OpenGL"
+config.term = "wezterm"
+config.color_scheme = "Argonaut (Gogh)"
+-- config.color_scheme = "Argonaut"
+-- config.color_scheme = "duckbones"
+-- config.color_scheme = "Arc Dark"
+-- config.color_scheme = "Aura (Gogh)"
 
 -- 👇🏾Do not touch!!! (tabs)
 config.tab_bar_at_bottom = true
