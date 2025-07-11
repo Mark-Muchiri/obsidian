@@ -17,7 +17,7 @@ vimcmd_symbol = '[V](bold purple)'
 
 [battery]
 [[battery.display]]
-threshold = 20
+threshold = 10
 style = 'red'
 
 # ===== RUNTIME MODULES (NO VERSION DISPLAY) =====
