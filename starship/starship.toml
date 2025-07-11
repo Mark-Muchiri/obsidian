@@ -5,17 +5,17 @@ command_timeout = 3600
 
 # ===== MODULE CONFIGURATION =====
 [directory]
-home_symbol = '󱄫 ' # Custom home directory icon
-style = 'cyan'     # Cyan color styling
+home_symbol = '󱄫 '
+style = 'cyan'
 # home_symbol = '󱄫 '
 # home_symbol = ' '
 # home_symbol = '🪴 '
 
 [character]
-success_symbol = '[➜](bold purple)' # Prompt symbol for successful commands
-error_symbol = '[✗](bold red)'      # Prompt symbol for failed commands
-vimcmd_symbol = '[V](bold purple)'  # Symbol when in Vim mode
-# success_symbol = '[󱞩](bold purple)'
+success_symbol = '[▷](bold purple)'
+error_symbol = '[✗](bold red)'
+vimcmd_symbol = '[V](bold purple)'
+# success_symbol = '[➜](bold purple)'
 
 [battery]
 [[battery.display]] # Low battery indicator
