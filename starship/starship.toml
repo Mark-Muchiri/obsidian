@@ -7,18 +7,16 @@ command_timeout = 3600
 [directory]
 home_symbol = '󱄫 '
 style = 'cyan'
-# home_symbol = '󱄫 '
-# home_symbol = ' '
-# home_symbol = '🪴 '
 
 [character]
-success_symbol = '[▷](bold purple)'
-error_symbol = '[✗](bold red)'
+success_symbol = '[](bold purple)'
+error_symbol = '[](bold red)'
 vimcmd_symbol = '[V](bold purple)'
-# success_symbol = '[➜](bold purple)'
+# success_symbol = '[▷](bold purple)'
+# error_symbol = '[](bold red)'
 
 [battery]
-[[battery.display]] # Low battery indicator
+[[battery.display]]
 threshold = 20
 style = 'red'
 
