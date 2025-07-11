@@ -4,7 +4,7 @@ zstyle ':omz:update' mode auto # Automatic updates
 
 # Plugins
 plugins=(
- sudo
+  sudo
   fast-syntax-highlighting
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -113,7 +113,7 @@ ffile() {
 }
 
 # Directory search
-fdir() { 
+fdir() {
   local dir
   dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
     fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 -A {}')
@@ -121,14 +121,14 @@ fdir() {
 }
 
 # Edit selected file
-ed() { 
+ed() {
   local file
   file=$(ffile)
   [[ -n "$file" ]] && $EDITOR "$file"
 }
 
 # Change to file's directory
-cdf() { 
+cdf() {
   local file
   file=$(ffile)
   [[ -n "$file" ]] && cd "$(dirname "$file")"

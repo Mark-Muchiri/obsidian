@@ -1,8 +1,8 @@
 {
-    "colorscheme": "solarized",
-    "pluginrepos": [
-        "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
-    ],
+    "colorscheme": "cmc-16",
+    "lsp.server": "python=pylsp,go=gopls,typescript=deno lsp={\"importMap\": \"./import_map.json\"}",
+    "prettier.autoformat": "on",
+    "prettier.wrap": "always",
     "softwrap": true,
     "wordwrap": true
 }
