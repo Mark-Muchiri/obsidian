@@ -1,9 +1,11 @@
 [blur-my-shell]
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.40000000000000002>, 'unscaled_radius': <15>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000001'>, 'params': <{'radius': <30>, 'brightness': <0.40000000000000002>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <@av []>}}
 settings-version=2
 
 [blur-my-shell/appfolder]
-brightness=0.5
-sigma=30
+blur=true
+brightness=0.29999999999999999
+sigma=15
 style-dialogs=3
 
 [blur-my-shell/applications]
@@ -25,27 +27,36 @@ sigma=30
 static-blur=true
 style-dash-to-dock=0
 
+[blur-my-shell/dash-to-panel]
+blur-original-panel=false
+
 [blur-my-shell/hidetopbar]
-compatibility=true
+compatibility=false
 
 [blur-my-shell/lockscreen]
 pipeline='pipeline_default'
 
 [blur-my-shell/overview]
+blur=true
 pipeline='pipeline_default'
+style-components=2
 
 [blur-my-shell/panel]
-brightness=0.59999999999999998
+brightness=0.40000000000000002
+force-light-text=false
 override-background=false
+override-background-dynamically=false
 pipeline='pipeline_default'
-sigma=30
-style-panel=2
+sigma=15
+static-blur=true
+style-panel=0
+unblur-in-overview=false
 
 [blur-my-shell/screenshot]
 pipeline='pipeline_default'
 
 [blur-my-shell/window-list]
-brightness=0.59999999999999998
+brightness=0.40000000000000002
 sigma=30
 
 [forge]
@@ -101,6 +112,14 @@ window-toggle-always-float=['<Shift><Super>c']
 window-toggle-float=['<Super>c']
 workspace-active-tile-toggle=@as []
 
+[hidetopbar]
+animation-time-overview=0.20000000000000004
+enable-intellihide=true
+keep-round-corners=false
+mouse-sensitive=false
+mouse-sensitive-fullscreen-window=false
+show-in-overview=true
+
 [just-perfection]
 accent-color-icon=false
 accessibility-menu=true
@@ -108,7 +127,7 @@ animation=7
 background-menu=false
 clock-menu-position=0
 clock-menu-position-offset=0
-controls-manager-spacing-size=22
+controls-manager-spacing-size=0
 dash=false
 dash-icon-size=0
 double-super-to-appgrid=false
@@ -118,7 +137,12 @@ notification-banner-position=2
 osd=true
 osd-position=8
 panel=false
+panel-button-padding-size=0
 panel-in-overview=true
+panel-indicator-padding-size=0
+panel-notification-icon=true
+panel-size=0
+power-icon=true
 ripple-box=false
 search=false
 show-apps-button=false
@@ -131,8 +155,9 @@ window-picker-icon=false
 window-preview-caption=false
 window-preview-close-button=false
 workspace=false
-workspace-background-corner-size=8
+workspace-background-corner-size=9
 workspace-popup=false
+workspace-wrap-around=false
 workspaces-in-app-grid=false
 
 [notification-timeout]
@@ -157,7 +182,10 @@ overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>, 'org.gnome.d
 
 [unite]
 app-menu-ellipsize-mode='start'
+autofocus-windows=true
 extend-left-box=false
+greyscale-tray-icons=false
+hide-activities-button='never'
 hide-app-menu-icon=false
 hide-window-titlebars='always'
 notifications-position='right'
