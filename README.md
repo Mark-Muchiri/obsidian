@@ -75,7 +75,7 @@ gnome-extensions install --force unite-v82.zip
 ## Gnome Extension Backup/Restore
 
 ```zsh
-dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
+dconf dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
 dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
 ```
 
