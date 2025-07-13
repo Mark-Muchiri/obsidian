@@ -4,7 +4,8 @@
 sudo dnf group install development-tools
 sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks
 sudo npm install --global prettier
-flatpak install flathub com.mattjakeman.ExtensionManager
+flatpak install flathub com.mattjakeman.ExtensionManager -y
+flatpak install it.mijorus.smile -y
 ```
 
 ## zsh plugins
