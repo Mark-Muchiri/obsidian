@@ -18,12 +18,11 @@
   "workbench.editor.showTabs": "single",
   "workbench.editor.tabActionLocation": "left",
   "workbench.sideBar.location": "right",
-  "workbench.activityBar.location": "hidden",
   "workbench.tree.enableStickyScroll": false,
   "workbench.list.smoothScrolling": true,
   "workbench.tips.enabled": false,
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Solarized Dark",
+  "workbench.preferredDarkColorTheme": "Aura Dark (Soft Text)",
   "workbench.iconTheme": "a-file-icon-vscode",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -41,7 +40,7 @@
   "editor.fontLigatures": true,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 70,
-  "editor.wrappingIndent": "deepIndent",
+  "editor.wrappingIndent": "none",
   "editor.wrappingStrategy": "advanced",
   "editor.tabSize": 2,
   "editor.tabCompletion": "on",
@@ -426,5 +425,7 @@
   "accessibility.signals.chatRequestSent": {
     "sound": "on"
   },
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "files.autoSave": "afterDelay"
 }
