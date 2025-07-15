@@ -291,6 +291,7 @@
   // TODO Highlight configuration
   "todohighlight.keywords": [
     {
+      "text": "FIXME",
       "regex": {
         "pattern": "(?<=^|\"|\\s)FIXME(\\(\\w+\\))?:"
       },
@@ -300,6 +301,7 @@
       "backgroundColor": "rgba(0,0,0,.2)"
     },
     {
+      "text": "REVIEW",
       "regex": {
         "pattern": "(?<=^|\"|\\s)REVIEW(\\(\\w+\\))?:"
       },
@@ -325,12 +327,13 @@
         "contentText": "⚠️"
       },
       "color": "red",
-      "border": "1px solid red",
+      "border": "1px solid #E65C00",
       "borderRadius": "2px",
       "backgroundColor": "rgba(0,0,0,.2)",
       "diagnosticSeverity": "warning"
     },
     {
+      "text": "TODO:",
       "regex": {
         "pattern": "(?<=^|\"|\\s)TODO(\\(\\w+\\))?:"
       },
@@ -422,5 +425,6 @@
   "diffEditor.experimental.showEmptyDecorations": false,
   "accessibility.signals.chatRequestSent": {
     "sound": "on"
-  }
+  },
+  "editor.minimap.enabled": false
 }
