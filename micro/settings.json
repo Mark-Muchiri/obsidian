@@ -1,8 +1,10 @@
 {
-    "colorscheme": "cmc-16",
-    "lsp.server": "python=pylsp,go=gopls,typescript=deno lsp={\"importMap\": \"./import_map.json\"}",
-    "prettier.autoformat": "on",
-    "prettier.wrap": "always",
-    "softwrap": true,
-    "wordwrap": true
+  "colorscheme": "cmc-16",
+  "lsp.autocompleteDetails": true,
+  "lsp.server": "python=pylsp,go=gopls,typescript=deno lsp={\"importMap\": \"./import_map.json\"}",
+  "prettier.autoformat": "on",
+  "prettier.wrap": "always",
+  "softwrap": true,
+  "wordwrap": true,
+  "tabsize": 2
 }
