@@ -52,6 +52,7 @@ brew install hello gcc
 ```zsh
 brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch
 brew install --cask font-jetbrains-mono-nerd-font
+brew install --cask font-victor-mono-nerd-font
 alias --save ls eza
 ```
 

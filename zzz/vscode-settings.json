@@ -1,0 +1,426 @@
+{
+  // ===========================
+  // Window & UI Configuration
+  // ===========================
+  "window.menuBarVisibility": "toggle",
+  "window.titleBarStyle": "native",
+  "window.restoreWindows": "none",
+  "window.autoDetectColorScheme": true,
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "never",
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editor.tabSizing": "fixed",
+  "workbench.editor.tabSizingFixedMaxWidth": 110,
+  "workbench.editor.showTabs": "single",
+  "workbench.editor.tabActionLocation": "left",
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "hidden",
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.tips.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.preferredDarkColorTheme": "Solarized Dark",
+  "workbench.iconTheme": "a-file-icon-vscode",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.incrementalNaming": "smart",
+  "explorer.compactFolders": false,
+  "scm.compactFolders": false,
+  "scm.inputFontFamily": "'JetBrainsMono Nerd Font Propo'",
+  "chat.commandCenter.enabled": false,
+  // ===========================
+  // Editor Configuration
+  // ===========================
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontSize": 14.5,
+  "editor.fontWeight": "200",
+  "editor.fontLigatures": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 70,
+  "editor.wrappingIndent": "deepIndent",
+  "editor.wrappingStrategy": "advanced",
+  "editor.tabSize": 2,
+  "editor.tabCompletion": "on",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.minimap.maxColumn": 40,
+  "editor.minimap.scale": 2,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.renderCharacters": false,
+  "editor.renderWhitespace": "none",
+  "editor.cursorWidth": 4,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.overtypeCursorStyle": "line",
+  "editor.folding": false,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingDelete": "always",
+  "editor.linkedEditing": true,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.smoothScrolling": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.inlineSuggest.fontFamily": "'JetBrainsMono Nerd Font Propo'",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.glyphMargin": false,
+  "editor.codeLens": false,
+  "editor.codeLensFontFamily": "'VictorMono Nerd Font Propo'",
+  "editor.inlayHints.fontFamily": "'JetBrainsMono Nerd Font Propo'",
+  "editor.selectionHighlight": false,
+  "editor.occurrencesHighlight": "off",
+  "editor.matchBrackets": "never",
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.guides.highlightActiveBracketPair": false,
+  "editor.guides.highlightActiveIndentation": "always",
+  "editor.guides.indentation": false,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.accessibilitySupport": "off",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "visible",
+  "editor.largeFileOptimizations": true,
+  "editor.scrollbar.horizontalScrollbarSize": 15,
+  "editor.scrollbar.verticalScrollbarSize": 12,
+  // ===========================
+  // Terminal Configuration
+  // ===========================
+  "terminal.integrated.defaultProfile.linux": "zsh (2)",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 17,
+  "terminal.integrated.fontWeight": "200",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 4,
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.customGlyphs": false,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.fontLigatures.featureSettings": "\"liga\" on",
+  "terminal.integrated.fontLigatures.fallbackLigatures": [
+    "<--",
+    "<---",
+    "<<-",
+    "<-",
+    "->",
+    "->>",
+    "-->",
+    "--->",
+    "<==",
+    "<===",
+    "<<=",
+    "<=",
+    "=>",
+    "=>>",
+    "==>",
+    "===>",
+    ">=",
+    ">>=",
+    "<->",
+    "<-->",
+    "<--->",
+    "<---->",
+    "<=>",
+    "<==>",
+    "<===>",
+    "<====>",
+    "::",
+    ":::",
+    "<~~",
+    "</",
+    "</>",
+    "/>",
+    "~~>",
+    "==",
+    "!=",
+    "/=",
+    "~=",
+    "<>",
+    "===",
+    "!==",
+    "!===",
+    "<:",
+    ":=",
+    "*=",
+    "*+",
+    "<*",
+    "<*>",
+    "*>",
+    "<|",
+    "<|>",
+    "|>",
+    "+*",
+    "=*",
+    "=:",
+    ":>",
+    "/*",
+    "*/",
+    "+++",
+    "<!--",
+    "<!---"
+  ],
+  "terminal.integrated.env.linux": {},
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh"
+    },
+    "fish": {
+      "path": "fish"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    },
+    "tmux (2)": {
+      "path": "/bin/tmux"
+    },
+    "zsh (2)": {
+      "path": "/bin/zsh"
+    }
+  },
+  // ===========================
+  // Git Configuration
+  // ===========================
+  "git.openRepositoryInParentFolders": "never",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.postCommitCommand": "sync",
+  "git.allowForcePush": true,
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.ignoredRepositories": [
+    "/home/mac/.vscode/extensions/stepsize.stepsize-1.0.15/resources/demo-repository"
+  ],
+  "githubPullRequests.createOnPublishBranch": "never",
+  // ===========================
+  // Color Customizations
+  // ===========================
+  "workbench.colorCustomizations": {
+    // Dark blue theme
+    "statusBar.background": "#01050a",
+    "sideBar.background": "#01050a",
+    "activityBar.background": "#01050a",
+    "terminal.background": "#01050a",
+    "editor.background": "#01050a",
+    "editor.lineHighlightBackground": "#01192c00",
+    "editor.lineHighlightBorder": "#1e1e1e00",
+    "editorCursor.foreground": "#585858",
+    // Scrollbar styling
+    "scrollbarSlider.activeBackground": "#1316289d",
+    "scrollbarSlider.background": "#1a1c3496",
+    "scrollbarSlider.hoverBackground": "#1a1c3496",
+    "minimapSlider.activeBackground": "#0d0f1a96",
+    "minimapSlider.background": "#11132196",
+    "minimapSlider.hoverBackground": "#11132196"
+  },
+  // ===========================
+  // Language & Formatting
+  // ===========================
+  "emmet.includeLanguages": {
+    "rust": "html",
+    "javascript": "javascriptreact"
+  },
+  "files.associations": {
+    "css": "css",
+    "html": "html",
+    "*.js": "javascript",
+    "*.css": "css",
+    "*.html": "html",
+    "*.tsx": "typescriptreact"
+  },
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "html.format.wrapLineLength": 70,
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+  // Language-specific formatters
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[toml]": {
+    // "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[git-commit]": {
+    // "editor.defaultFormatter": "adam-bender.commit-message-formatter"
+  },
+  // ===========================
+  // Extensions Configuration
+  // ===========================
+  "material-icon-theme.hidesExplorerArrows": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  // TODO Highlight configuration
+  "todohighlight.keywords": [
+    {
+      "regex": {
+        "pattern": "(?<=^|\"|\\s)FIXME(\\(\\w+\\))?:"
+      },
+      "color": "pink",
+      "border": "1px solid pink",
+      "borderRadius": "2px",
+      "backgroundColor": "rgba(0,0,0,.2)"
+    },
+    {
+      "regex": {
+        "pattern": "(?<=^|\"|\\s)REVIEW(\\(\\w+\\))?:"
+      },
+      "color": "blue",
+      "border": "1px solid blue",
+      "borderRadius": "2px",
+      "backgroundColor": "rgba(0,0,0,.2)"
+    },
+    {
+      "text": "INFO:",
+      "color": "green",
+      "backgroundColor": "rgba(0,0,0,0)",
+      "border": "1px solid green",
+      "borderRadius": "2px",
+      "isWholeLine": false
+    },
+    {
+      "text": "WARNING:",
+      "before": {
+        "contentText": "⚠️"
+      },
+      "after": {
+        "contentText": "⚠️"
+      },
+      "color": "red",
+      "border": "1px solid red",
+      "borderRadius": "2px",
+      "backgroundColor": "rgba(0,0,0,.2)",
+      "diagnosticSeverity": "warning"
+    },
+    {
+      "regex": {
+        "pattern": "(?<=^|\"|\\s)TODO(\\(\\w+\\))?:"
+      },
+      "color": "red",
+      "border": "1px solid red",
+      "borderRadius": "2px",
+      "backgroundColor": "rgba(0,0,0,.2)"
+    },
+    {
+      "text": "NOTE:",
+      "regex": {
+        "pattern": "(?<=^|\"|\\s)NOTE[:]?(?!\\w)"
+      },
+      "color": "purple",
+      "border": "1px solid purple",
+      "borderRadius": "2px",
+      "backgroundColor": "rgba(0,0,0,.2)",
+      "isWholeLine": false
+    }
+  ],
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "todohighlight.exclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/.next/**"
+  ],
+  "todohighlight.maxFilesForSearch": 5120,
+  "todohighlight.toggleURI": false,
+  "files.readonlyFromPermissions": true,
+  "files.simpleDialog.enable": true,
+  "files.readonlyInclude": {
+    "**/.cargo/registry/src/**/*.rs": true,
+    "**/.cargo/git/checkouts/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/env/**": true,
+    "**/venv/**": true,
+    "env-*": true
+  },
+  "files.exclude": {
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "node_modules": true,
+    "venv": true,
+    "*.sublime-*": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/env": true,
+    "**/venv": true
+  },
+  // ===========================
+  // Debug & Diagnostics
+  // ===========================
+  "debug.console.fontFamily": "'JetBrainsMono Nerd Font Propo'",
+  "application.shellEnvironmentResolutionTimeout": 50,
+  "application.experimental.rendererProfiling": true,
+  "telemetry.telemetryLevel": "off",
+  "update.showReleaseNotes": false,
+  "diffEditor.experimental.showEmptyDecorations": false,
+  "accessibility.signals.chatRequestSent": {
+    "sound": "on"
+  }
+}
