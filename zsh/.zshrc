@@ -65,6 +65,7 @@ alias search="sudo dnf5 search"
 
 ## Bat Enhancements
 alias bat="bat --theme=base16"
+alias b="bat"
 
 # ===== Git Configuration =====
 ## Core Commands
@@ -98,6 +99,7 @@ export FZF_DEFAULT_OPTS='
   --reverse
   --height 85%
   --border=rounded
+  --scrollbar=" "
   --preview-window bottom:75%
   '
 # Use ~~ as the trigger sequence instead of the default **
@@ -160,3 +162,5 @@ source <(fzf --zsh)
 ## Manual Page Viewer
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
 export MANROFFOPT="-c"
+# theme=\"Solarized (dark)\"
+# theme=\"base16\"
