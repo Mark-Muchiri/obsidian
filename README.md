@@ -16,11 +16,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting;
 ```
 
-## HOMEBREW INSTALL INSTRUCTIONS
+### HOMEBREW INSTALL INSTRUCTIONS
 
-## website link for proper instructions
-
-🖙 https://docs.brew.sh/Homebrew-on-Linux
+> website link for proper instructions 🖙 https://docs.brew.sh/Homebrew-on-Linux
 
 1. install script 🖟
 
@@ -45,9 +43,7 @@ gcc
 brew install hello gcc
 ```
 
-> Once you're done
-
-# Install (gcc & glibc) 1st, then 🖟
+> Once you're done Install (gcc & glibc) 1st, then 🖟
 
 ```zsh
 brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch
@@ -56,16 +52,16 @@ brew install --cask font-victor-mono-nerd-font
 alias --save ls eza
 ```
 
-## Micro Prettier installation
+### Micro Prettier installation
 
-# should work automatically on save
+- should work automatically on save
 
 ```zsh
 sudo npm install --global prettier
 micro --plugin install prettier
 ```
 
-## Unite extension
+### Unite extension install
 
 ```zsh
 sudo dnf5 install gnome-browser-connector xprop
@@ -74,19 +70,21 @@ wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zi
 gnome-extensions install --force unite-v82.zip
 ```
 
-## Gnome Extension Backup/Restore
+### Gnome Extensions Backup/Restore
 
 ```zsh
 dconf dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
 dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
 ```
 
-## Install Wezterm
+### Install Wezterm
 
 ```zsh
 dnf copr enable wezfurlong/wezterm-nightly
 dnf install wezterm
 ```
+
+for this function to work `config.term = "wezterm"`, you need this 🖟
 
 ```zsh
 tempfile=$(mktemp) \
@@ -95,7 +93,7 @@ tempfile=$(mktemp) \
   && rm $tempfile
 ```
 
-## loading the backup files
+### loading the backup files
 
 ```zsh
 cp ~/repo/obsidian/micro/settings.json ~/.config/micro/settings.json
