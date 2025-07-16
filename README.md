@@ -84,7 +84,9 @@ dnf copr enable wezfurlong/wezterm-nightly
 dnf install wezterm
 ```
 
-for this function to work `config.term = "wezterm"`, you need this 🖟
+for this function to work `config.term = "wezterm"`, you need this 🖟.
+
+> Ref: wezterm.lua
 
 ```zsh
 tempfile=$(mktemp) \
