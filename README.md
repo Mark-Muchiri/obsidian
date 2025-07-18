@@ -9,6 +9,14 @@ dnf copr enable atim/starship
 dnf install starship
 ```
 
+- GCM (Git Credential Manager)
+- Link: https://github.com/git-ecosystem/git-credential-manager/releases/
+
+```zsh
+sudo tar -xvf ~/Downloads/*.tar.gz -C /usr/local/bin
+git-credential-manager configure
+```
+
 ```zsh
 sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks 
 sudo npm install --global prettier
