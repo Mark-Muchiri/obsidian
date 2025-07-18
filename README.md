@@ -1,8 +1,10 @@
 # Core utilities
 
 ```zsh
-sudo dnf group install development-tools
-sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks
+sudo dnf group install development-tools -y
+dnf copr enable atim/starship
+dnf install starship
+sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks 
 sudo npm install --global prettier
 flatpak install flathub com.mattjakeman.ExtensionManager -y
 flatpak install it.mijorus.smile -y
