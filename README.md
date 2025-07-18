@@ -30,6 +30,7 @@ flatpak install it.mijorus.smile -y
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions;
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting;
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting;
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search;
 ```
 
 ### HOMEBREW INSTALL INSTRUCTIONS
@@ -63,9 +64,14 @@ brew install hello gcc
 
 ```zsh
 brew install micro eza wget zoxide thefuck yazi fastfetch nerdfetch
+```
+
+```zsh
 brew install --cask font-jetbrains-mono-nerd-font
+```
+
+```zsh
 brew install --cask font-victor-mono-nerd-font
-alias --save ls eza
 ```
 
 ### Micro Prettier installation
@@ -121,4 +127,16 @@ cp ~/repo/obsidian/starship/starship.toml ~/.config/starship.toml
 cp ~/repo/obsidian/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
 cp ~/repo/obsidian/yazi/yazi.toml ~/.config/yazi/yazi.toml
 cp ~/repo/obsidian/zsh/.zshrc ~/.zshrc
+```
+
+### Install Wine
+
+Link: https://gitlab.winehq.org/wine/wine/-/wikis/Fedora
+
+```zsh
+dnf5 config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fedora/42/winehq.repo
+```
+
+```zsh
+dnf install winehq-stable
 ```
