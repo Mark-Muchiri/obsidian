@@ -9,7 +9,7 @@ dnf copr enable atim/starship
 dnf install starship
 ```
 
-#### GCM (Git Credential Manager)
+#### <u>GCM (Git Credential Manager)<u>
 Link: https://github.com/git-ecosystem/git-credential-manager/releases/
 
 ```zsh
@@ -70,7 +70,7 @@ alias --save ls eza
 
 ### Micro Prettier installation
 
-- should work automatically on save
+should work automatically on save
 
 ```zsh
 sudo npm install --global prettier
