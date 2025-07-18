@@ -51,8 +51,8 @@ alias ls="eza --color='always' --icons='always' --sort='type' -l"
 alias lt="eza --tree --icons='always' --sort='type' --git-ignore -A"
 
 ## Configuration Files
-alias edrc="$EDITOR ~/.zshrc"
-alias rc="bat ~/.zshrc"
+alias edzshrc="$EDITOR ~/.zshrc"
+alias zshrc="bat ~/.zshrc"
 alias src="exec zsh" # Reload zsh config
 alias gh="$EDITOR ~/.config/ghostty/config"
 
