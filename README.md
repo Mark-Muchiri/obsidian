@@ -2,8 +2,14 @@
 
 ```zsh
 sudo dnf group install development-tools -y
+```
+
+```zsh
 dnf copr enable atim/starship
 dnf install starship
+```
+
+```zsh
 sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks 
 sudo npm install --global prettier
 flatpak install flathub com.mattjakeman.ExtensionManager -y
@@ -48,7 +54,7 @@ brew install hello gcc
 > Once you're done Install (gcc & glibc) 1st, then 🖟
 
 ```zsh
-brew install micro eza wget zoxide thefuck starship yazi fastfetch nerdfetch
+brew install micro eza wget zoxide thefuck yazi fastfetch nerdfetch
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-victor-mono-nerd-font
 alias --save ls eza
