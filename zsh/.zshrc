@@ -58,7 +58,7 @@ alias gh="$EDITOR ~/.config/ghostty/config"
 
 ## Package Management (DNF)
 alias dnf="sudo dnf5"
-alias update="sudo dnf5 update"
+alias update="sudo dnf5 update -y"
 alias install="sudo dnf5 install -y"
 alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
