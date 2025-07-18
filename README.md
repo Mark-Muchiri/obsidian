@@ -9,7 +9,7 @@ dnf copr enable atim/starship
 dnf install starship
 ```
 
-#### <u>GCM (Git Credential Manager)<u>
+#### GCM (Git Credential Manager)
 Link: https://github.com/git-ecosystem/git-credential-manager/releases/
 
 ```zsh
