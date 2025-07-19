@@ -142,3 +142,17 @@ dnf5 config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fe
 ```zsh
 dnf install winehq-stable
 ```
+
+#### Extra stuff
+
+Copy folder content
+
+```zsh
+cp -a /source/. /destination/
+```
+
+Initial full copy
+
+```zsh
+rsync -avh --progress /source/ /destination/
+```
