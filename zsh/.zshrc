@@ -118,7 +118,7 @@ ffile() {
 fdir() {
   local dir
   dir=$(fd --type d --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
-    fzf --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 -A {}')
+    fzf -m --preview='eza --tree --color='always' --icons='always' --sort='type' --git-ignore --level=3 -A {}')
   [[ -n "$dir" ]] && cd "$dir"
 }
 
