@@ -110,7 +110,7 @@ export FZF_COMPLETION_TRIGGER='~~'
 ffile() { 
   local file
   file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
-    fzf --preview="bat --style=plain --theme=base16 --color=always {}")
+    fzf -m --preview="bat --style=plain --theme=base16 --color=always {}")
   [[ -n "$file" ]] && echo "$file"
 }
 
