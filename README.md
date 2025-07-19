@@ -10,6 +10,7 @@ dnf install starship
 ```
 
 #### GCM (Git Credential Manager)
+
 Link: https://github.com/git-ecosystem/git-credential-manager/releases/
 
 ```zsh
@@ -18,7 +19,7 @@ git-credential-manager configure
 ```
 
 ```zsh
-sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks 
+sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks
 sudo npm install --global prettier
 flatpak install flathub com.mattjakeman.ExtensionManager -y
 flatpak install it.mijorus.smile -y
@@ -81,6 +82,7 @@ should work automatically on save
 ```zsh
 sudo npm install --global prettier
 micro --plugin install prettier
+micro -plugin install lsp
 ```
 
 ### Unite extension install
