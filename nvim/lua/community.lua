@@ -8,6 +8,8 @@ return {
   -- import/override with your plugins folder
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.scrolling.mini-animate" },
+  { import = "astrocommunity.motion.mini-move" },
+  { import = "astrocommunity.scrolling.neoscroll-nvim" },
   -- { import = "astrocommunity.utility.hover-nvim" },
-  -- { import = "astrocommunity.scrolling.mini-animate" },
 }
