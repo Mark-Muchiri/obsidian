@@ -1,0 +1,20 @@
+-- return function()
+--   vim.g.onedark_style = "dark"
+--   vim.g.onedark_transparent_background = true
+--   vim.g.onedark_hide_endofbuffer = true
+--   vim.g.onedark_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+--
+--   require("onedark").setup {
+--     style = "dark",
+--     transparent = true, -- Force transparency
+--     term_colors = true,
+--   }
+--
+--   vim.cmd [[colorscheme onedark]]
+--
+--   -- Re-apply highlights after colorscheme loads
+--   vim.schedule(function()
+--     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--   end)
+-- end
