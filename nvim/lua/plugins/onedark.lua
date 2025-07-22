@@ -1,4 +1,15 @@
 return {
+  "navarasu/onedark.nvim",
+  -- lazy = false,
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    require("onedark").setup {
+      style = "deep",
+    }
+    -- Enable theme
+    require("onedark").load()
+  end,
+
   vim.defer_fn(function()
     -- ... existing configuration ...
 
@@ -19,15 +30,5 @@ return {
     vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = transparent_bg })
 
     -- ... rest of your configuration ...
-  end, 20000),
-
-  "navarasu/onedark.nvim",
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    require("onedark").setup {
-      style = "deep",
-    }
-    -- Enable theme
-    require("onedark").load()
-  end,
+  end, 1),
 }
