@@ -1,15 +1,4 @@
 return {
-  "navarasu/onedark.nvim",
-  -- lazy = false,
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    require("onedark").setup {
-      style = "deep",
-    }
-    -- Enable theme
-    require("onedark").load()
-  end,
-
   vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()
@@ -120,7 +109,12 @@ return {
       vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = transparent_bg })
 
       -- winbar (top line)
-      vim.api.nvim_set_hl(0, "WinBar", { bg = NONE })
+      -- Make WinBar match cursor line colors
+      vim.api.nvim_set_hl(0, "WinBar", {
+        bg = "NONE",
+        fg = "#182e6e",
+        bold = true,
+      })
       vim.api.nvim_set_hl(0, "WinBarNC", { bg = NONE })
 
       -- statusline
@@ -128,4 +122,15 @@ return {
       vim.api.nvim_set_hl(0, "StatusLineNC", { bg = NONE })
     end,
   }),
+
+  "navarasu/onedark.nvim",
+  -- lazy = false,                                                              }
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    require("onedark").setup {
+      style = "deep",
+    }
+    -- Enable theme
+    require("onedark").load()
+  end,
 }
