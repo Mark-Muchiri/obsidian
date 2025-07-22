@@ -42,6 +42,7 @@ pipeline='pipeline_default'
 style-components=2
 
 [blur-my-shell/panel]
+blur=false
 brightness=0.40000000000000002
 force-light-text=false
 override-background=false
