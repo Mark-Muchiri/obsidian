@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nano' # Remote editor
 else
-  export EDITOR='micro' # Local editor
+  export EDITOR='nvim' # Local editor
 fi
 export VISUAL="$EDITOR" # GUI applications
 
@@ -40,7 +40,7 @@ alias c="clear"
 alias x="exit"
 alias cpu="sudo btop"
 alias /="cd ~"
-alias vi="nvim"
+alias v="nvim"
 alias rm="trash"     # Safer alternative to rm
 alias root="sudo -i" # Get root shell
 
