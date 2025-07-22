@@ -1,6 +1,6 @@
--- This will run last in the setup process.
--- This is just pure lua so anything that doesn't
--- fit in the normal config locations above can go here
+1st code
+
+```lua
 return {
   vim.defer_fn(function()
     -- Core text areas                                                                                     }
@@ -108,3 +108,72 @@ return {
     vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = transparent_bg })
   end, 20),
 }
+```
+
+Additional
+
+```lua
+return {
+  vim.defer_fn(function()
+    -- ... existing configuration ...
+
+    -- Use terminal's background color instead of "NONE"
+    local transparent_bg = vim.fn.has "gui_running" == 1 and "NONE" or ""
+
+    -- Enhanced Tabline Fixes
+    vim.api.nvim_set_hl(0, "BufferLineFill", { bg = transparent_bg }) -- Background of the entire tabline
+    vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = transparent_bg }) -- Background of inactive tabs
+
+    -- Fix typos in group names:
+    vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = transparent_bg, fg = "#5c6370" })
+    vim.api.nvim_set_hl(0, "BufferLineTabSelected", { bg = transparent_bg })
+    vim.api.nvim_set_hl(0, "BufferLineTabClose", { bg = transparent_bg })
+
+    -- Additional groups for full transparency
+    vim.api.nvim_set_hl(0, "BufferLineTab", { bg = transparent_bg })
+    vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", { bg = transparent_bg })
+
+    -- ... rest of your configuration ...
+  end, 1),
+}
+```
+
+last
+
+```lua
+return {
+	vim.api.nvim_create_autocmd("ColorScheme", {
+	  pattern = "*",
+	  callback = function()
+	    local NONE = "NONE"
+
+	    -- core
+	    vim.api.nvim_set_hl(0, "Normal", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "NormalFloat", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "NormalNC", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "MsgArea", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = NONE })
+
+	    -- winbar (top line)
+	    vim.api.nvim_set_hl(0, "WinBar", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "WinBarNC", { bg = NONE })
+
+	    -- tabline / bufferline
+	    vim.api.nvim_set_hl(0, "TabLine", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "TabLineFill", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "TabLineSel", { bg = NONE, fg = "#e06c75", bold = true })
+	    vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "BufferLineBufferVisible", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "BufferLineBufferSelected", { bg = NONE, bold = true })
+	    vim.api.nvim_set_hl(0, "BufferLineTab", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "BufferLineTabSelected", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = NONE, fg = "#5c6370" })
+	    vim.api.nvim_set_hl(0, "BufferLineFill", { bg = NONE })
+
+	    -- statusline
+	    vim.api.nvim_set_hl(0, "StatusLine", { bg = NONE })
+	    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = NONE })
+	  end,
+	}),
+}
+```
