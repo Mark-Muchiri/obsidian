@@ -39,6 +39,9 @@ return {
           -- quik save
           ["<C-s>"] = { desc = "Save File", "<cmd>:w!<cr>" },
 
+          -- save and quit
+          ["<C-q>"] = { desc = "Save quit", "<Esc>:confirm q<cr>" },
+
           -- Floating terminal
           ["<C-/>"] = { desc = "floating terminal", "<cmd>ToggleTerm direction=float<cr>" },
         },
@@ -50,7 +53,10 @@ return {
 
         i = {
           -- quick save
-          ["<C-s>"] = { desc = "Save File", "<cmd>:w!<cr>" },
+          ["<C-s>"] = { desc = "Save File", "<Esc>:w!<cr>" },
+
+          -- save and quit
+          ["<C-q>"] = { desc = "Save quit", "<Esc>:confirm q<cr>" },
 
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
