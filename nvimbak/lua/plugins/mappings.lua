@@ -12,9 +12,6 @@ return {
           -- floating Neotree
           ["\\"] = { desc = "floating neotree", "<cmd>Neotree float toggle<cr>" },
 
-          -- Floating terminal
-          ["<C-/>"] = { desc = "floating terminal", "<cmd>ToggleTerm direction=float<cr>" },
-
           -- Find files
           ["<Leader><Leader>"] = {
             function()
@@ -39,8 +36,11 @@ return {
           -- this is useful for naming menus
           ["<Leader>b"] = { desc = "Buffers" },
 
-          -- quick save
+          -- quik save
           ["<C-s>"] = { desc = "Save File", "<cmd>:w!<cr>" },
+
+          -- Floating terminal
+          ["<C-/>"] = { desc = "floating terminal", "<cmd>ToggleTerm direction=float<cr>" },
         },
 
         t = {
