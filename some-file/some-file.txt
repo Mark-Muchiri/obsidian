@@ -167,7 +167,7 @@ window-preview-caption=false
 window-preview-close-button=false
 workspace=false
 workspace-background-corner-size=9
-workspace-popup=false
+workspace-popup=true
 workspace-wrap-around=false
 workspaces-in-app-grid=false
 
