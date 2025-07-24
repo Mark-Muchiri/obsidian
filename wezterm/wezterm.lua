@@ -5,8 +5,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Appearance
-config.initial_cols = 86
-config.initial_rows = 34
+config.initial_cols = 89
+config.initial_rows = 38
 config.font_size = 10.8
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.default_cursor_style = "BlinkingBar"
@@ -15,11 +15,18 @@ config.window_decorations = "NONE"
 config.hide_tab_bar_if_only_one_tab = true
 config.pane_focus_follows_mouse = true
 config.front_end = "OpenGL"
+config.enable_wayland = true
 config.term = "wezterm"
 config.color_scheme = "Argonaut (Gogh)"
 -- config.color_scheme = "Argonaut"
 -- config.color_scheme = "duckbones"
 -- config.color_scheme = "Aura (Gogh)"
+config.window_padding = {
+	-- left = 10,
+	-- right = 8,
+	top = 0,
+	bottom = 0,
+}
 
 -- 👇🏾Do not touch!!! (tabs)
 config.tab_bar_at_bottom = true
