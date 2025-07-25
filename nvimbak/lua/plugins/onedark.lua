@@ -1,14 +1,6 @@
 return {
-  "navarasu/onedark.nvim",
-  -- lazy = false,                                                              }
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    require("onedark").setup {
-      style = "deep",
-    }
-    -- Enable theme
-    require("onedark").load()
-  end,
+  "olimorris/onedarkpro.nvim",
+  priority = 1000,
 
   -- Transparency
   vim.api.nvim_create_autocmd("ColorScheme", {
@@ -16,7 +8,7 @@ return {
     callback = function()
       local NONE = "NONE"
 
-      -- Core text areas                                                                                     }
+      -- Core text areas
       vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
