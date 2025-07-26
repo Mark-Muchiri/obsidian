@@ -47,8 +47,25 @@ return {
       "nvim-neo-tree/neo-tree.nvim",
       optional = true,
       opts = {
-        popup_border_style = "rounded",
+        popup_border_style = border_type,
         window = { position = "float" },
+      },
+    },
+    {
+      "williamboman/mason.nvim",
+      opts = {
+        ui = {
+          border = border_type,
+        },
+      },
+    },
+    {
+      "folke/lazy.nvim",
+      opts = {
+        ui = {
+          border = "rounded",
+          backdrop = 60,
+        },
       },
     },
   },

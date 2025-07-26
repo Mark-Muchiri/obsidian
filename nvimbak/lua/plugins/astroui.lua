@@ -34,6 +34,7 @@ return {
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
     },
+
     -- Transparency
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "*",
