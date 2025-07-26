@@ -91,7 +91,7 @@ return {
         vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { bg = "NONE", fg = "#5c6370" })
         vim.api.nvim_set_hl(0, "NeoTreeTabInactive", { bg = "NONE" })
-        vim.api.nvim_set_hl(0, "NeoTreeTabActive", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeTabActive", { bg = "NONE", fg = "#8a8a8a" })
         vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorInactive", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorActive", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE" })
@@ -157,7 +157,7 @@ return {
         -- Make WinBar match cursor line colors
         vim.api.nvim_set_hl(0, "WinBar", {
           bg = "NONE",
-          fg = "#333333",
+          fg = "#4d4d4d",
           bold = true,
         })
         vim.api.nvim_set_hl(0, "WinBarNC", { bg = "NONE" })
@@ -165,9 +165,6 @@ return {
         -- statusline
         vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
         vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-
-        -- rounded borders for all floating windows
-        -- vim.o.winborder = "rounded"
       end,
     }),
   },
