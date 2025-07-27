@@ -45,6 +45,7 @@ return {
         wrap = true, -- sets vim.opt.wrap
         linebreak = true,
         showbreak = "↪ ",
+        -- showtabline = 0,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
