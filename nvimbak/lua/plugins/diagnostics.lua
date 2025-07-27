@@ -6,10 +6,12 @@ return {
   opts = {
     features = {
       diagnostics = true,
+      wrap = true,
     },
     diagnostics = {
       virtual_text = false,
       virtual_lines = { current_line = true },
+      wrap = true,
       underline = true,
       update_in_insert = false,
     },
