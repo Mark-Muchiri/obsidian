@@ -5,13 +5,14 @@ command_timeout = 3600
 
 # ===== MODULE CONFIGURATION =====
 [directory]
-home_symbol = '󱄫 '
+home_symbol = ' 󱄫 '
 style = 'cyan'
+truncation_symbol = ' '
 
 [character]
-success_symbol = '[](bold purple)'
-error_symbol = '[](bold red)'
-vimcmd_symbol = '[V](bold purple)'
+success_symbol = '[ ](bold purple)'
+error_symbol = '[ ](bold red)'
+vimcmd_symbol = '[ V](bold purple)'
 # success_symbol = '[▷](bold purple)'
 # error_symbol = '[](bold red)'
 

@@ -1,12 +1,6 @@
 return {
-  "olimorris/onedarkpro.nvim",
-  priority = 1000,
-  opts = {
-    highlights = {
-      ShowBreak = { bg = "NONE" },
-    },
-    options = {
-      transparency = true,
-    },
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000, -- Ensure it loads first
   },
 }

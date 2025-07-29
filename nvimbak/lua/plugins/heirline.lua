@@ -1,6 +1,7 @@
 return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
+    opts.winbar = nil
     local status = require "astroui.status"
     opts.statusline = { -- statusline
       hl = { fg = "fg", bg = "bg" },
@@ -33,5 +34,6 @@ return {
       status.component.numbercolumn(),
       status.component.signcolumn(),
     }
+    status.breadcrumbs = false
   end,
 }

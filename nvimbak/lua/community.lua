@@ -10,4 +10,5 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.scrolling.mini-animate" },
   { import = "astrocommunity.motion.mini-move" },
+  { import = "astrocommunity.recipes.disable-tabline" },
 }
