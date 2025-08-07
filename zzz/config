@@ -1,11 +1,13 @@
-theme = duckbones
-font-size = 14
+theme = Argonaut
+font-size = 15.5
 font-family = VictorMono Nerd Font
 gtk-titlebar = false
 gtk-tabs-location = bottom
 cursor-style = bar
-window-padding-x = 13
-window-padding-y = 10
+window-padding-x = 0, 0
+window-padding-y = 0, 0
+window-height = 24
+window-width = 55
 
 # This is the configuration file for Ghostty.
 #
