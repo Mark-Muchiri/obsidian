@@ -150,7 +150,7 @@ panel-in-overview=true
 panel-indicator-padding-size=0
 panel-notification-icon=true
 panel-size=0
-power-icon=false
+power-icon=true
 quick-settings=true
 quick-settings-airplane-mode=false
 ripple-box=false
@@ -255,7 +255,7 @@ use-activities-text=false
 [vitals]
 fixed-widths=true
 hide-zeros=false
-hot-sensors=['_memory_allocated_', '__network-rx_max__', '_processor_usage_', '_processor_frequency_', '__temperature_avg__', '_battery_percentage_']
+hot-sensors=['__temperature_avg__', '_memory_allocated_', '_processor_usage_']
 icon-style=1
 include-static-gpu-info=true
 include-static-info=true
