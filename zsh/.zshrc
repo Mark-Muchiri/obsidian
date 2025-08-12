@@ -43,6 +43,7 @@ alias /="cd ~"
 alias v="nvim"
 alias rm="trash"     # Safer alternative to rm
 alias root="sudo -i" # Get root shell
+alias fastfetch="fastfetch -c examples/8.jsonc"
 
 ## Navigation
 alias l="eza --color='always' --icons='always' --sort='type'"
