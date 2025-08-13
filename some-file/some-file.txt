@@ -179,7 +179,7 @@ border-width=1
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
 settings-version=uint32 7
 skip-libadwaita-app=false
 skip-libhandy-app=false
@@ -255,7 +255,7 @@ use-activities-text=false
 [vitals]
 fixed-widths=true
 hide-zeros=false
-hot-sensors=['__temperature_avg__', '_memory_allocated_', '_processor_usage_']
+hot-sensors=['__temperature_avg__', '_memory_allocated_']
 icon-style=1
 include-static-gpu-info=true
 include-static-info=true
