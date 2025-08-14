@@ -61,6 +61,15 @@ pipeline='pipeline_default'
 brightness=0.40000000000000002
 sigma=30
 
+[clipboard-indicator]
+cache-size=100
+history-size=100
+keep-selected-on-clear=true
+move-item-first=true
+notify-on-copy=true
+preview-size=10
+strip-text=true
+
 [forge]
 css-last-update=uint32 37
 focus-border-toggle=false
