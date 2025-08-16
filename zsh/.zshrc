@@ -18,7 +18,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim' # Local editor
 fi
-export VISUAL="$EDITOR" # GUI applications
+export VISUAL='code' # GUI applications
 
 # ===== Path Configuration =====
 # PNPM
