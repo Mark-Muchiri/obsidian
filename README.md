@@ -143,6 +143,12 @@ dnf5 config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fe
 dnf install winehq-stable
 ```
 
+### Brave backup
+
+```zsh
+cp -r ~/repo/obsidian/zzz/Default ~/.config/BraveSoftware/Brave-Browser/Default
+```
+
 #### Extra stuff
 
 Copy folder content
