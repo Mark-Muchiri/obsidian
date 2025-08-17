@@ -1,0 +1,9 @@
+2025/08/17-04:09:57.534 c816 Reusing MANIFEST /home/obsidian/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/08/17-04:09:57.535 c816 Recovering log #30
+2025/08/17-04:09:57.548 c816 Reusing old log /home/obsidian/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000030.log 
+2025/08/17-04:10:00.452 c818 Compacting 1@1 + 1@2 files
+2025/08/17-04:10:00.465 c818 Generated table #33@1: 355 keys, 90013 bytes
+2025/08/17-04:10:00.466 c818 Compacted 1@1 + 1@2 files => 90013 bytes
+2025/08/17-04:10:00.468 c818 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/08/17-04:10:00.470 c818 Delete type=2 #28
+2025/08/17-04:10:00.470 c818 Delete type=2 #31

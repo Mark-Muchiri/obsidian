@@ -1,0 +1,39 @@
+{
+   "action": {
+      "default_icon": "icon16.png",
+      "default_popup": "index.html"
+   },
+   "background": {
+      "service_worker": "background.min.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "css": [ "YouTube.min.css" ],
+      "js": [ "YouTube.min.js" ],
+      "matches": [ "*://www.youtube.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Watch videos on YouTube fullscreen within your browsers screen.",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhbt0bH18LUhNDMhRV8HrvQURzwXGYTfkJ3CSpUINJbmkzLzw5KEC2Hyb44acjA0qTp4HuNsjVSbbNcBfMIDsKRo6hp8zFsOSucQnMALre/x8SMCqOaE9wqURwY8nGkrJfVCxGmLJZxhhejn/DzFJiCFY1C54e7wmL60iv5T4Ykz45hxF9ckQt+TFHqZa6pQMm81ik2peuiB4og7xz4E5fUshsaT9wcTOxtjk3uH2ZrMZmMDtsA0tScT3TkKaCN5Z1gM7kAPqiXrwQmBk8was1tgTBBBFn2buNibdyICwGDS2sHySLEdTttc8WrgLF7Q0bmlQI6hFnGQKEhYA9bzcswIDAQAB",
+   "manifest_version": 3,
+   "name": "YouTube Windowed FullScreen",
+   "options_ui": {
+      "browser_style": true,
+      "open_in_tab": false,
+      "page": "index.html"
+   },
+   "permissions": [ "storage" ],
+   "short_name": "YouTube FullScreen",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "4.11",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "index.html", "welcome.html", "update-4-7.html" ]
+   } ]
+}

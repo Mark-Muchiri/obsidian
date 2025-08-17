@@ -1,0 +1,13 @@
+2025/08/17-04:09:44.574 c816 Reusing MANIFEST /home/obsidian/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/chrome-extension_gkkmiofalnjagdcjheckamobghglpdpm_0.indexeddb.leveldb/MANIFEST-000001
+2025/08/17-04:09:44.575 c816 Recovering log #14
+2025/08/17-04:09:44.577 c816 Reusing old log /home/obsidian/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/chrome-extension_gkkmiofalnjagdcjheckamobghglpdpm_0.indexeddb.leveldb/000014.log 
+2025/08/17-04:09:44.597 c83e Level-0 table #19: started
+2025/08/17-04:09:44.601 c83e Level-0 table #19: 1308 bytes OK
+2025/08/17-04:09:44.611 c83e Delete type=0 #14
+2025/08/17-04:09:44.611 c818 Manual compaction at level-0 from '\x00\x08\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at '\x00\x08\x00\x00\x05' @ 265 : 1
+2025/08/17-04:09:44.611 c818 Compacting 1@0 + 1@1 files
+2025/08/17-04:09:44.640 c818 Generated table #20@0: 47 keys, 1453 bytes
+2025/08/17-04:09:44.641 c818 Compacted 1@0 + 1@1 files => 1453 bytes
+2025/08/17-04:09:44.649 c818 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/08/17-04:09:44.650 c818 Delete type=2 #19
+2025/08/17-04:09:44.652 c818 Manual compaction at level-0 from '\x00\x08\x00\x00\x05' @ 265 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at (end)

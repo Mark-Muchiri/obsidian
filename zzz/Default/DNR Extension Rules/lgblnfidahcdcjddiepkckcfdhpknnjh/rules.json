@@ -1,0 +1,1 @@
+[{"action":{"type":"allow"},"condition":{"initiatorDomains":["web.whatsapp.com","youtube.com"]},"id":2,"priority":100},{"action":{"type":"allow"},"condition":{"initiatorDomains":["web.whatsapp.com","youtube.com"]},"id":1,"priority":100}]

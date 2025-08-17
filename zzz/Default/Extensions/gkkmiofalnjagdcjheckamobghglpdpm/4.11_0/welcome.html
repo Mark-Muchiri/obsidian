@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Windowed Fullscreen</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <h1><img src="icon16.png" /> YouTube Windowed Fullscreen</h1>
+      </div>
+    </header>
+    <main>
+      <h1 style="text-align: center; color: #ff0000;">Scrolling while windowed fullscreen is here!</h1>
+      <section class="options">
+        <h2>Setting Options</h2>
+        <p>
+          To set your options, go to the settings page in the app. From there,
+          you can customize your experience to suit your preferences.
+        </p>
+      </section>
+      <section class="instructions">
+        <h2>How to Access the Options Page</h2>
+        <p>
+          To configure your settings, click
+          <a href="#" id="open-options" style="font-weight: bold">here</a> to
+          open the options page!
+        </p>
+        <h3>OR From the Extension Icon</h3>
+        <p>
+          Click on the extension's icon in the browser toolbar to open the
+          popup. From there, you can access "Options" to adjust your settings.
+        </p>
+        <img src="https://i.imgur.com/LlsMrhy.png" style="margin-left: auto; margin-right: auto; display: flex;" />
+      </section>
+      <section class="trial">
+        <h2>Free One-Day Trial for New Users</h2>
+        <p>
+          New users who sign up for the first time get a
+          <strong>1-day free trial</strong> to try all the premium features and
+          see if it is for you. No credit card required!
+        </p>
+        <p>
+          Premium access is available for a one-time payment of $12 AUD. Once purchased, you'll have lifetime access to all premium features!
+        </p>
+      </section>
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <strong>Auto Toggle (Premium):</strong> Automatically enter windowed
+            fullscreen mode whenever you go to a YouTube video. Search bar will appear while in windowed fullscreen mode
+            if you mouse over where the bar usually is.
+          </li>
+          <li>
+            <strong>Scrolling Support (Premium):</strong> Now able to scroll the page like
+            normal when in windowed fullscreen mode! Search bar will appear if you mouse over where it usually is, or
+            scroll down a bit.
+            <div class="image-group"><img src="https://i.imgur.com/xv7BFFF.png" /><img
+                src="https://i.imgur.com/kl1nqkl.png" /></div>
+          </li>
+          <li>
+            <strong>Hide Scrollbar whilst in Scrollable Mode (Premium):</strong> Enjoy a cleaner viewing experience with more visual space by hiding the scrollbar when scrolling.
+          </li>
+          <li>
+            <strong>Hide 'Includes Paid Promotion' Overlay on Thumbnails (Premium):</strong> Middle clickers rejoice! Hide the annoying 'Includes Paid Promotion' overlay on thumbnails on the Subscriptions page so you don't accidentally open the google support page on paid promotions.
+          </li>
+          <li>
+            <strong>Mini-player (Premium):</strong> While scrolling down the page, see a
+            mini player so that you don't miss anything as you browse comments
+            <img src="https://i.imgur.com/zinpHCG.png" style="max-width: 100%; margin-top: 15px;" />
+          </li>
+          <li>
+            <strong>Picture-in-Picture Shortcut (Premium):</strong> Quickly toggle Picture-in-Picture mode using Alt/Option + O, making it easy to watch videos while browsing other content.
+          </li>
+          <li>
+            <strong>Always Show Search Bar:</strong> Keep YouTube's search bar visible while in windowed fullscreen mode, making it easier to search for new videos without leaving fullscreen.
+            <img src="https://i.imgur.com/wUHc9UJ.png" style="max-width: 100%; margin-top: 15px;" />
+          </li>
+          <li>
+            <strong>Show Video Title:</strong> Shows the video title when the mouse is moved on the player in windowed fullscreen mode, helping you keep track of what you're watching.
+            <img src="https://i.imgur.com/Qn2Cw9K.png" style="max-width: 100%; margin-top: 15px;" />
+          </li>
+        </ul>
+      </section>
+      <section class="intro">
+        <h2>We're Moving to a Freemium Model, and why</h2>
+        <p>
+          I never thought I would have to make this decision, and I want to
+          apologize for the change. Unfortunately, with the current economic
+          situation and after recently losing my job, I need a source of income
+          to keep this extension running and up-to-date. Maintaining the
+          extension, especially with the frequent changes to YouTube's layout,
+          requires significant time and effort. By introducing a premium model,
+          I'll be able to dedicate the necessary time to continue updating and
+          improving the extension.
+        </p>
+        <p>
+          I understand that this may not be ideal for many of you, but I hope
+          you'll understand the circumstances. Thank you for your continued
+          support, and I'm truly grateful for all the users who have used the
+          extension over the years.
+        </p>
+        <p>
+          Sign up is simple and secure - it's just a one-time payment of $12 AUD for lifetime access to all premium features. I'm using Stripe for all payment processing so none of your payment information is stored by me personally.
+        </p>
+        <p>Please find our terms and conditions and privacy policy here: https://docs.google.com/document/d/1czbBOblR46ucyfxpCUhdNnxh_TUH69R2Up-KbA6-ffw/pub</p>
+      </section>
+    </main>
+    <div class="footer">
+      <p>Thank you for using YouTube Windowed Fullscreen!</p>
+      <p>Questions? Contact us at fullscreen.ext.supp@gmail.com</p>
+    </div>
+    <script src="welcome.js"></script>
+  </body>
+  <style>
+    .image-group {
+      display: flex;
+      gap: 4%;
+      margin-top: 15px;
+    }
+
+    .image-group img {
+      max-width: 48%;
+      display: inline-flex;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ff0000;
+      /* YouTube Red */
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #ff0000;
+      /* YouTube Red */
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid #ff0000;
+      font-size: 14px;
+    }
+
+    strong {
+      color: #ff0000;
+      /* Emphasize important parts in YouTube Red */
+    }
+
+    /* Section styles */
+    .intro,
+    .features,
+    .trial,
+    .options,
+    .instructions {
+      margin-bottom: 30px;
+    }
+
+    /* Instructions section specific styling */
+    .instructions h3 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .instructions a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .instructions a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      main {
+        padding: 15px;
+      }
+
+      header {
+        padding: 10px;
+      }
+
+      .footer {
+        font-size: 12px;
+      }
+    }
+  </style>
+
+</html>
