@@ -18,7 +18,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim' # Local editor
 fi
-export VISUAL='code' # GUI applications
+export VISUAL="$EDITOR" # GUI applications
 
 # ===== Path Configuration =====
 # PNPM
@@ -153,8 +153,8 @@ eval "$(zoxide init --cmd cd zsh)"
 ## Starship Prompt
 eval "$(starship init zsh)"
 
-## The Fuck (Correct previous command)
-eval $(thefuck --alias)
+## zsh correction
+setopt CORRECT
 
 ## Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
