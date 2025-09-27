@@ -63,12 +63,14 @@ sigma=30
 
 [clipboard-indicator]
 cache-size=100
+display-mode=0
 history-size=100
 keep-selected-on-clear=true
 move-item-first=true
-notify-on-copy=true
-preview-size=50
+notify-on-copy=false
+preview-size=30
 strip-text=true
+topbar-preview-size=8
 
 [forge]
 css-last-update=uint32 37
@@ -146,7 +148,7 @@ clock-menu-position-offset=6
 controls-manager-spacing-size=0
 dash=false
 dash-icon-size=0
-double-super-to-appgrid=false
+double-super-to-appgrid=true
 events-button=false
 invert-calendar-column-items=true
 max-displayed-search-results=0
@@ -188,7 +190,7 @@ border-width=1
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
 settings-version=uint32 7
 skip-libadwaita-app=false
 skip-libhandy-app=false
@@ -264,10 +266,10 @@ use-activities-text=false
 fixed-widths=true
 hide-zeros=false
 hot-sensors=['__temperature_avg__', '_memory_allocated_']
-icon-style=1
+icon-style=0
 include-static-gpu-info=true
 include-static-info=true
-memory-measurement=0
+memory-measurement=1
 menu-centered=true
 show-battery=true
 show-gpu=true
