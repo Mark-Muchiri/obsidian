@@ -14,6 +14,7 @@ blur=true
 brightness=0.5
 dynamic-opacity=false
 opacity=191
+pipeline='pipeline_default'
 sigma=70
 whitelist=@as []
 
@@ -67,10 +68,34 @@ display-mode=0
 history-size=100
 keep-selected-on-clear=true
 move-item-first=true
+next-history-clear=-1
 notify-on-copy=false
 preview-size=30
 strip-text=true
 topbar-preview-size=8
+
+[dash-to-dock]
+apply-custom-theme=false
+autohide=false
+background-color='rgb(61,56,70)'
+background-opacity=0.59999999999999998
+custom-background-color=false
+custom-theme-shrink=true
+dash-max-icon-size=48
+dock-fixed=false
+dock-position='BOTTOM'
+height-fraction=0.90000000000000002
+intellihide=false
+intellihide-mode='MAXIMIZED_WINDOWS'
+multi-monitor=true
+preferred-monitor=-2
+preferred-monitor-by-connector='eDP-1'
+preview-size-scale=0.0
+require-pressure-to-show=false
+running-indicator-style='DEFAULT'
+scroll-action='cycle-windows'
+show-trash=false
+transparency-mode='FIXED'
 
 [forge]
 css-last-update=uint32 37
@@ -136,6 +161,7 @@ show-in-overview=true
 [just-perfection]
 accent-color-icon=false
 accessibility-menu=true
+activities-button=true
 alt-tab-icon-size=0
 alt-tab-small-icon-size=0
 alt-tab-window-preview-size=0
@@ -146,8 +172,8 @@ clock-menu=true
 clock-menu-position=1
 clock-menu-position-offset=6
 controls-manager-spacing-size=0
-dash=false
-dash-icon-size=0
+dash=true
+dash-icon-size=32
 double-super-to-appgrid=true
 events-button=false
 invert-calendar-column-items=true

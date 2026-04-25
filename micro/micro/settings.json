@@ -1,0 +1,17 @@
+{
+    "colorscheme": "cmc-16",
+    "lsp.autocompleteDetails": true,
+    "lsp.formatOnSave": true,
+    "lsp.ignoreMessages": "LS message1 to ignore|LS message 2 to ignore|...",
+    "lsp.ignoreTriggerCharacters": "completion,signature",
+    "lsp.server": "python=pyls,go=gopls,typescript=deno lsp,rust=rust-analyzer",
+    "lsp.tabcompletion": true,
+    "pluginrepos": [
+        "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
+    ],
+    "prettier.autoformat": "on",
+    "prettier.wrap": "always",
+    "softwrap": true,
+    "tabsize": 2,
+    "wordwrap": true
+}

@@ -95,10 +95,13 @@ gnome-extensions install --force unite-v82.zip
 ```
 
 ### Gnome Extensions Backup/Restore
-
+-> Load the backup to the current setup 
+```zsh
+dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
+```
+-> Backup the current setup 
 ```zsh
 dconf dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
-dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
 ```
 
 ### Install Wezterm
@@ -161,4 +164,10 @@ Initial full copy
 
 ```zsh
 rsync -avh --progress /source/ /destination/
+```
+
+Github ssh command
+
+```zsh
+ssh-keygen -t ed25519
 ```
