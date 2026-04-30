@@ -271,6 +271,14 @@ toggle-always-on-top=@as []
 toggle-tiling-popup=@as []
 window-gap=8
 
+[touchpad-gesture-customization]
+horizontal-swipe-3-fingers-gesture='WORKSPACE_SWITCHING'
+horizontal-swipe-4-fingers-gesture='NONE'
+pinch-3-finger-gesture='NONE'
+pinch-4-finger-gesture='NONE'
+touchpad-speed-scale=2.0
+vertical-swipe-4-fingers-gesture='NONE'
+
 [unite]
 app-menu-ellipsize-mode='start'
 autofocus-windows=true
