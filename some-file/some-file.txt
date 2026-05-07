@@ -219,6 +219,7 @@ panel-size=0
 power-icon=true
 quick-settings=true
 quick-settings-airplane-mode=false
+quick-settings-dark-mode=false
 quick-settings-do-not-disturb=false
 ripple-box=false
 search=false

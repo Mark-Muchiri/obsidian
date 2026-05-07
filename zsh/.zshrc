@@ -165,3 +165,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --c
 export MANROFFOPT="-c"
 # theme=\"Solarized (dark)\"
 # theme=\"base16\"
+
+# Dotfiles sync
+alias sync-dots="bash /home/obsidian/repo/obsidian/sync.sh"
+alias restore-dots="bash /home/obsidian/repo/obsidian/restore.sh"
