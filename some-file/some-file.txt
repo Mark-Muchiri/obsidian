@@ -64,6 +64,7 @@ brightness=0.40000000000000002
 sigma=30
 
 [clipboard-indicator]
+blink-icon-on-copy=true
 cache-size=100
 display-mode=0
 history-size=100
@@ -71,7 +72,7 @@ keep-selected-on-clear=true
 move-item-first=true
 next-history-clear=-1
 notify-on-copy=false
-preview-size=30
+preview-size=25
 strip-text=true
 topbar-preview-size=8
 
@@ -248,7 +249,7 @@ border-width=-1
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 2, 'right': 5, 'top': 2, 'bottom': 3}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 2, 'right': 4, 'top': 2, 'bottom': 3}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
 settings-version=uint32 9
 skip-libadwaita-app=false
 skip-libhandy-app=false
@@ -307,7 +308,7 @@ horizontal-swipe-3-fingers-gesture='WORKSPACE_SWITCHING'
 horizontal-swipe-4-fingers-gesture='NONE'
 pinch-3-finger-gesture='NONE'
 pinch-4-finger-gesture='NONE'
-touchpad-speed-scale=2.0
+touchpad-speed-scale=3.0099999999999998
 vertical-swipe-4-fingers-gesture='NONE'
 
 [unite]
