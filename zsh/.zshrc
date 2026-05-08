@@ -14,9 +14,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ===== Editor Configuration =====
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim' # Remote editor
+  export EDITOR='micro' # Remote editor
 else
-  export EDITOR='micro' # Local editor
+  export EDITOR='nvim' # Local editor
 fi
 export VISUAL="$EDITOR" # GUI applications
 

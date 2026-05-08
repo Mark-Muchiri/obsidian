@@ -271,9 +271,9 @@ sudo gsettings set org.gnome.shell disable-extension-version-validation true 2>/
   warn "gsettings failed — may need an active GNOME session."
 
 info "Installing Unite shell extension..."
-UNITE_ZIP="/tmp/unite-v82.zip"
+UNITE_ZIP="/tmp/unite-v85.zip"
 wget -q -O "$UNITE_ZIP" \
-  https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
+  https://github.com/hardpixel/unite-shell/releases/download/v85/unite-v85.zip
 gnome-extensions install --force "$UNITE_ZIP" 2>/dev/null || \
   warn "gnome-extensions install failed — may need active GNOME session. Run manually: gnome-extensions install --force $UNITE_ZIP"
 rm -f "$UNITE_ZIP"
