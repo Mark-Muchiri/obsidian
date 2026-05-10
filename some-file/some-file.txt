@@ -1,6 +1,6 @@
 [blur-my-shell]
 hacks-level=0
-pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.5>, 'unscaled_radius': <25>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_32861622386704'>, 'params': <{'brightness': <0.5>, 'unscaled_radius': <25>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <@av []>}}
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.14999999999999999>, 'unscaled_radius': <25>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_32861622386704'>, 'params': <{'brightness': <0.14999999999999999>, 'unscaled_radius': <25>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <@av []>}}
 rounded-blur-found=false
 settings-version=2
 
@@ -245,11 +245,11 @@ workspaces-in-app-grid=false
 timeout=1000
 
 [rounded-window-corners-reborn]
-border-width=-1
+border-width=1
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 3, 'right': 4, 'top': 2, 'bottom': 3}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.10000000000000001>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
 settings-version=uint32 9
 skip-libadwaita-app=false
 skip-libhandy-app=false
