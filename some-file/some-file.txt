@@ -79,7 +79,7 @@ topbar-preview-size=8
 [dash-to-dock]
 apply-custom-theme=false
 autohide=false
-background-color='rgb(61,56,70)'
+background-color='rgb(36,31,49)'
 background-opacity=0.5
 custom-background-color=false
 custom-theme-shrink=true
