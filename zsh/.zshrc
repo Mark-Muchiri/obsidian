@@ -170,3 +170,10 @@ export MANROFFOPT="-c"
 # Dotfiles sync
 alias sync-dots="bash /home/obsidian/repo/obsidian/sync.sh"
 alias restore-dots="bash /home/obsidian/repo/obsidian/restore.sh"
+
+# bun completions
+[ -s "/home/obsidian/.bun/_bun" ] && source "/home/obsidian/.bun/_bun"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
