@@ -177,3 +177,6 @@ alias restore-dots="bash /home/obsidian/repo/obsidian/restore.sh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Postgress !important
+export TERM=xterm-256color
