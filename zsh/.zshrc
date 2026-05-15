@@ -93,7 +93,7 @@ alias gfp='git push --force-with-lease' # Safer force push
 alias gsync='git add -A && git commit -v && git push'
 alias gsmartsync='git fetch --all --prune && git rebase && git push'
 alias gclean='git clean -fd && git reset --hard'
-
+alias sync-config="cd ~/repo/obsidian/ && gsync && gl && /"
 
 # ===== FZF Configuration =====
 ## Custom fzf configurations
