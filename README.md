@@ -9,15 +9,6 @@ dnf copr enable atim/starship
 dnf install starship
 ```
 
-#### GCM (Git Credential Manager)
-
-Link: https://github.com/git-ecosystem/git-credential-manager/releases/
-
-```zsh
-sudo tar -xvf ~/Downloads/*.tar.gz -C /usr/local/bin
-git-credential-manager configure
-```
-
 ```zsh
 sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks
 sudo npm install --global prettier
@@ -71,10 +62,6 @@ brew install micro eza wget zoxide thefuck yazi fastfetch nerdfetch
 brew install --cask font-jetbrains-mono-nerd-font
 ```
 
-```zsh
-brew install --cask font-victor-mono-nerd-font
-```
-
 ### Micro Prettier installation
 
 should work automatically on save
@@ -90,12 +77,12 @@ micro -plugin install lsp
 ```zsh
 sudo dnf5 install gnome-browser-connector xprop
 sudo gsettings set org.gnome.shell disable-extension-version-validation true
-wget https://github.com/hardpixel/unite-shell/releases/download/v82/unite-v82.zip
-gnome-extensions install --force unite-v82.zip
+wget https://github.com/hardpixel/unite-shell/releases/download/v85/unite-v85.zip
+gnome-extensions install --force unite-v85.zip
 ```
 
 ### Gnome Extensions Backup/Restore
--> Load the backup to the current setup 
+-> Load the backup to the setup 
 ```zsh
 dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
 ```
@@ -132,24 +119,6 @@ cp ~/repo/obsidian/starship/starship.toml ~/.config/starship.toml
 cp ~/repo/obsidian/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
 cp ~/repo/obsidian/yazi/yazi.toml ~/.config/yazi/yazi.toml
 cp ~/repo/obsidian/zsh/.zshrc ~/.zshrc
-```
-
-### Install Wine
-
-Link: https://gitlab.winehq.org/wine/wine/-/wikis/Fedora
-
-```zsh
-dnf5 config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fedora/42/winehq.repo
-```
-
-```zsh
-dnf install winehq-stable
-```
-
-### Brave backup
-
-```zsh
-cp -r ~/repo/obsidian/zzz/Default ~/.config/BraveSoftware/Brave-Browser/Default
 ```
 
 #### Extra stuff
