@@ -5,8 +5,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Appearance
-config.initial_cols = 90
-config.initial_rows = 24
+config.initial_cols = 130
+config.initial_rows = 30
 config.font_size = 9.0
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.default_cursor_style = "BlinkingBar"
@@ -22,10 +22,10 @@ config.color_scheme = "Argonaut (Gogh)"
 -- config.color_scheme = "duckbones"
 -- config.color_scheme = "Aura (Gogh)"
 config.window_padding = {
-	left = 0,
-	right = 0,
+	left = 4,
+	right = 4,
 	top = 6,
-	bottom = 0,
+	bottom = 4,
 }
 
 -- 👇🏾Do not touch!!! (tabs)
