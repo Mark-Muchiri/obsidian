@@ -22,8 +22,8 @@ config.color_scheme = "Argonaut (Gogh)"
 -- config.color_scheme = "duckbones"
 -- config.color_scheme = "Aura (Gogh)"
 config.window_padding = {
-	left = 4,
-	right = 4,
+	left = 5,
+	right = 5,
 	top = 6,
 	bottom = 4,
 }
