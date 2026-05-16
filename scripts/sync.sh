@@ -1,98 +1,60 @@
 #!/usr/bin/env bash
-# =============================================================================
-#  sync.sh — Save live config changes to the obsidian repo and push to GitHub
-#  Usage: bash sync.sh   OR   sync-dots  (alias added by setup.sh)
-# =============================================================================
+# scripts/sync.sh — Sync dotfiles changes back to GitHub
+# Usage: bash scripts/sync.sh
+#
+# Equivalent to the sync-config alias:
+#   git add -A && git commit -v && git push
+#
+# The repo is the source of truth. All configs are symlinked into place
+# by restore.sh, so edits to live configs are already edits to the repo.
+# This script just commits and pushes whatever has changed.
 
 set -euo pipefail
 
-RED='\033[0;31m'; YELLOW='\033[1;33m'; GREEN='\033[0;32m'
-CYAN='\033[0;36m'; BOLD='\033[1m'; RESET='\033[0m'
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LIB_DIR="${REPO_DIR}/lib"
 
-ok()   { echo -e "${GREEN}✔${RESET}  $*"; }
-info() { echo -e "${CYAN}→${RESET}  $*"; }
-warn() { echo -e "${YELLOW}⚠${RESET}  $*"; }
-die()  { echo -e "${RED}✘${RESET}  $*" >&2; exit 1; }
-h1()   { echo -e "\n${BOLD}${CYAN}══ $* ══${RESET}"; }
+# shellcheck source=lib/utils.sh
+. "${LIB_DIR}/utils.sh"
 
-REPO_DIR="$HOME/repo/obsidian"
+main() {
+  progress_header "Sync dotfiles → GitHub"
 
-[[ -d "$REPO_DIR/.git" ]] || die "Repo not found at $REPO_DIR. Run setup.sh first."
+  cd "${REPO_DIR}"
 
-# =============================================================================
-#  Copy live configs → repo
-# =============================================================================
-h1 "Syncing configs to repo"
-
-backup() {
-  local src="$1" dst="$2" use_sudo="${3:-no}"
-  local dst_dir
-  dst_dir="$(dirname "$dst")"
-
-  if [[ ! -f "$src" && ! -d "$src" ]]; then
-    warn "Not found, skipping: $src"
-    return
+  # Verify we are inside a git repo — catches accidental moves
+  if ! git rev-parse --git-dir &>/dev/null; then
+    die "Not a git repository: ${REPO_DIR}"
   fi
 
-  mkdir -p "$dst_dir"
-
-  if [[ "$use_sudo" == "sudo" ]]; then
-    sudo cp -r "$src" "$dst"
-  else
-    cp -r "$src" "$dst"
+  # Check there is a configured remote to push to
+  if ! git remote get-url origin &>/dev/null; then
+    die "No 'origin' remote configured. Add one with:\n  git remote add origin git@github.com:Mark-Muchiri/obsidian.git"
   fi
-  ok "$src  →  $dst"
+
+  # Bail early if there is nothing to commit — avoids an empty commit error
+  if git diff --quiet && git diff --cached --quiet && \
+     [[ -z "$(git ls-files --others --exclude-standard)" ]]; then
+    ok "Nothing to commit — repo is clean."
+    info "Last commit:"
+    git log --oneline -1
+    exit 0
+  fi
+
+  info "Staging all changes…"
+  git add -A
+
+  info "Opening editor for commit message…"
+  # -v shows the diff in the commit message editor — matches sync-config alias behaviour
+  git commit -v
+
+  info "Pushing to origin…"
+  git push
+
+  ok "Sync complete."
+  printf '\n'
+  info "Recent commits:"
+  git log --oneline -5
 }
 
-backup "$HOME/.zshrc"                    "$REPO_DIR/zsh/.zshrc"
-backup "$HOME/.config/starship.toml"     "$REPO_DIR/starship/starship.toml"
-backup "$HOME/.config/wezterm/wezterm.lua" "$REPO_DIR/wezterm/wezterm.lua"
-backup "$HOME/.config/yazi/yazi.toml"   "$REPO_DIR/yazi/yazi.toml"
-backup "$HOME/.config/micro/settings.json" "$REPO_DIR/micro/micro/settings.json"
-backup "/etc/nanorc"                     "$REPO_DIR/nano/nanorc" sudo
-
-# GNOME extensions dconf dump
-if command -v dconf &>/dev/null; then
-  info "Dumping GNOME extensions via dconf..."
-  mkdir -p "$REPO_DIR/some-file"
-  dconf dump /org/gnome/shell/extensions/ > "$REPO_DIR/some-file/some-file.txt" 2>/dev/null && \
-    ok "GNOME extensions dumped." || warn "dconf dump failed — needs active GNOME session."
-fi
-
-# =============================================================================
-#  Git: commit & push
-# =============================================================================
-h1 "Committing and pushing to GitHub"
-
-cd "$REPO_DIR"
-
-# Ensure SSH key is loaded
-SSH_KEY="$HOME/.ssh/id_ed25519"
-if [[ -f "$SSH_KEY" ]]; then
-  eval "$(ssh-agent -s)" &>/dev/null
-  ssh-add "$SSH_KEY" 2>/dev/null || true
-fi
-
-git add -A
-
-# Only commit if there's something to commit
-if git diff --cached --quiet; then
-  ok "No changes detected — repo is already up to date."
-  exit 0
-fi
-
-# Show what changed
-echo ""
-git diff --cached --stat
-echo ""
-
-# Commit with timestamp
-COMMIT_MSG="chore: sync configs $(date '+%Y-%m-%d %H:%M')"
-read -rp "  Commit message [${COMMIT_MSG}]: " USER_MSG
-COMMIT_MSG="${USER_MSG:-$COMMIT_MSG}"
-
-git commit -m "$COMMIT_MSG"
-git push
-
-ok "Changes pushed to GitHub."
-echo ""
+main "$@"
