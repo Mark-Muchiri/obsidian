@@ -146,8 +146,14 @@ _install_jetbrains_font() {
   rm -f "${tmp_zip}"
 
   # Refresh font cache for both user and system font directories
-  fc-cache -f "${font_dir}"
-  ok "JetBrainsMono Nerd Font installed and font cache refreshed."
+  fc-cache -f "${font_dir}" 2>/dev/null || fc-cache -f 2>/dev/null
+  
+  # Verify the font is actually detectable before declaring success
+  if fc-list | grep -q "JetBrainsMono"; then
+    ok "JetBrainsMono Nerd Font installed and font cache refreshed."
+  else
+    warn "Font files installed but not yet detected. Try: fc-cache -f && exec zsh"
+  fi
 }
 
 # ── 5. Starship prompt ────────────────────────────────────────────────────────
