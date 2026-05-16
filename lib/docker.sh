@@ -163,39 +163,56 @@ _clone_winapps() {
 _gate_install_windows() {
   _manual_step_header 1 4 "Install Windows (Docker + VNC)"
 
-  # Auto-advance: if port 3389 is already reachable, Windows is up.
+  # Auto-advance path 1: port 3389 reachable → Windows is up right now.
   if nc -z -w 5 127.0.0.1 3389 2>/dev/null; then
     ok "Port 3389 is open — Windows is already running. Skipping install step."
     return 0
   fi
 
-  # Prompt user to review compose.yaml before first boot.
-  # Auto-skip if USERNAME has already been customised from the default.
-  local compose_user
-  compose_user="$(grep 'USERNAME:' "${_WINAPPS_COMPOSE}" 2>/dev/null \
-    | head -1 | sed 's/.*USERNAME:[[:space:]]*//' | tr -d '"' | xargs || true)"
-  if [[ "${compose_user}" == "MyWindowsUser" ]] || [[ -z "${compose_user}" ]]; then
-    info "Before starting, review ${_WINAPPS_COMPOSE} and set:"
-    printf '\n'
-    printf '    %-14s  RAM available to Windows (default: 4G)\n'      "RAM_SIZE:"
-    printf '    %-14s  CPU cores for Windows   (default: 2)\n'        "CPU_CORES:"
-    printf '    %-14s  Windows version          (default: tiny11)\n'   "VERSION:"
-    printf '    %-14s  RDP username ← set this now\n'                  "USERNAME:"
-    printf '    %-14s  RDP password ← set this now\n'                  "PASSWORD:"
-    printf '\n'
-    warn "Set USERNAME and PASSWORD now — they cannot be changed after Windows installs."
-    printf '    micro %s\n\n' "${_WINAPPS_COMPOSE}"
-    prompt_yes_no "Have you reviewed/edited compose.yaml and are ready to install Windows?" \
-      || { info "Re-run setup.sh --resume after editing compose.yaml."; return 1; }
+  # Auto-advance path 2: container already exists (any state) → Windows was
+  # previously installed. Skip the first-time review prompt, just start it.
+  local container_id
+  container_id="$(docker compose --file "${_WINAPPS_COMPOSE}" ps --all --quiet 2>/dev/null || true)"
+  if [[ -n "${container_id}" ]]; then
+    ok "Windows container already exists — skipping compose.yaml review."
+    info "Starting existing Windows container…"
+    docker compose --file "${_WINAPPS_COMPOSE}" up -d \
+      || die "Failed to start Windows container."
+    ok "Windows container started."
   else
-    ok "compose.yaml has custom USERNAME='${compose_user}' — skipping review prompt."
-  fi
+    # First-time install: prompt user to review compose.yaml before boot.
+    # Auto-skip the prompt if USERNAME has already been customised.
+    local compose_user
+    # sed chain: strip key prefix → strip inline yaml comment → strip quotes → trim whitespace
+    compose_user="$(grep 'USERNAME:' "${_WINAPPS_COMPOSE}" 2>/dev/null \
+      | head -1 \
+      | sed 's/.*USERNAME:[[:space:]]*//' \
+      | sed 's/[[:space:]]*#.*//' \
+      | tr -d '"' \
+      | xargs || true)"
+    if [[ "${compose_user}" == "MyWindowsUser" ]] || [[ -z "${compose_user}" ]]; then
+      info "Before starting, review ${_WINAPPS_COMPOSE} and set:"
+      printf '\n'
+      printf '    %-14s  RAM available to Windows (default: 4G)\n'    "RAM_SIZE:"
+      printf '    %-14s  CPU cores for Windows   (default: 2)\n'      "CPU_CORES:"
+      printf '    %-14s  Windows version          (default: tiny11)\n' "VERSION:"
+      printf '    %-14s  RDP username ← set this now\n'                "USERNAME:"
+      printf '    %-14s  RDP password ← set this now\n'                "PASSWORD:"
+      printf '\n'
+      warn "Set USERNAME and PASSWORD now — they cannot be changed after Windows installs."
+      printf '    micro %s\n\n' "${_WINAPPS_COMPOSE}"
+      prompt_yes_no "Have you reviewed/edited compose.yaml and are ready to install Windows?" \
+        || { info "Re-run setup.sh --resume after editing compose.yaml."; return 1; }
+    else
+      ok "compose.yaml has custom USERNAME='${compose_user}' — skipping review prompt."
+    fi
 
-  # Start the Windows container (docs/docker.md: docker compose up).
-  info "Starting Windows Docker container…"
-  docker compose --file "${_WINAPPS_COMPOSE}" up -d \
-    || die "Failed to start Windows container."
-  ok "Windows container started."
+    # First boot: start the container and guide user through Windows VNC setup.
+    info "Starting Windows Docker container…"
+    docker compose --file "${_WINAPPS_COMPOSE}" up -d \
+      || die "Failed to start Windows container."
+    ok "Windows container started."
+  fi
 
   printf '\n'
   printf '%s  ══════════════════════════════════════════════════════%s\n' \
@@ -239,12 +256,21 @@ _gate_create_conf() {
 
   if [[ ! -f "${_WINAPPS_CONF}" ]]; then
     info "Scaffolding ${_WINAPPS_CONF} with defaults…"
-    # Read USERNAME from compose.yaml to pre-populate RDP_USER.
+    # Read USERNAME/PASSWORD from compose.yaml to pre-populate the conf.
+    # sed chain: strip key prefix → strip inline yaml comment → strip quotes → trim whitespace
     local compose_user compose_pass
     compose_user="$(grep 'USERNAME:' "${_WINAPPS_COMPOSE}" 2>/dev/null \
-      | head -1 | sed 's/.*USERNAME:[[:space:]]*//' | tr -d '"' | xargs || true)"
+      | head -1 \
+      | sed 's/.*USERNAME:[[:space:]]*//' \
+      | sed 's/[[:space:]]*#.*//' \
+      | tr -d '"' \
+      | xargs || true)"
     compose_pass="$(grep 'PASSWORD:' "${_WINAPPS_COMPOSE}" 2>/dev/null \
-      | head -1 | sed 's/.*PASSWORD:[[:space:]]*//' | tr -d '"' | xargs || true)"
+      | head -1 \
+      | sed 's/.*PASSWORD:[[:space:]]*//' \
+      | sed 's/[[:space:]]*#.*//' \
+      | tr -d '"' \
+      | xargs || true)"
     compose_user="${compose_user:-MyWindowsUser}"
     compose_pass="${compose_pass:-MyWindowsPassword}"
 
