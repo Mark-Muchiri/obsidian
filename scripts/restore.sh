@@ -1,131 +1,138 @@
 #!/usr/bin/env bash
-# =============================================================================
-#  restore.sh — Pull latest configs from GitHub and apply them to the system
-#  Usage: bash restore.sh   OR   restore-dots  (alias added by setup.sh)
-# =============================================================================
+# scripts/restore.sh — Link dotfiles from the repo into their system locations
+# Usage:
+#   bash scripts/restore.sh            # create all symlinks
+#   bash scripts/restore.sh --check    # verify all symlinks, no changes
+#   bash scripts/restore.sh --unlink   # remove symlinks, restore backups
 
 set -euo pipefail
 
-RED='\033[0;31m'; YELLOW='\033[1;33m'; GREEN='\033[0;32m'
-CYAN='\033[0;36m'; BOLD='\033[1m'; RESET='\033[0m'
+# ── Resolve repo root regardless of where the script is called from ───────────
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LIB_DIR="${REPO_DIR}/lib"
 
-ok()   { echo -e "${GREEN}✔${RESET}  $*"; }
-info() { echo -e "${CYAN}→${RESET}  $*"; }
-warn() { echo -e "${YELLOW}⚠${RESET}  $*"; }
-die()  { echo -e "${RED}✘${RESET}  $*" >&2; exit 1; }
-h1()   { echo -e "\n${BOLD}${CYAN}══ $* ══${RESET}"; }
+# shellcheck source=lib/utils.sh
+. "${LIB_DIR}/utils.sh"
 
-REPO_DIR="$HOME/repo/obsidian"
+# ── Config map ────────────────────────────────────────────────────────────────
+# Format: ["REPO_SOURCE"]="SYSTEM_DEST"
+# REPO_SOURCE is relative to REPO_DIR. SYSTEM_DEST is the canonical system path.
+# To add a new config: add one line here. Nothing else needs changing.
+#
+# NOTE: configs managed by GUI apps that rewrite files atomically (replacing
+# the inode rather than writing through it) must NOT be symlinked — they would
+# silently break the link. Those configs are handled separately via dconf or
+# direct copies in the relevant lib/ module. All entries below are safe.
 
-[[ -d "$REPO_DIR/.git" ]] || die "Repo not found at $REPO_DIR. Run setup.sh first."
+declare -A CONFIG_MAP=(
+  ["configs/zsh/.zshrc"]="${HOME}/.zshrc"
+  ["configs/starship/starship.toml"]="${HOME}/.config/starship.toml"
+  ["configs/wezterm/wezterm.lua"]="${HOME}/.config/wezterm/wezterm.lua"
+  ["configs/micro/settings.json"]="${HOME}/.config/micro/settings.json"
+  ["configs/micro/micro/bindings.json"]="${HOME}/.config/micro/bindings.json"
+  ["configs/nano/nanorc"]="${HOME}/.config/nano/nanorc"
+  ["configs/btop/btop.conf"]="${HOME}/.config/btop/btop.conf"
+  ["configs/yazi/yazi.toml"]="${HOME}/.config/yazi/yazi.toml"
+  ["configs/nvim"]="${HOME}/.config/nvim"
+)
 
-# =============================================================================
-#  Pull latest from GitHub
-# =============================================================================
-h1 "Pulling latest from GitHub"
+# ── Mode: link (default) ──────────────────────────────────────────────────────
 
-SSH_KEY="$HOME/.ssh/id_ed25519"
-if [[ -f "$SSH_KEY" ]]; then
-  eval "$(ssh-agent -s)" &>/dev/null
-  ssh-add "$SSH_KEY" 2>/dev/null || true
-fi
+do_link() {
+  progress_header "Restore — linking configs"
 
-cd "$REPO_DIR"
-git fetch origin
+  local src dest
+  for rel_src in "${!CONFIG_MAP[@]}"; do
+    src="${REPO_DIR}/${rel_src}"
+    dest="${CONFIG_MAP[${rel_src}]}"
+    safe_symlink "${src}" "${dest}"
+  done
 
-LOCAL=$(git rev-parse HEAD)
-REMOTE=$(git rev-parse origin/main 2>/dev/null || git rev-parse origin/master)
-
-if [[ "$LOCAL" == "$REMOTE" ]]; then
-  ok "Already up to date."
-else
-  git pull
-  ok "Pulled latest changes."
-fi
-
-# Show what changed vs previous HEAD
-if [[ "$LOCAL" != "$REMOTE" ]]; then
-  echo ""
-  info "Files changed:"
-  git diff --name-only "$LOCAL" "$REMOTE" | sed 's/^/    /'
-  echo ""
-fi
-
-# =============================================================================
-#  Backup existing local configs before overwriting
-# =============================================================================
-h1 "Backing up current local configs"
-
-BACKUP_DIR="$HOME/.config/dotfiles-backup/$(date '+%Y%m%d-%H%M%S')"
-mkdir -p "$BACKUP_DIR"
-
-safe_backup() {
-  local src="$1"
-  if [[ -f "$src" ]]; then
-    cp "$src" "$BACKUP_DIR/$(basename "$src")"
-    ok "Backed up: $src"
-  fi
+  ok "All configs linked."
+  info "Run 'exec zsh' to pick up the new .zshrc immediately."
 }
 
-safe_backup "$HOME/.zshrc"
-safe_backup "$HOME/.config/starship.toml"
-safe_backup "$HOME/.config/wezterm/wezterm.lua"
-safe_backup "$HOME/.config/yazi/yazi.toml"
-safe_backup "$HOME/.config/micro/settings.json"
+# ── Mode: check ───────────────────────────────────────────────────────────────
 
-info "Backups saved to: $BACKUP_DIR"
+do_check() {
+  progress_header "Restore — checking symlinks"
 
-# =============================================================================
-#  Apply configs from repo → system
-# =============================================================================
-h1 "Applying configs to system"
+  local src dest
+  local all_ok=1
 
-restore() {
-  local src="$1" dst="$2" use_sudo="${3:-no}"
-  local dst_dir
-  dst_dir="$(dirname "$dst")"
+  for rel_src in "${!CONFIG_MAP[@]}"; do
+    src="${REPO_DIR}/${rel_src}"
+    dest="${CONFIG_MAP[${rel_src}]}"
 
-  if [[ ! -f "$src" && ! -d "$src" ]]; then
-    warn "Source not found in repo, skipping: $src"
-    return
-  fi
+    if [[ ! -e "${src}" ]]; then
+      warn "  MISSING source : ${src}"
+      all_ok=0
+    elif [[ -L "${dest}" && "$(readlink "${dest}")" == "${src}" ]]; then
+      ok "  OK             : ${dest}"
+    elif [[ -e "${dest}" && ! -L "${dest}" ]]; then
+      warn "  UNMANAGED FILE : ${dest}  (exists but is not a symlink)"
+      info "    Run restore.sh without --check to back it up and link it."
+      all_ok=0
+    elif [[ -L "${dest}" ]]; then
+      warn "  BROKEN LINK    : ${dest} → $(readlink "${dest}") (target missing)"
+      all_ok=0
+    else
+      warn "  NOT LINKED     : ${dest}  (run restore.sh to create it)"
+      all_ok=0
+    fi
+  done
 
-  if [[ "$use_sudo" == "sudo" ]]; then
-    sudo mkdir -p "$dst_dir"
-    sudo cp -r "$src" "$dst"
+  if (( all_ok )); then
+    ok "All symlinks intact."
   else
-    mkdir -p "$dst_dir"
-    cp -r "$src" "$dst"
+    warn "Some configs are not correctly linked. Run restore.sh to fix."
+    return 1
   fi
-  ok "Applied: $dst"
 }
 
-restore "$REPO_DIR/zsh/.zshrc"                 "$HOME/.zshrc"
-restore "$REPO_DIR/starship/starship.toml"     "$HOME/.config/starship.toml"
-restore "$REPO_DIR/wezterm/wezterm.lua"        "$HOME/.config/wezterm/wezterm.lua"
-restore "$REPO_DIR/yazi/yazi.toml"             "$HOME/.config/yazi/yazi.toml"
-restore "$REPO_DIR/micro/micro/settings.json"  "$HOME/.config/micro/settings.json"
-restore "$REPO_DIR/nano/nanorc"                "/etc/nanorc" sudo
+# ── Mode: unlink ──────────────────────────────────────────────────────────────
 
-# GNOME extensions dconf restore
-if [[ -f "$REPO_DIR/some-file/some-file.txt" ]] && command -v dconf &>/dev/null; then
-  info "Restoring GNOME extensions via dconf..."
-  dconf load /org/gnome/shell/extensions/ < "$REPO_DIR/some-file/some-file.txt" 2>/dev/null && \
-    ok "GNOME extensions restored." || \
-    warn "dconf load failed — needs active GNOME session. Run manually if needed."
-fi
+do_unlink() {
+  progress_header "Restore — unlinking configs"
+  warn "This will remove all managed symlinks."
+  warn "If a backup exists (.bak.*), it will be restored in place."
+  prompt_yes_no "Continue?" || { info "Aborted."; exit 0; }
 
-# =============================================================================
-#  Done
-# =============================================================================
-h1 "Restore Complete"
+  local dest backup
+  for rel_src in "${!CONFIG_MAP[@]}"; do
+    dest="${CONFIG_MAP[${rel_src}]}"
 
-echo ""
-ok "All configs applied from repo."
-echo ""
-echo -e "${YELLOW}⚠  Reload your shell to apply .zshrc changes:${RESET}"
-echo -e "   ${CYAN}exec zsh${RESET}"
-echo ""
-echo -e "  If something looks wrong, restore your previous configs from:"
-echo -e "  ${CYAN}$BACKUP_DIR${RESET}"
-echo ""
+    if [[ ! -L "${dest}" ]]; then
+      warn "  Not a symlink, skipping: ${dest}"
+      continue
+    fi
+
+    rm "${dest}"
+
+    # Restore most recent backup if one exists
+    backup="$(find "$(dirname "${dest}")" -maxdepth 1 -name "$(basename "${dest}").bak.*" 2>/dev/null | sort -r | head -1)"
+    if [[ -n "${backup}" ]]; then
+      mv "${backup}" "${dest}"
+      ok "  Restored backup: ${backup} → ${dest}"
+    else
+      info "  Removed symlink (no backup found): ${dest}"
+    fi
+  done
+
+  ok "Unlink complete."
+}
+
+# ── Argument parsing ──────────────────────────────────────────────────────────
+
+main() {
+  case "${1:-}" in
+    --check)  do_check  ;;
+    --unlink) do_unlink ;;
+    "")       do_link   ;;
+    *)
+      die "Unknown argument: ${1}\nUsage: restore.sh [--check | --unlink]"
+      ;;
+  esac
+}
+
+main "$@"
