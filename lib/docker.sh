@@ -71,7 +71,7 @@ _install_winapps_prerequisites() {
   local -a to_install=()
 
   for pkg in "${prereqs[@]}"; do
-    if rpm -q "${pkg}" &>/dev/null; then
+    if rpm -q --whatprovides "${pkg}" &>/dev/null; then
       warn "  [dnf] ${pkg} already installed — skipping."
     else
       to_install+=("${pkg}")
@@ -89,6 +89,15 @@ _install_winapps_prerequisites() {
 }
 
 _install_winapps() {
+  # Idempotency: skip entirely if the winapps command is already in PATH.
+  # This is the correct check — it means setup ran successfully before.
+  # Do NOT re-run the installer on an existing install; it may prompt or
+  # overwrite configuration the user has already customised.
+  if command -v winapps &>/dev/null; then
+    ok "Winapps already installed ($(winapps --version 2>/dev/null || printf 'version unknown'))."
+    return 0
+  fi
+
   if [[ -d "${_WINAPPS_DIR}" ]]; then
     ok "Winapps already cloned at ${_WINAPPS_DIR}."
   else
