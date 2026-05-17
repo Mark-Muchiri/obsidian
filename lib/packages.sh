@@ -59,6 +59,10 @@ install_dnf_packages() {
 
   local -a to_install=()
   for pkg in "${pkgs[@]}"; do
+    # VS Code requires the Microsoft repo to be added before dnf can resolve it.
+    # It is handled separately by _install_vscode() and must not enter the batch.
+    [[ "${pkg}" == "code" ]] && continue
+
     if is_installed_dnf "${pkg}"; then
       warn "  [dnf] ${pkg} already installed — skipping."
     else
@@ -75,6 +79,41 @@ install_dnf_packages() {
   # sudo required: dnf5 writes to system package database
   sudo dnf5 install -y "${to_install[@]}" || die "dnf5 install failed."
   ok "dnf packages installed."
+}
+
+# _install_vscode
+#   VS Code is not in the Fedora default repos. Microsoft provides a signed
+#   RPM repository. This function:
+#     1. Imports the Microsoft GPG key
+#     2. Writes /etc/yum.repos.d/vscode.repo
+#     3. Installs the 'code' package via dnf5
+#   All three steps are idempotent and safe to re-run.
+_install_vscode() {
+  if is_installed_dnf "code"; then
+    warn "  [dnf] code (VS Code) already installed — skipping."
+    return 0
+  fi
+
+  progress "  [vscode] Adding Microsoft GPG key…"
+  # sudo required: rpm --import writes to the system RPM keyring
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc \
+    || die "Failed to import Microsoft GPG key."
+
+  local repo_file="/etc/yum.repos.d/vscode.repo"
+  if [[ ! -f "${repo_file}" ]]; then
+    progress "  [vscode] Adding VS Code repository…"
+    # sudo required: writes to /etc/yum.repos.d/
+    printf '[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\n' \
+      | sudo tee "${repo_file}" >/dev/null \
+      || die "Failed to write ${repo_file}."
+  else
+    info "  [vscode] VS Code repo already present at ${repo_file}."
+  fi
+
+  progress "  [vscode] Installing VS Code…"
+  # sudo required: dnf5 writes to the system package database
+  sudo dnf5 install -y code || die "VS Code installation failed."
+  ok "  [vscode] VS Code installed."
 }
 
 install_brew_packages() {
@@ -136,6 +175,7 @@ _install_bun() {
 
 install_packages() {
   install_dnf_packages
+  _install_vscode
   _install_bun
   install_brew_packages
   install_flatpak_packages

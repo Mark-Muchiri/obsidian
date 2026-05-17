@@ -178,3 +178,10 @@ before every commit:
 ```bash
 for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f"; done
 ```
+
+## ❕️ One assumption that held but wasn't proven
+
+The full test was on your existing configured machine, not a clean Fedora VM.
+Every stage skipped cleanly because everything was already installed — which
+proves idempotency, but not the first-run path for stages like `shell`,
+`pkgmgr`, and `editors`.
