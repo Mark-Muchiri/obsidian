@@ -67,7 +67,7 @@ main() {
   ok "Sync complete."
   printf '\n'
   info "Recent commits:"
-  git log --oneline -5
+  git log --graph --pretty="%C(bold)%h%Creset%C(yellow)%d%Creset%n%C(bold blue)(%an)%Creset%C(cyan)(%cr)%n%w(0,0,0)%B" --all
 }
 
 main "$@"
