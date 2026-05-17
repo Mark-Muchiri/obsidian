@@ -24,6 +24,36 @@ One script. Fresh Fedora 43+ install → fully configured development environmen
 
 ---
 
+## About this project
+
+This is a personal dotfiles management system built for a **Fedora Workstation
+43+** development environment. The goal is to make setting up a new machine — or
+recovering a broken one — a single command rather than hours of manual work.
+
+The approach is built on three ideas:
+
+**Symlinks as the source of truth.** Every config file (`~/.zshrc`,
+`~/.config/nvim`, etc.) is a symlink pointing into this repo. Editing a config
+in your editor is the same as editing it in the repo. There is no copy step, no
+sync-back step, and no risk of the repo and the live system diverging.
+
+**Git as the sync mechanism.** Running `sync.sh` exports GNOME settings, stages
+everything with `git add -A`, and pushes. Because configs are symlinked,
+`git diff` always shows exactly what changed — no diffing between two copies of
+a file.
+
+**Staged, resumable automation.** `setup.sh` runs through a sequence of named
+stages (shell, packages, editors, WezTerm, Docker/WinApps, restore). Each stage
+is marked complete in a local state file. If setup is interrupted —
+intentionally, for a shell restart, or due to an error — re-running with
+`--resume` picks up exactly where it left off without repeating work.
+
+This project is specific to one person's machine and tooling choices. It is
+published publicly in case the structure or approach is useful to others as a
+reference.
+
+---
+
 ## What's included
 
 - **Shell** — zsh + Oh My Zsh, autosuggestions, syntax highlighting, history
@@ -179,9 +209,17 @@ before every commit:
 for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f"; done
 ```
 
-## ❕️ One assumption that held but wasn't proven
+---
 
-The full test was on your existing configured machine, not a clean Fedora VM.
-Every stage skipped cleanly because everything was already installed — which
-proves idempotency, but not the first-run path for stages like `shell`,
-`pkgmgr`, and `editors`.
+## For contributors and maintainers
+
+If you are working on this project — fixing a bug, adding a new config, or
+extending the automation — read [`handout.md`](handout.md) before making
+changes.
+
+`handout.md` is a complete technical reference that documents every design
+decision, the full contents of every script, the rationale behind each
+implementation choice, every bug found and fixed during development, and the
+current known gaps. It is written to give a technical reader (or an AI
+assistant) full context to continue the project without any prior knowledge of
+its history.

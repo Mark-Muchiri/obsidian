@@ -16,3 +16,6 @@ state/
 *.key
 id_ed25519
 id_rsa
+configs/micro/micro/backups/
+configs/micro/micro/buffers/
+configs/micro/micro/settings.json
