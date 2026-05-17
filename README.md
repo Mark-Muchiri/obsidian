@@ -1,142 +1,180 @@
-  # Core utilities
+<div align="center">
 
-```zsh
-sudo dnf group install development-tools -y
+```
+   ██████╗ ██████╗ ███████╗██╗██████╗ ██╗ █████╗  ███╗   ██╗
+  ██╔═══██╗██╔══██╗██╔════╝██║██╔══██╗██║██╔══██╗ ████╗  ██║
+  ██║   ██║██████╔╝███████╗██║██║  ██║██║███████║ ██╔██╗ ██║
+  ██║   ██║██╔══██╗╚════██║██║██║  ██║██║██╔══██║ ██║╚██╗██║
+  ╚██████╔╝██████╔╝███████║██║██████╔╝██║██║  ██║ ██║ ╚████║
+   ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
 ```
 
-```zsh
-dnf copr enable atim/starship
-dnf install starship
+**Dotfiles — Fedora Workstation**
+
+One script. Fresh Fedora 43+ install → fully configured development environment.
+
+[Quick Start](#quick-start) · [Structure](#structure) ·
+[Daily Usage](#daily-usage) · [Setup Guide](docs/setup.md)
+
+![Fedora](https://img.shields.io/badge/Fedora-43%2B-51A2DA?logo=fedora&logoColor=white)
+![Shell](https://img.shields.io/badge/shell-bash%20%2F%20zsh-89E051?logo=gnubash&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+</div>
+
+---
+
+## What's included
+
+- **Shell** — zsh + Oh My Zsh, autosuggestions, syntax highlighting, history
+  search
+- **Prompt** — Starship with custom config
+- **Font** — JetBrainsMono Nerd Font (user-scoped, no root required)
+- **Terminal** — WezTerm via COPR with terminfo
+- **Editors** — Neovim (full config), micro (with LSP plugin), nano
+- **CLI tools** — eza, bat, fd, zoxide, thefuck, btop, yazi, fastfetch, bun
+- **GUI apps** — VS Code, EasyEffects, GNOME Extension Manager, Flatseal, Smile
+- **Desktop** — Unite shell extension, GNOME extension settings restored via
+  dconf
+- **Package managers** — dnf (primary), Homebrew, Flatpak/Flathub
+- **Windows apps** — Docker-based WinApps (FreeRDP, winapps-org/winapps)
+- **Sync** — git-only, no file copying; symlinks make every config edit instant
+
+---
+
+## Structure
+
+```
+obsidian/
+├── configs/          ← dotfiles; source of truth; never copied during sync
+│   ├── btop/
+│   ├── gnome-extensions/
+│   ├── micro/
+│   ├── nano/
+│   ├── nvim/         ← full Neovim config (symlinked as a directory)
+│   ├── starship/
+│   ├── wezterm/
+│   ├── yazi/
+│   └── zsh/
+├── docs/
+│   └── setup.md      ← step-by-step manual
+├── extras/
+│   └── rename/       ← playlist helper scripts
+├── lib/              ← sourced modules; never run directly
+│   ├── utils.sh      ← colours, logging, spinner, safe_symlink
+│   ├── preflight.sh  ← OS, root, internet, git/SSH checks
+│   ├── shell.sh      ← zsh, Oh My Zsh, plugins, font, starship
+│   ├── pkgmgr.sh     ← Homebrew + Flatpak/Flathub setup
+│   ├── packages.sh   ← dnf / brew / flatpak installs
+│   ├── editors.sh    ← prettier, micro LSP, Unite extension, dconf
+│   ├── wezterm.sh    ← COPR, terminfo, config symlink
+│   └── docker.sh     ← Docker CE + WinApps (optional)
+├── scripts/          ← user-facing entry points
+│   ├── setup.sh      ← orchestrator with stage resumption
+│   ├── restore.sh    ← symlink manager (link / --check / --unlink)
+│   └── sync.sh       ← git-only sync (dconf dump included)
+├── state/            ← gitignored; setup progress file
+├── zzz/              ← archive; do not modify
+├── packages.conf     ← INI package list (dnf / homebrew / flatpak)
+└── README.md
 ```
 
-```zsh
-sudo dnf5 install procps-ng curl file bat fd-find tree trash-cli btop node dconf-editor gnome-tweaks
-sudo npm install --global prettier
-flatpak install flathub com.mattjakeman.ExtensionManager -y
-flatpak install it.mijorus.smile -y
+---
+
+## Prerequisites
+
+- Fedora Workstation 43+
+- A regular user account (not root)
+- Internet connection
+- A GitHub account with an SSH key (setup.sh will generate one if needed)
+
+---
+
+## Quick Start
+
+### Fresh machine
+
+```bash
+# 1. Clone the repo
+git clone git@github.com:Mark-Muchiri/obsidian.git ~/repo/obsidian
+
+# 2. Run setup
+cd ~/repo/obsidian
+bash scripts/setup.sh
 ```
 
-## zsh plugins
+Setup will walk you through every stage. If it asks you to restart your shell,
+do so and run:
 
-```zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions.git
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git
-git clone https://github.com/zsh-users/zsh-history-substring-search
+```bash
+bash scripts/setup.sh --resume
 ```
 
-### HOMEBREW INSTALL INSTRUCTIONS
+### Existing machine (restore configs only)
 
-> website link for proper instructions 🖙 https://docs.brew.sh/Homebrew-on-Linux
-
-1. install script 🖟
-
-```zsh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```bash
+git clone git@github.com:Mark-Muchiri/obsidian.git ~/repo/obsidian
+bash ~/repo/obsidian/scripts/restore.sh
 ```
 
-2. add to path 🖟
+---
 
-```zsh
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
+## Daily Usage
+
+### Sync changes to GitHub
+
+```bash
+bash scripts/sync.sh        # or: sync-dots
 ```
 
-3. test brew
+Automatically dumps GNOME extension settings, stages all changes, opens your
+editor for a commit message, and pushes.
 
-installing your first package will also install a recent version of glibc and
-gcc
+### Verify all symlinks are intact
 
-```zsh
-brew install hello gcc
+```bash
+bash scripts/restore.sh --check
 ```
 
-> Once you're done Install (gcc & glibc) 1st, then 🖟
+### Add a new config file
 
-```zsh
-brew install micro eza wget zoxide thefuck yazi fastfetch nerdfetch
-```
+1. Move the file into the appropriate `configs/` subdirectory
+2. Add one line to the `CONFIG_MAP` in `scripts/restore.sh`
+3. Run `bash scripts/restore.sh` to create the symlink
+4. Run `bash scripts/sync.sh` to commit
 
-```zsh
-brew install --cask font-jetbrains-mono-nerd-font
-```
+See [docs/setup.md](docs/setup.md) for the full walkthrough.
 
-### Micro Prettier installation
+---
 
-should work automatically on save
+## Setup flags
 
-```zsh
-sudo npm install --global prettier
-micro --plugin install prettier
-micro -plugin install lsp
-```
+| Command                            | Effect                                                  |
+| ---------------------------------- | ------------------------------------------------------- |
+| `bash scripts/setup.sh`            | Fresh install, runs all stages                          |
+| `bash scripts/setup.sh --resume`   | Skip completed stages, continue from last               |
+| `bash scripts/setup.sh --reset`    | Clear state, re-run all stages (does not undo installs) |
+| `bash scripts/restore.sh`          | Create all config symlinks                              |
+| `bash scripts/restore.sh --check`  | Verify all symlinks, no changes made                    |
+| `bash scripts/restore.sh --unlink` | Remove symlinks, restore backups                        |
+| `bash scripts/sync.sh`             | Dump dconf + commit + push                              |
 
-### Unite extension install
+---
 
-```zsh
-sudo dnf5 install gnome-browser-connector xprop
-sudo gsettings set org.gnome.shell disable-extension-version-validation true
-wget https://github.com/hardpixel/unite-shell/releases/download/v85/unite-v85.zip
-gnome-extensions install --force unite-v85.zip
-```
+## How sync works
 
-### Gnome Extensions Backup/Restore
--> Load the backup to the setup 
-```zsh
-dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
-```
--> Backup the current setup 
-```zsh
-dconf dump /org/gnome/shell/extensions/ > ~/repo/obsidian/some-file/some-file.txt
-```
+All configs in `configs/` are **symlinked** into their system locations — not
+copied. Editing `~/.zshrc` edits `configs/zsh/.zshrc` directly. `sync.sh` runs
+`git add -A`, so every config change is captured automatically. No manual copy
+step is ever needed.
 
-### Install Wezterm
+---
 
-```zsh
-dnf copr enable wezfurlong/wezterm-nightly
-dnf install wezterm
-```
+## ShellCheck
 
-for this function to work `config.term = "wezterm"`, you need this 🖟.
+All scripts and lib modules are ShellCheck-clean (`shellcheck -x -s bash`). Run
+before every commit:
 
-> Ref: wezterm.lua
-
-```zsh
-tempfile=$(mktemp) \
-  && curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo \
-  && tic -x -o ~/.terminfo $tempfile \
-  && rm $tempfile
-```
-
-### loading the backup files
-
-```zsh
-cp ~/repo/obsidian/micro/settings.json ~/.config/micro/settings.json
-sudo cp ~/repo/obsidian/nano/nanorc /etc/nanorc
-dconf load /org/gnome/shell/extensions/ < ~/repo/obsidian/some-file/some-file.txt
-cp ~/repo/obsidian/starship/starship.toml ~/.config/starship.toml
-cp ~/repo/obsidian/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
-cp ~/repo/obsidian/yazi/yazi.toml ~/.config/yazi/yazi.toml
-cp ~/repo/obsidian/zsh/.zshrc ~/.zshrc
-```
-
-#### Extra stuff
-
-Copy folder content
-
-```zsh
-cp -a /source/. /destination/
-```
-
-Initial full copy
-
-```zsh
-rsync -avh --progress /source/ /destination/
-```
-
-Github ssh command
-
-```zsh
-ssh-keygen -t ed25519
+```bash
+for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f"; done
 ```

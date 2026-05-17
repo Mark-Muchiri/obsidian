@@ -178,6 +178,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Postgress !important
+# Postgress / Obsidian repo 
+# !important ( Do not touch this )
 export TERM=xterm-256color
 export PATH="${HOME}/.local/bin:${PATH}"
+
+# ── Obsidian dotfiles ─────────────────────────────────────────────────────────
+# Resolve the repo root dynamically from the .zshrc symlink target so these
+# aliases work regardless of username or clone location.
+_obsidian_dir="$(cd "$(dirname "$(readlink -f "${HOME}/.zshrc")")/../.." && pwd)"
+
+alias sync-dots='bash "${_obsidian_dir}/scripts/sync.sh"'
+alias restore-dots='bash "${_obsidian_dir}/scripts/restore.sh"'

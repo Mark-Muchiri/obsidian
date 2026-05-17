@@ -1,3 +1,18 @@
+# Setup state — gitignored so progress is machine-local
 state/
+
+# Editor swap files
 *.swp
+*.swo
+
+# macOS metadata (in case the repo is ever touched on a Mac)
 .DS_Store
+
+# Timestamped backups created by safe_symlink and restore.sh --unlink
+*.bak.*
+
+# Secrets — never commit these
+*.pem
+*.key
+id_ed25519
+id_rsa
