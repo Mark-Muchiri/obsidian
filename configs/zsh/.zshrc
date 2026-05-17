@@ -180,3 +180,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Postgress !important
 export TERM=xterm-256color
+export PATH="${HOME}/.local/bin:${PATH}"

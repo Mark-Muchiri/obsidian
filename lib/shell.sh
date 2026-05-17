@@ -76,14 +76,35 @@ _install_zsh_plugins() {
 }
 
 _install_jetbrains_font() {
+  local font_dir="${HOME}/.local/share/fonts/JetBrainsMono"
+
+  # Fast path: fc-list confirms the font is registered in the font cache.
   if fc-list | grep -q "JetBrainsMono"; then
     ok "JetBrainsMono Nerd Font already installed."
     return 0
   fi
+
+  # Fix 2: Font files may exist on disk but not yet indexed (e.g. fc-cache was
+  # never run, or was run before files landed). Check for .ttf files first;
+  # if found, rebuild the cache and re-check before attempting any download.
+  # This prevents re-downloading on --reset when the fonts are already present.
+  if find "${font_dir}" -name '*.ttf' 2>/dev/null | grep -q .; then
+    progress "Font files found in ${font_dir} but not indexed — rebuilding cache…"
+    fc-cache -f 2>/dev/null
+    if fc-list | grep -q "JetBrainsMono"; then
+      ok "JetBrainsMono Nerd Font already installed (cache rebuilt)."
+      return 0
+    fi
+    # Files present but still not visible to fc-list — don't re-download;
+    # the user's session just needs to pick up the rebuilt cache.
+    ok "JetBrainsMono font files present at ${font_dir}."
+    warn "Font not yet visible to fc-list. Run 'fc-cache -f && exec zsh' after setup completes."
+    return 0
+  fi
+
+  # Font files not found at all — proceed with download.
   progress "Downloading JetBrainsMono Nerd Font…"
   check_battery
-
-  local font_dir="${HOME}/.local/share/fonts/JetBrainsMono"
   mkdir -p "${font_dir}"
 
   local latest_tag

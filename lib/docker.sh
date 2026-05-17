@@ -297,27 +297,49 @@ EOF
     ok "${_WINAPPS_CONF} already exists."
   fi
 
-  # Test: RDP_USER and RDP_PASS must not be the static placeholders.
+  # Fix 5: validate credentials — but handle the case where the user kept
+  # the compose.yaml defaults (MyWindowsUser/MyWindowsPassword), which are
+  # legitimate values if Windows was installed with those defaults.
   local rdp_user rdp_pass
   rdp_user="$(grep '^RDP_USER=' "${_WINAPPS_CONF}" \
     | head -1 | cut -d= -f2 | tr -d '"' | xargs || true)"
   rdp_pass="$(grep '^RDP_PASS=' "${_WINAPPS_CONF}" \
     | head -1 | cut -d= -f2 | tr -d '"' | xargs || true)"
 
-  if [[ "${rdp_user}" == "MyWindowsUser" ]] || [[ -z "${rdp_user}" ]]; then
-    warn "RDP_USER is still the placeholder value — edit ${_WINAPPS_CONF}:"
-    printf '    micro %s\n' "${_WINAPPS_CONF}"
-    printf '  Then run: bash %s/scripts/setup.sh --resume\n\n' "${REPO_DIR}"
-    return 1
-  fi
-  if [[ "${rdp_pass}" == "MyWindowsPassword" ]] || [[ -z "${rdp_pass}" ]]; then
-    warn "RDP_PASS is still the placeholder value — edit ${_WINAPPS_CONF}:"
+  if [[ -z "${rdp_user}" ]] || [[ -z "${rdp_pass}" ]]; then
+    warn "RDP_USER or RDP_PASS is blank in ${_WINAPPS_CONF}."
+    info "Both must be set. Edit the file and re-run:"
     printf '    micro %s\n' "${_WINAPPS_CONF}"
     printf '  Then run: bash %s/scripts/setup.sh --resume\n\n' "${REPO_DIR}"
     return 1
   fi
 
-  ok "winapps.conf validated (RDP_USER='${rdp_user}', non-placeholder password set)."
+  if [[ "${rdp_user}" == "MyWindowsUser" ]] && [[ "${rdp_pass}" == "MyWindowsPassword" ]]; then
+    # Both are the compose.yaml defaults — valid ONLY if Windows was installed
+    # without changing USERNAME/PASSWORD in compose.yaml first.
+    printf "\n"
+    printf '%s  ┄┄ Confirm your Windows credentials ┄┄%s\n' "${C_BOLD}${C_YELLOW}" "${C_RESET}"
+    printf "\n"
+    info "  RDP_USER is set to: ${rdp_user}"
+    info "  RDP_PASS is set to: (password present)"
+    printf "\n"
+    printf "  These are the default values from compose.yaml.\n"
+    printf "  They are CORRECT if you did NOT change USERNAME/PASSWORD\n"
+    printf "  in compose.yaml before Windows was installed.\n"
+    printf "  They are WRONG if you set a different Windows username/password.\n"
+    printf "\n"
+    printf "  RDP_USER = the username you log into Windows with.\n"
+    printf "  RDP_PASS = the password for that Windows account.\n"
+    printf "\n"
+    printf "  To change them:  micro %s\n" "${_WINAPPS_CONF}"
+    printf "\n"
+    prompt_yes_no "Do RDP_USER='${rdp_user}' and RDP_PASS match your actual Windows login?" || {
+      info "Edit the conf then re-run: bash ${REPO_DIR}/scripts/setup.sh --resume"
+      return 1
+    }
+  fi
+
+  ok "winapps.conf validated (RDP_USER='${rdp_user}')."
 }
 
 # ── Manual gate 3: Test FreeRDP connection ────────────────────────────────────
@@ -430,6 +452,16 @@ setup_docker() {
   _gate_create_conf              || return 1
   _gate_test_freerdp             || return 1
   _gate_run_installer            || return 1
+
+  # Fix 4: stop the Windows container now that setup is complete.
+  # WinApps starts it automatically on demand; leaving it running wastes RAM.
+  info "Stopping Windows container to conserve resources…"
+  if docker compose --file "${_WINAPPS_COMPOSE}" stop 2>/dev/null; then
+    ok "Windows container stopped. WinApps will start it automatically when needed."
+  else
+    warn "Could not stop the Windows container. Stop it manually:"
+    printf '    docker compose --file %s stop\n' "${_WINAPPS_COMPOSE}"
+  fi
 
   ok "Docker + WinApps stage complete."
   warn "Log out and back in if you were just added to the docker group."
