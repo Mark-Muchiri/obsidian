@@ -76,6 +76,10 @@ preview-size=10
 strip-text=true
 topbar-preview-size=5
 
+[com/github/hermes83/compiz-windows-effect]
+last-version=31
+preset='R'
+
 [dash-to-dock]
 apply-custom-theme=false
 autohide=false
