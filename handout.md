@@ -9,7 +9,7 @@
 
 # Obsidian Dotfiles — Project Handout
 
-*Complete context for a new developer or AI agent to continue this project without loss of understanding.*
+_Complete context for a new developer or AI agent to continue this project without loss of understanding._
 
 </div>
 
@@ -17,17 +17,17 @@
 
 ## Quick Navigation
 
-| # | Section | What's inside |
-|---|---------|---------------|
-| 1 | [Project Purpose](#1-project-purpose) | What the repo does, clone path, primary machine |
-| 2 | [Project Status](#2-project-status--complete) | Completion checklist + last git state |
-| 3 | [File & Folder Structure](#3-file--folder-structure) | Annotated directory tree |
-| 4 | [Key Design Decisions](#4-key-design-decisions) | Every major architectural choice with rationale |
-| 5 | [Working Conventions](#5-working-conventions) | Shell rules, output format, ShellCheck, git workflow |
-| 6 | [Complete File Contents](#6-complete-file-contents) | Full source of every script and config (collapsible) |
-| 7 | [Tested Behaviours](#7-tested-behaviours) | What was verified on Fedora 44 |
-| 8 | [Known Gap](#8-known-gap) | VS Code first-run path untested |
-| 9 | [If Something Breaks](#9-if-something-breaks) | Break-glass commands |
+| #   | Section                                              | What's inside                                        |
+| --- | ---------------------------------------------------- | ---------------------------------------------------- |
+| 1   | [Project Purpose](#1-project-purpose)                | What the repo does, clone path, primary machine      |
+| 2   | [Project Status](#2-project-status--complete)        | Completion checklist + last git state                |
+| 3   | [File & Folder Structure](#3-file--folder-structure) | Annotated directory tree                             |
+| 4   | [Key Design Decisions](#4-key-design-decisions)      | Every major architectural choice with rationale      |
+| 5   | [Working Conventions](#5-working-conventions)        | Shell rules, output format, ShellCheck, git workflow |
+| 6   | [Complete File Contents](#6-complete-file-contents)  | Full source of every script and config (collapsible) |
+| 7   | [Tested Behaviours](#7-tested-behaviours)            | What was verified on Fedora 44                       |
+| 8   | [Known Gap](#8-known-gap)                            | VS Code first-run path untested                      |
+| 9   | [If Something Breaks](#9-if-something-breaks)        | Break-glass commands                                 |
 
 ---
 
@@ -35,11 +35,11 @@
 
 This repo automates the complete setup, configuration restore, and Git-based sync of a **Fedora Workstation 43+** development environment — covering shell, fonts, CLI tools, GUI apps, editors, terminal emulator, and Windows app integration via WinApps — so any machine can be brought to a fully configured state by running a single script.
 
-| | |
-|---|---|
-| **Repo** | `git@github.com:Mark-Muchiri/obsidian.git` |
-| **Clone path (convention)** | `~/repo/obsidian` |
-| **Primary machine** | Fedora 44, username `obsidian` |
+|                             |                                            |
+| --------------------------- | ------------------------------------------ |
+| **Repo**                    | `git@github.com:Mark-Muchiri/obsidian.git` |
+| **Clone path (convention)** | `~/repo/obsidian`                          |
+| **Primary machine**         | Fedora 44, username `obsidian`             |
 
 ---
 
@@ -156,32 +156,32 @@ obsidian/
 <details>
 <summary>📋 Expand all design decisions (26 entries)</summary>
 
-| Decision | Rationale |
-|----------|-----------|
-| **Symlinks, not copies** | Edits to live configs are instantly in the repo. `sync.sh` captures everything with `git add -A`. |
-| **Sync = git commands only** | The repo is the source of truth. `sync.sh` is dconf dump + three git commands. |
-| **dconf dump in sync.sh** | GNOME extension settings live in a binary database, not a file. Must be explicitly exported before `git add`. |
-| **Package priority: dnf → homebrew → flatpak** | dnf is native. Homebrew and Flatpak only used when a package is unavailable in dnf. |
-| **VS Code filtered from dnf batch** | Requires Microsoft GPG key + yum repo added first. Handled by `_install_vscode()` separately. |
-| **bun not in packages.conf** | Not in Fedora repos. Installed via official `curl \| bash` installer in `_install_bun()`. |
-| **Shell stage runs first** | Everything else depends on zsh and Oh My Zsh being in place. |
-| **Mandatory shell restart gate** | After `setup_shell` changes the default shell, script writes a sentinel and exits. Re-run with `--resume` continues past the gate. |
-| **Stage state machine in `state/.setup_state`** | Allows `--resume` after the shell restart. Each stage name written to file on completion. Gitignored. |
-| **`safe_symlink` in utils.sh** | Centralised symlink logic: skip if correct, backup with timestamp if dest exists, create parent dirs. |
-| **`restore.sh` sourced by `setup.sh`** | `do_link` must be callable as a function. A `BASH_SOURCE` guard prevents `main()` firing on source. |
-| **`rpm -q --whatprovides`** | On Fedora 44 packages like `wget2-wget` provide `wget` but aren't named `wget`. `--whatprovides` resolves virtual provides correctly. |
-| **`unzip -q -o`** | `-o` overwrites silently on re-runs — prevents interactive prompt when font files already exist. |
-| **Font file-existence check before download** | `_install_jetbrains_font` checks `fc-list`, then checks for `.ttf` files on disk, then downloads. Prevents re-downloading on `--reset`. |
-| **Docker container-exists check** | `docker compose ps --all` detects existing (stopped) Windows containers — skips the first-time review prompt and just starts the container. |
-| **WinApps cloned to `~/.config/winapps`** | This is where `compose.yaml`, `winapps.conf`, and the WinApps source all live per the upstream docs. |
-| **VM stop after WinApps install** | `docker compose stop` runs at end of `setup_docker`. WinApps starts Windows on demand — no reason to leave it running. |
-| **`configs/nvim` symlinked as a directory** | Neovim writes files inside `~/.config/nvim/`. Symlinking the whole directory means all writes go directly into the repo. |
-| **GUI-managed configs excluded from symlinks** | GNOME settings are managed via dconf — handled separately in `lib/editors.sh` and `sync.sh`. |
-| **No root execution** | Script dies early if `EUID == 0`. `sudo` used only where necessary, always with a comment. |
-| **Idempotency everywhere** | Every step checks if already done and skips. Safe to re-run on a partially configured system. |
-| **`$'...'` for escape sequences** | Colour codes use `$'\033[...'` — single-quoted form prints literally. |
-| **`printf` colour rule** | Colour variables never in the format string — always passed as `%s` arguments (SC2059). |
-| **Secrets never committed** | SSH private keys, `.pem` files excluded via `.gitignore`. |
+| Decision                                        | Rationale                                                                                                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Symlinks, not copies**                        | Edits to live configs are instantly in the repo. `sync.sh` captures everything with `git add -A`.                                           |
+| **Sync = git commands only**                    | The repo is the source of truth. `sync.sh` is dconf dump + three git commands.                                                              |
+| **dconf dump in sync.sh**                       | GNOME extension settings live in a binary database, not a file. Must be explicitly exported before `git add`.                               |
+| **Package priority: dnf → homebrew → flatpak**  | dnf is native. Homebrew and Flatpak only used when a package is unavailable in dnf.                                                         |
+| **VS Code filtered from dnf batch**             | Requires Microsoft GPG key + yum repo added first. Handled by `_install_vscode()` separately.                                               |
+| **bun not in packages.conf**                    | Not in Fedora repos. Installed via official `curl \| bash` installer in `_install_bun()`.                                                   |
+| **Shell stage runs first**                      | Everything else depends on zsh and Oh My Zsh being in place.                                                                                |
+| **Mandatory shell restart gate**                | After `setup_shell` changes the default shell, script writes a sentinel and exits. Re-run with `--resume` continues past the gate.          |
+| **Stage state machine in `state/.setup_state`** | Allows `--resume` after the shell restart. Each stage name written to file on completion. Gitignored.                                       |
+| **`safe_symlink` in utils.sh**                  | Centralised symlink logic: skip if correct, backup with timestamp if dest exists, create parent dirs.                                       |
+| **`restore.sh` sourced by `setup.sh`**          | `do_link` must be callable as a function. A `BASH_SOURCE` guard prevents `main()` firing on source.                                         |
+| **`rpm -q --whatprovides`**                     | On Fedora 44 packages like `wget2-wget` provide `wget` but aren't named `wget`. `--whatprovides` resolves virtual provides correctly.       |
+| **`unzip -q -o`**                               | `-o` overwrites silently on re-runs — prevents interactive prompt when font files already exist.                                            |
+| **Font file-existence check before download**   | `_install_jetbrains_font` checks `fc-list`, then checks for `.ttf` files on disk, then downloads. Prevents re-downloading on `--reset`.     |
+| **Docker container-exists check**               | `docker compose ps --all` detects existing (stopped) Windows containers — skips the first-time review prompt and just starts the container. |
+| **WinApps cloned to `~/.config/winapps`**       | This is where `compose.yaml`, `winapps.conf`, and the WinApps source all live per the upstream docs.                                        |
+| **VM stop after WinApps install**               | `docker compose stop` runs at end of `setup_docker`. WinApps starts Windows on demand — no reason to leave it running.                      |
+| **`configs/nvim` symlinked as a directory**     | Neovim writes files inside `~/.config/nvim/`. Symlinking the whole directory means all writes go directly into the repo.                    |
+| **GUI-managed configs excluded from symlinks**  | GNOME settings are managed via dconf — handled separately in `lib/editors.sh` and `sync.sh`.                                                |
+| **No root execution**                           | Script dies early if `EUID == 0`. `sudo` used only where necessary, always with a comment.                                                  |
+| **Idempotency everywhere**                      | Every step checks if already done and skips. Safe to re-run on a partially configured system.                                               |
+| **`$'...'` for escape sequences**               | Colour codes use `$'\033[...'` — single-quoted form prints literally.                                                                       |
+| **`printf` colour rule**                        | Colour variables never in the format string — always passed as `%s` arguments (SC2059).                                                     |
+| **Secrets never committed**                     | SSH private keys, `.pem` files excluded via `.gitignore`.                                                                                   |
 
 </details>
 
@@ -267,53 +267,53 @@ bash scripts/setup.sh --reset
 
 ```mermaid
 flowchart TD
-    A([bash setup.sh]) --> B{State file\nexists?}
+    A([bash setup.sh]) --> B{State file exists?}
 
-    B -- No --> PRE
-    B -- Yes --> D{Flag passed?}
+    B -->|No| PRE
+    B -->|Yes| D{Flag passed?}
 
-    D -- no flag --> E{Prompt user}
-    E -- Resume --> PRE
-    E -- Reset --> CLR[Clear state]
+    D -->|no flag| E{Prompt user}
+    E -->|Resume| PRE
+    E -->|Reset| CLR[Clear state]
     CLR --> PRE
 
-    D -- --resume --> PRE
-    D -- --reset --> CLR
+    D -->|resume flag| PRE
+    D -->|reset flag| CLR
 
-    PRE["① preflight\n(OS · root · internet · SSH · git)"]
+    PRE["① preflight<br/>(OS, root, internet, SSH, git)"]
     PRE --> SH
 
-    SH["② shell\n(zsh · OMZ · plugins · fonts · Starship)"]
-    SH --> GATE{Default shell\nchanged?}
+    SH["② shell<br/>(zsh, OMZ, plugins, fonts, Starship)"]
+    SH --> GATE{Default shell changed?}
 
-    GATE -- First run --> WARN["⚠️  EXIT\nOpen a new terminal\nthen run --resume"]
-    GATE -- Already zsh --> PKG
+    GATE -->|First run| WARN["EXIT — open new terminal<br/>then: bash setup.sh --resume"]
+    GATE -->|Already zsh| PKG
 
-    PKG["③ pkgmgr\n(Homebrew · Flatpak/Flathub)"]
+    PKG["③ pkgmgr<br/>(Homebrew, Flatpak/Flathub)"]
     PKG --> PKGS
 
-    PKGS["④ packages\n(dnf · VS Code · bun · brew · flatpak)"]
+    PKGS["④ packages<br/>(dnf, VS Code, bun, brew, flatpak)"]
     PKGS --> ED
 
-    ED["⑤ editors\n(prettier · micro LSP · Unite · dconf)"]
+    ED["⑤ editors<br/>(prettier, micro LSP, Unite, dconf)"]
     ED --> WEZ
 
-    WEZ["⑥ wezterm\n(COPR · terminfo · symlink)"]
+    WEZ["⑥ wezterm<br/>(COPR, terminfo, symlink)"]
     WEZ --> OPT
 
-    OPT{Install Docker\n& WinApps?}
-    OPT -- Yes --> DOC
-    OPT -- Skip --> REST
+    OPT{Install Docker and WinApps?}
+    OPT -->|Yes| DOC
+    OPT -->|Skip| REST
 
-    DOC["⑦ docker\n(CE · WinApps 4-step gated flow)"]
+    DOC["⑦ docker<br/>(CE, WinApps 4-step gated flow)"]
     DOC --> REST
 
-    REST["⑧ restore\n(9 symlinks via restore.sh)"]
-    REST --> DONE([✅ Complete])
+    REST["⑧ restore<br/>(9 symlinks via restore.sh)"]
+    REST --> DONE([Setup complete])
 
-    style WARN  fill:#FFF3CD,stroke:#D6A800,color:#7D5B00
-    style DONE  fill:#D1FAE5,stroke:#059669,color:#065F46
-    style CLR   fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D
+    style WARN fill:#FFF3CD,stroke:#D6A800,color:#7D5B00
+    style DONE fill:#D1FAE5,stroke:#059669,color:#065F46
+    style CLR  fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D
 ```
 
 ---
@@ -1332,23 +1332,23 @@ alias restore-dots='bash "${_obsidian_dir}/scripts/restore.sh"'
 
 ## 7. Tested Behaviours
 
-| Behaviour | Result |
-|-----------|--------|
-| `setup.sh` full run with `--resume` | ✅ All stages complete |
-| `setup.sh --reset` | ✅ Clears state, re-runs all stages |
-| Shell restart gate | ✅ Exits cleanly, resumes correctly |
-| `restore.sh` link mode | ✅ 9 symlinks created, existing files backed up |
-| `restore.sh --check` after link | ✅ All 9 reported OK |
-| `restore.sh --unlink` | ✅ All symlinks removed, all backups restored |
-| Re-link after unlink | ✅ All 9 symlinks recreated |
-| Idempotency (re-run link) | ✅ All 9 report "Already linked" |
-| `restore.sh --check` final | ✅ All symlinks intact |
-| `sync.sh` | ✅ dconf dump + commit + push + graph log |
-| dnf `--whatprovides` check | ✅ wget, npm, nodejs skip correctly on Fedora 44 |
-| Font file-existence check | ✅ No re-download on `--reset` when files present |
-| WinApps 4-step gated flow | ✅ Windows running, FreeRDP tested, winapps installed |
-| `command -v winapps` fast path | ✅ Docker stage completes immediately on re-run |
-| VS Code Microsoft repo | ⚠️ Logic complete; not tested on a clean machine yet |
+| Behaviour                           | Result                                                |
+| ----------------------------------- | ----------------------------------------------------- |
+| `setup.sh` full run with `--resume` | ✅ All stages complete                                |
+| `setup.sh --reset`                  | ✅ Clears state, re-runs all stages                   |
+| Shell restart gate                  | ✅ Exits cleanly, resumes correctly                   |
+| `restore.sh` link mode              | ✅ 9 symlinks created, existing files backed up       |
+| `restore.sh --check` after link     | ✅ All 9 reported OK                                  |
+| `restore.sh --unlink`               | ✅ All symlinks removed, all backups restored         |
+| Re-link after unlink                | ✅ All 9 symlinks recreated                           |
+| Idempotency (re-run link)           | ✅ All 9 report "Already linked"                      |
+| `restore.sh --check` final          | ✅ All symlinks intact                                |
+| `sync.sh`                           | ✅ dconf dump + commit + push + graph log             |
+| dnf `--whatprovides` check          | ✅ wget, npm, nodejs skip correctly on Fedora 44      |
+| Font file-existence check           | ✅ No re-download on `--reset` when files present     |
+| WinApps 4-step gated flow           | ✅ Windows running, FreeRDP tested, winapps installed |
+| `command -v winapps` fast path      | ✅ Docker stage completes immediately on re-run       |
+| VS Code Microsoft repo              | ⚠️ Logic complete; not tested on a clean machine yet  |
 
 ---
 
@@ -1411,6 +1411,6 @@ for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f" && echo "✔ $f"; 
 
 <div align="center">
 
-*Handout generated 2026-05-17 · Project status: **COMPLETE** · Next action: first-run test on a clean Fedora 43+ VM*
+_Handout generated 2026-05-17 · Project status: **COMPLETE** · Next action: first-run test on a clean Fedora 43+ VM_
 
 </div>
