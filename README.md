@@ -4,7 +4,6 @@
   <img src="banner.svg" alt="Obsidian Dotfiles Banner" />
 </picture>
 
-</div>
 **Dotfiles — Fedora Workstation**
 
 _One script. Fresh Fedora 43+ install → fully configured development environment._
