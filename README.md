@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="banner.svg" alt="Obsidian Dotfiles Banner" />
+  <img src="images/banner.svg" alt="Obsidian Dotfiles Banner" />
 </picture>
 
 **Dotfiles — Fedora Workstation**
@@ -20,7 +20,7 @@ _One script. Fresh Fedora 43+ install → fully configured development environme
 
 ---
 
-## 💡 How it works 
+## 💡 How it works
 
 Three ideas drive the whole design:
 
