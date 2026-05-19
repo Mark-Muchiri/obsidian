@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <img src="images/banner.svg" alt="Obsidian Dotfiles Banner" />
+  <img src="./media/banner.svg" alt="Obsidian Dotfiles Banner" />
 </picture>
 
 **Dotfiles — Fedora Workstation**
