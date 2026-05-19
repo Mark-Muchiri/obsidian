@@ -20,7 +20,7 @@ _One script. Fresh Fedora 43+ install → fully configured development environme
 
 ---
 
-## 💡 How it works
+## 💡 How it works 
 
 Three ideas drive the whole design:
 
