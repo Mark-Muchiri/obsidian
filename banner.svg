@@ -23,13 +23,13 @@
     .ascii {
       font-family: 'Courier New', Courier, monospace;
       font-size: 16px;
-      font-weight: bold;
+      <!-- font-weight: bold; -->
       /* Base text color is static purple */
-      fill: #b19cd9; 
+      fill: #9889b7; 
       white-space: pre;
       text-anchor: middle;
       /* Apply the filter to handle background glow and animation */
-      filter: url(#bg-glow);
+      <!-- filter: url(#bg-glow); -->
     }
   </style>
 
