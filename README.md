@@ -9,9 +9,10 @@
    ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
 ```
 
+</div>
 **Dotfiles — Fedora Workstation**
 
-*One script. Fresh Fedora 43+ install → fully configured development environment.*
+_One script. Fresh Fedora 43+ install → fully configured development environment._
 
 [![Fedora](https://img.shields.io/badge/Fedora-43%2B-51A2DA?style=for-the-badge&logo=fedora&logoColor=white)](https://fedoraproject.org/)
 [![Shell](https://img.shields.io/badge/shell-bash_%2F_zsh-89E051?style=for-the-badge&logo=gnubash&logoColor=white)](configs/zsh/.zshrc)
@@ -30,7 +31,7 @@
 Three ideas drive the whole design:
 
 > [!NOTE]
-> **Symlinks as the source of truth.** Every config file (`~/.zshrc`, `~/.config/nvim`, etc.) is a symlink pointing into this repo. Editing a config in your editor *is* editing the repo — no copy step, no sync-back, no drift.
+> **Symlinks as the source of truth.** Every config file (`~/.zshrc`, `~/.config/nvim`, etc.) is a symlink pointing into this repo. Editing a config in your editor _is_ editing the repo — no copy step, no sync-back, no drift.
 
 > [!NOTE]
 > **Git as the sync mechanism.** `sync.sh` exports GNOME settings, stages everything with `git add -A`, and pushes. Because configs are symlinked, `git diff` always shows exactly what changed.
@@ -42,19 +43,19 @@ Three ideas drive the whole design:
 
 ## 📦 What's included
 
-| Category | Tools |
-|---|---|
-| 🐚 **Shell** | zsh, Oh My Zsh, autosuggestions, syntax highlighting, history substring search |
-| ✨ **Prompt** | Starship with custom config |
-| 🔤 **Font** | JetBrainsMono Nerd Font (user-scoped, no root required) |
-| 🖥️ **Terminal** | WezTerm via COPR with terminfo |
-| 📝 **Editors** | Neovim (full config), micro (+ LSP plugin), nano |
-| 🔧 **CLI tools** | `eza` `bat` `fd` `zoxide` `thefuck` `btop` `yazi` `fastfetch` `bun` |
-| 🖱️ **GUI apps** | VS Code, EasyEffects, GNOME Extension Manager, Flatseal, Smile |
-| 🎨 **Desktop** | Unite shell extension, GNOME settings restored via `dconf` |
-| 📦 **Package managers** | dnf (primary), Homebrew, Flatpak / Flathub |
-| 🪟 **Windows apps** | Docker-based WinApps (FreeRDP + winapps-org/winapps) |
-| 🔀 **Sync** | Git-only — symlinks make every config edit instantly committed |
+| Category                | Tools                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| 🐚 **Shell**            | zsh, Oh My Zsh, autosuggestions, syntax highlighting, history substring search |
+| ✨ **Prompt**           | Starship with custom config                                                    |
+| 🔤 **Font**             | JetBrainsMono Nerd Font (user-scoped, no root required)                        |
+| 🖥️ **Terminal**         | WezTerm via COPR with terminfo                                                 |
+| 📝 **Editors**          | Neovim (full config), micro (+ LSP plugin), nano                               |
+| 🔧 **CLI tools**        | `eza` `bat` `fd` `zoxide` `thefuck` `btop` `yazi` `fastfetch` `bun`            |
+| 🖱️ **GUI apps**         | VS Code, EasyEffects, GNOME Extension Manager, Flatseal, Smile                 |
+| 🎨 **Desktop**          | Unite shell extension, GNOME settings restored via `dconf`                     |
+| 📦 **Package managers** | dnf (primary), Homebrew, Flatpak / Flathub                                     |
+| 🪟 **Windows apps**     | Docker-based WinApps (FreeRDP + winapps-org/winapps)                           |
+| 🔀 **Sync**             | Git-only — symlinks make every config edit instantly committed                 |
 
 ---
 
@@ -105,9 +106,9 @@ obsidian/
 ## ✅ Prerequisites
 
 - [x] Fedora Workstation 43+
-- [x] A regular user account *(not root — `setup.sh` will refuse to run as root)*
+- [x] A regular user account _(not root — `setup.sh` will refuse to run as root)_
 - [x] Internet connection
-- [x] A GitHub account *(setup.sh will generate an SSH key if you don't have one)*
+- [x] A GitHub account _(setup.sh will generate an SSH key if you don't have one)_
 
 ---
 
@@ -126,9 +127,11 @@ bash scripts/setup.sh
 
 > [!TIP]
 > If setup asks you to restart your shell — close the terminal completely, open a new one, then run:
+>
 > ```bash
 > bash scripts/setup.sh --resume
 > ```
+>
 > The state machine remembers exactly where it left off.
 
 ### Restore configs on an existing machine
@@ -183,15 +186,15 @@ bash scripts/restore.sh --check
 
 ## ⚙️ Setup flags
 
-| Command | Effect |
-|---|---|
-| `bash scripts/setup.sh` | Fresh install — runs all stages in order |
-| `bash scripts/setup.sh --resume` | Skip completed stages, continue from last |
-| `bash scripts/setup.sh --reset` | Clear state and re-run all stages[^1] |
-| `bash scripts/restore.sh` | Create all config symlinks |
-| `bash scripts/restore.sh --check` | Verify all symlinks — no changes made |
-| `bash scripts/restore.sh --unlink` | Remove symlinks, restore any backups |
-| `bash scripts/sync.sh` | Dump dconf + commit + push |
+| Command                            | Effect                                    |
+| ---------------------------------- | ----------------------------------------- |
+| `bash scripts/setup.sh`            | Fresh install — runs all stages in order  |
+| `bash scripts/setup.sh --resume`   | Skip completed stages, continue from last |
+| `bash scripts/setup.sh --reset`    | Clear state and re-run all stages[^1]     |
+| `bash scripts/restore.sh`          | Create all config symlinks                |
+| `bash scripts/restore.sh --check`  | Verify all symlinks — no changes made     |
+| `bash scripts/restore.sh --unlink` | Remove symlinks, restore any backups      |
+| `bash scripts/sync.sh`             | Dump dconf + commit + push                |
 
 [^1]: `--reset` clears the stage progress file only. It does **not** uninstall any packages or undo any system changes.
 
@@ -243,6 +246,6 @@ It is written so that a technical reader — or an AI assistant — can continue
 
 <div align="center">
 
-*Built for one machine. Published in case the approach is useful to others.*
+_Built for one machine. Published in case the approach is useful to others._
 
 </div>
