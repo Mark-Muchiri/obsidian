@@ -11,68 +11,57 @@
 
 **Dotfiles — Fedora Workstation**
 
-One script. Fresh Fedora 43+ install → fully configured development environment.
+*One script. Fresh Fedora 43+ install → fully configured development environment.*
 
-[Quick Start](#quick-start) · [Structure](#structure) ·
-[Daily Usage](#daily-usage) · [Setup Guide](docs/setup.md)
+[![Fedora](https://img.shields.io/badge/Fedora-43%2B-51A2DA?style=for-the-badge&logo=fedora&logoColor=white)](https://fedoraproject.org/)
+[![Shell](https://img.shields.io/badge/shell-bash_%2F_zsh-89E051?style=for-the-badge&logo=gnubash&logoColor=white)](configs/zsh/.zshrc)
+[![ShellCheck](https://img.shields.io/badge/ShellCheck-zero_warnings-success?style=for-the-badge)](scripts/)
+[![Status](https://img.shields.io/badge/status-complete-brightgreen?style=for-the-badge&logo=checkmarx&logoColor=white)](handout.md)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 
-![Fedora](https://img.shields.io/badge/Fedora-43%2B-51A2DA?logo=fedora&logoColor=white)
-![Shell](https://img.shields.io/badge/shell-bash%20%2F%20zsh-89E051?logo=gnubash&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
+[🚀 Quick Start](#-quick-start) · [📁 Structure](#-structure) · [🔄 Daily Usage](#-daily-usage) · [📖 Setup Guide](docs/setup.md) · [📋 Handout](handout.md)
 
 </div>
 
 ---
 
-## About this project
+## 💡 How it works
 
-This is a personal dotfiles management system built for a **Fedora Workstation
-43+** development environment. The goal is to make setting up a new machine — or
-recovering a broken one — a single command rather than hours of manual work.
+Three ideas drive the whole design:
 
-The approach is built on three ideas:
+> [!NOTE]
+> **Symlinks as the source of truth.** Every config file (`~/.zshrc`, `~/.config/nvim`, etc.) is a symlink pointing into this repo. Editing a config in your editor *is* editing the repo — no copy step, no sync-back, no drift.
 
-**Symlinks as the source of truth.** Every config file (`~/.zshrc`,
-`~/.config/nvim`, etc.) is a symlink pointing into this repo. Editing a config
-in your editor is the same as editing it in the repo. There is no copy step, no
-sync-back step, and no risk of the repo and the live system diverging.
+> [!NOTE]
+> **Git as the sync mechanism.** `sync.sh` exports GNOME settings, stages everything with `git add -A`, and pushes. Because configs are symlinked, `git diff` always shows exactly what changed.
 
-**Git as the sync mechanism.** Running `sync.sh` exports GNOME settings, stages
-everything with `git add -A`, and pushes. Because configs are symlinked,
-`git diff` always shows exactly what changed — no diffing between two copies of
-a file.
-
-**Staged, resumable automation.** `setup.sh` runs through a sequence of named
-stages (shell, packages, editors, WezTerm, Docker/WinApps, restore). Each stage
-is marked complete in a local state file. If setup is interrupted —
-intentionally, for a shell restart, or due to an error — re-running with
-`--resume` picks up exactly where it left off without repeating work.
-
-This project is specific to one person's machine and tooling choices. It is
-published publicly in case the structure or approach is useful to others as a
-reference.
+> [!NOTE]
+> **Staged, resumable automation.** `setup.sh` runs through named stages and writes each completed stage to a local state file. Interrupted? Run `bash scripts/setup.sh --resume` and it picks up exactly where it left off.
 
 ---
 
-## What's included
+## 📦 What's included
 
-- **Shell** — zsh + Oh My Zsh, autosuggestions, syntax highlighting, history
-  search
-- **Prompt** — Starship with custom config
-- **Font** — JetBrainsMono Nerd Font (user-scoped, no root required)
-- **Terminal** — WezTerm via COPR with terminfo
-- **Editors** — Neovim (full config), micro (with LSP plugin), nano
-- **CLI tools** — eza, bat, fd, zoxide, thefuck, btop, yazi, fastfetch, bun
-- **GUI apps** — VS Code, EasyEffects, GNOME Extension Manager, Flatseal, Smile
-- **Desktop** — Unite shell extension, GNOME extension settings restored via
-  dconf
-- **Package managers** — dnf (primary), Homebrew, Flatpak/Flathub
-- **Windows apps** — Docker-based WinApps (FreeRDP, winapps-org/winapps)
-- **Sync** — git-only, no file copying; symlinks make every config edit instant
+| Category | Tools |
+|---|---|
+| 🐚 **Shell** | zsh, Oh My Zsh, autosuggestions, syntax highlighting, history substring search |
+| ✨ **Prompt** | Starship with custom config |
+| 🔤 **Font** | JetBrainsMono Nerd Font (user-scoped, no root required) |
+| 🖥️ **Terminal** | WezTerm via COPR with terminfo |
+| 📝 **Editors** | Neovim (full config), micro (+ LSP plugin), nano |
+| 🔧 **CLI tools** | `eza` `bat` `fd` `zoxide` `thefuck` `btop` `yazi` `fastfetch` `bun` |
+| 🖱️ **GUI apps** | VS Code, EasyEffects, GNOME Extension Manager, Flatseal, Smile |
+| 🎨 **Desktop** | Unite shell extension, GNOME settings restored via `dconf` |
+| 📦 **Package managers** | dnf (primary), Homebrew, Flatpak / Flathub |
+| 🪟 **Windows apps** | Docker-based WinApps (FreeRDP + winapps-org/winapps) |
+| 🔀 **Sync** | Git-only — symlinks make every config edit instantly committed |
 
 ---
 
-## Structure
+## 📁 Structure
+
+<details>
+<summary>Expand full directory tree</summary>
 
 ```
 obsidian/
@@ -93,7 +82,7 @@ obsidian/
 ├── lib/              ← sourced modules; never run directly
 │   ├── utils.sh      ← colours, logging, spinner, safe_symlink
 │   ├── preflight.sh  ← OS, root, internet, git/SSH checks
-│   ├── shell.sh      ← zsh, Oh My Zsh, plugins, font, starship
+│   ├── shell.sh      ← zsh, Oh My Zsh, plugins, font, Starship
 │   ├── pkgmgr.sh     ← Homebrew + Flatpak/Flathub setup
 │   ├── packages.sh   ← dnf / brew / flatpak installs
 │   ├── editors.sh    ← prettier, micro LSP, Unite extension, dconf
@@ -109,18 +98,20 @@ obsidian/
 └── README.md
 ```
 
----
-
-## Prerequisites
-
-- Fedora Workstation 43+
-- A regular user account (not root)
-- Internet connection
-- A GitHub account with an SSH key (setup.sh will generate one if needed)
+</details>
 
 ---
 
-## Quick Start
+## ✅ Prerequisites
+
+- [x] Fedora Workstation 43+
+- [x] A regular user account *(not root — `setup.sh` will refuse to run as root)*
+- [x] Internet connection
+- [x] A GitHub account *(setup.sh will generate an SSH key if you don't have one)*
+
+---
+
+## 🚀 Quick Start
 
 ### Fresh machine
 
@@ -133,14 +124,14 @@ cd ~/repo/obsidian
 bash scripts/setup.sh
 ```
 
-Setup will walk you through every stage. If it asks you to restart your shell,
-do so and run:
+> [!TIP]
+> If setup asks you to restart your shell — close the terminal completely, open a new one, then run:
+> ```bash
+> bash scripts/setup.sh --resume
+> ```
+> The state machine remembers exactly where it left off.
 
-```bash
-bash scripts/setup.sh --resume
-```
-
-### Existing machine (restore configs only)
+### Restore configs on an existing machine
 
 ```bash
 git clone git@github.com:Mark-Muchiri/obsidian.git ~/repo/obsidian
@@ -149,16 +140,28 @@ bash ~/repo/obsidian/scripts/restore.sh
 
 ---
 
-## Daily Usage
+## 🔄 Daily Usage
 
 ### Sync changes to GitHub
 
 ```bash
-bash scripts/sync.sh        # or: sync-dots
+bash scripts/sync.sh   # or the alias: sync-dots
 ```
 
-Automatically dumps GNOME extension settings, stages all changes, opens your
-editor for a commit message, and pushes.
+Here's what happens under the hood:
+
+```mermaid
+flowchart LR
+    A([Edit any config]) -->|symlink — instant| B[configs/ in repo]
+    B --> C[sync-dots]
+    C --> D[dconf dump]
+    C --> E[git add -A]
+    E --> F[git commit]
+    F --> G([github.com])
+
+    style A fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style G fill:#E6F1FB,stroke:#185FA5,color:#0C447C
+```
 
 ### Verify all symlinks are intact
 
@@ -169,57 +172,77 @@ bash scripts/restore.sh --check
 ### Add a new config file
 
 1. Move the file into the appropriate `configs/` subdirectory
-2. Add one line to the `CONFIG_MAP` in `scripts/restore.sh`
+2. Add one line to `CONFIG_MAP` in `scripts/restore.sh`
 3. Run `bash scripts/restore.sh` to create the symlink
 4. Run `bash scripts/sync.sh` to commit
 
-See [docs/setup.md](docs/setup.md) for the full walkthrough.
+> [!TIP]
+> See [docs/setup.md](docs/setup.md) for the full walkthrough.
 
 ---
 
-## Setup flags
+## ⚙️ Setup flags
 
-| Command                            | Effect                                                  |
-| ---------------------------------- | ------------------------------------------------------- |
-| `bash scripts/setup.sh`            | Fresh install, runs all stages                          |
-| `bash scripts/setup.sh --resume`   | Skip completed stages, continue from last               |
-| `bash scripts/setup.sh --reset`    | Clear state, re-run all stages (does not undo installs) |
-| `bash scripts/restore.sh`          | Create all config symlinks                              |
-| `bash scripts/restore.sh --check`  | Verify all symlinks, no changes made                    |
-| `bash scripts/restore.sh --unlink` | Remove symlinks, restore backups                        |
-| `bash scripts/sync.sh`             | Dump dconf + commit + push                              |
+| Command | Effect |
+|---|---|
+| `bash scripts/setup.sh` | Fresh install — runs all stages in order |
+| `bash scripts/setup.sh --resume` | Skip completed stages, continue from last |
+| `bash scripts/setup.sh --reset` | Clear state and re-run all stages[^1] |
+| `bash scripts/restore.sh` | Create all config symlinks |
+| `bash scripts/restore.sh --check` | Verify all symlinks — no changes made |
+| `bash scripts/restore.sh --unlink` | Remove symlinks, restore any backups |
+| `bash scripts/sync.sh` | Dump dconf + commit + push |
 
----
-
-## How sync works
-
-All configs in `configs/` are **symlinked** into their system locations — not
-copied. Editing `~/.zshrc` edits `configs/zsh/.zshrc` directly. `sync.sh` runs
-`git add -A`, so every config change is captured automatically. No manual copy
-step is ever needed.
+[^1]: `--reset` clears the stage progress file only. It does **not** uninstall any packages or undo any system changes.
 
 ---
 
-## ShellCheck
+## 🔀 How sync works
 
-All scripts and lib modules are ShellCheck-clean (`shellcheck -x -s bash`). Run
-before every commit:
+All configs in `configs/` are **symlinked** — not copied — into their system locations. Editing `~/.zshrc` edits `configs/zsh/.zshrc` directly. `sync.sh` runs `git add -A`, so every config change is captured automatically with no manual copy step.
 
-```bash
-for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f"; done
+```
+~/.zshrc                    →  configs/zsh/.zshrc
+~/.config/nvim              →  configs/nvim/
+~/.config/wezterm/wezterm.lua  →  configs/wezterm/wezterm.lua
+          ︙                              ︙
+     live system                    git repo  →  GitHub
 ```
 
 ---
 
-## For contributors and maintainers
+## 🔍 ShellCheck
 
-If you are working on this project — fixing a bug, adding a new config, or
-extending the automation — read [`handout.md`](handout.md) before making
-changes.
+All scripts and lib modules are ShellCheck-clean. Run before every commit:
 
-`handout.md` is a complete technical reference that documents every design
-decision, the full contents of every script, the rationale behind each
-implementation choice, every bug found and fixed during development, and the
-current known gaps. It is written to give a technical reader (or an AI
-assistant) full context to continue the project without any prior knowledge of
-its history.
+```bash
+for f in lib/*.sh scripts/*.sh; do shellcheck -x -s bash "$f" && echo "✔ $f"; done
+```
+
+> [!CAUTION]
+> Always pass `-x` — without it, ShellCheck cannot follow `source` directives and will report false positives on every script that sources a `lib/` module.
+
+---
+
+## 👥 For contributors and maintainers
+
+> [!IMPORTANT]
+> Read [`handout.md`](handout.md) **before making any changes.**
+
+`handout.md` is a complete technical reference covering:
+
+- Every design decision and the rationale behind it
+- Full source of every script
+- Every bug found and fixed during development
+- Current known gaps (including what's untested)
+- A visual stage-flow diagram of `setup.sh`
+
+It is written so that a technical reader — or an AI assistant — can continue the project with full context and zero prior knowledge of its history.
+
+---
+
+<div align="center">
+
+*Built for one machine. Published in case the approach is useful to others.*
+
+</div>
