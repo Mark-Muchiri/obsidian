@@ -1,28 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="100%">
+  <defs>
+    <filter id="bg-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feMorphology operator="dilate" radius="1" in="SourceAlpha" result="thickenedAlpha" />
+      <feGaussianBlur in="thickenedAlpha" stdDeviation="4" result="blurred" />
+      <feFlood flood-color="#a084dc" result="glowColor" />
+      <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow" />
+      
+      <feComponentTransfer in="softGlow" result="animatedGlow">
+        <feFuncA type="table" tableValues="0.1 0.43 0.1">
+          <animate attributeName="tableValues" values="0.1 0.43 0.1; 0.1 0.2 0.1; 0.1 0.43 0.1" dur="5s" repeatCount="indefinite" />
+        </feFuncA>
+      </feComponentTransfer>
+      
+      <feMerge>
+        <feMergeNode in="animatedGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
   <style>
     .ascii {
       font-family: 'Courier New', Courier, monospace;
       font-size: 16px;
       font-weight: bold;
-      fill: #b19cd9; /* Soft purple */
+      /* Base text color is static purple */
+      fill: #b19cd9; 
       white-space: pre;
       text-anchor: middle;
-      animation: pulse 2.5s infinite alternate;
-    }
-    
-    @keyframes pulse {
-      0% {
-        fill: #a084dc;
-        filter: drop-shadow(0 0 4px rgba(160, 132, 220, 0.6));
-      }
-      100% {
-        fill: #d4c4f9;
-        filter: drop-shadow(0 0 15px rgba(212, 196, 249, 1)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
-      }
+      /* Apply the filter to handle background glow and animation */
+      filter: url(#bg-glow);
     }
   </style>
 
-  <!-- The text is grouped and centered horizontally via x="50%" -->
   <text x="50%" y="20" class="ascii">
     <tspan x="50%" dy="1.2em">   ██████╗ ██████╗ ███████╗██╗██████╗ ██╗ █████╗  ███╗   ██╗</tspan>
     <tspan x="50%" dy="1.2em">  ██╔═══██╗██╔══██╗██╔════╝██║██╔══██╗██║██╔══██╗ ████╗  ██║</tspan>
