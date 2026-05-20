@@ -81,6 +81,7 @@ last-version=31
 preset='R'
 
 [dash-to-dock]
+application-counter-overrides-notifications=false
 apply-custom-theme=false
 autohide=false
 background-color='rgb(36,31,49)'
@@ -88,16 +89,17 @@ background-opacity=0.5
 custom-background-color=false
 custom-theme-shrink=true
 customize-alphas=true
-dash-max-icon-size=48
+dash-max-icon-size=55
 disable-overview-on-startup=true
 dock-fixed=false
 dock-position='BOTTOM'
 height-fraction=0.90000000000000002
+hide-tooltip=true
 hot-keys=false
 intellihide=false
 intellihide-mode='MAXIMIZED_WINDOWS'
 max-alpha=1.0
-min-alpha=0.80000000000000004
+min-alpha=0.65000000000000002
 multi-monitor=false
 preferred-monitor=-2
 preferred-monitor-by-connector='eDP-1'
@@ -116,19 +118,23 @@ animation-spread=0.75
 autohide-dash=true
 autohide-dodge=false
 autohide-speed=0.5
+blur-background=true
 border-radius=3.0
+border-thickness=0
 dock-padding=0.5
+edge-distance=0.50000000000000022
 icon-border-radius=3.0
 icon-size=0.0
 icon-spacing=0.33950617283950618
 items-pullout-angle=0.5
+lamp-app-animation=false
 msg-to-ext=''
 panel-mode=false
 preferred-monitor=0
 pressure-sense=false
 pressure-sense-sensitivity=0.40000000000000002
 scroll-sensitivity=0.40000000000000002
-shrink-icons=false
+shrink-icons=true
 
 [forge]
 css-last-update=uint32 37
@@ -250,10 +256,11 @@ timeout=1000
 
 [rounded-window-corners-reborn]
 border-width=-1
+custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 5>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>, 'org.gnome.Ptyxis': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 13>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 7>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>}
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.60392159223556519, 0.60000002384185791, 0.58823531866073608, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 14>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}
 keep-shadow-for-maximized-fullscreen=false
 settings-version=uint32 9
 skip-libadwaita-app=false
