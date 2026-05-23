@@ -190,3 +190,4 @@ _obsidian_dir="$(cd "$(dirname "$(readlink -f "${HOME}/.zshrc")")/../.." && pwd)
 
 alias sync-dots='bash "${_obsidian_dir}/scripts/sync.sh"'
 alias restore-dots='bash "${_obsidian_dir}/scripts/restore.sh"'
+export LIBVA_DRIVER_NAME=i965
