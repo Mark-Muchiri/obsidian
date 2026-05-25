@@ -44,7 +44,7 @@ alias v="nvim"
 alias m="micro"
 alias rm="trash"     # Safer alternative to rm
 alias root="sudo -i" # Get root shell
-alias fastfetch="fastfetch -c examples/8.jsonc"
+alias fastfetch="fastfetch -c examples/6.jsonc"
 
 ## Navigation
 alias l="eza --color='always' --icons='always' --sort='type'"

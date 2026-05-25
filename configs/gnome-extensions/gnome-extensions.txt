@@ -1,34 +1,39 @@
 [blur-my-shell]
 hacks-level=0
-pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.45000000000000001>, 'unscaled_radius': <15>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_32861622386704'>, 'params': <{'brightness': <0.45000000000000001>, 'unscaled_radius': <15>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <@av []>}}
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_89876332914833'>, 'params': <{'unscaled_radius': <15>, 'brightness': <0.45000000000000001>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_01825400281714'>, 'params': <{'unscaled_radius': <15>, 'brightness': <0.45000000000000001>}>}>]>}}
 rounded-blur-found=false
 settings-version=2
 
 [blur-my-shell/appfolder]
 blur=true
-brightness=0.29999999999999999
+brightness=0.45000000000000001
 sigma=15
 style-dialogs=3
 
 [blur-my-shell/applications]
-blur=true
-brightness=0.5
+blacklist=@as []
+blur=false
+brightness=1.0
 dynamic-opacity=false
-opacity=191
-pipeline='pipeline_default'
-sigma=70
+enable-all=true
+opacity=255
+pipeline='pipeline_69709734494983'
+sigma=50
+static-blur=false
 whitelist=@as []
 
 [blur-my-shell/coverflow-alt-tab]
 pipeline='pipeline_default'
 
 [blur-my-shell/dash-to-dock]
-blur=true
+blur=false
 brightness=0.59999999999999998
-pipeline='pipeline_default_rounded'
+override-background=true
+pipeline='pipeline_default'
 sigma=30
 static-blur=true
-style-dash-to-dock=0
+style-dash-to-dock=2
+unblur-in-overview=true
 
 [blur-my-shell/dash-to-panel]
 blur-original-panel=false
@@ -41,7 +46,7 @@ pipeline='pipeline_default'
 
 [blur-my-shell/overview]
 blur=true
-pipeline='pipeline_default'
+pipeline='pipeline_69709734494983'
 style-components=2
 
 [blur-my-shell/panel]
@@ -81,35 +86,45 @@ last-version=31
 preset='R'
 
 [dash-to-dock]
-application-counter-overrides-notifications=false
+always-center-icons=true
+application-counter-overrides-notifications=true
 apply-custom-theme=false
+apply-glossy-effect=false
 autohide=false
 background-color='rgb(0,0,0)'
 background-opacity=0.40000000000000002
 custom-background-color=true
+custom-theme-customize-running-dots=false
+custom-theme-running-dots-border-width=0
 custom-theme-shrink=true
 customize-alphas=true
 dash-max-icon-size=48
-disable-overview-on-startup=true
+disable-overview-on-startup=false
 dock-fixed=false
 dock-position='BOTTOM'
-height-fraction=0.90000000000000002
+extend-height=false
+height-fraction=1.0
 hide-tooltip=true
 hot-keys=false
 icon-size-fixed=false
 intellihide=false
 intellihide-mode='MAXIMIZED_WINDOWS'
 max-alpha=1.0
+middle-click-action='launch'
 min-alpha=0.40000000000000002
 multi-monitor=false
 preferred-monitor=-2
 preferred-monitor-by-connector='eDP-1'
 preview-size-scale=0.0
 require-pressure-to-show=false
+running-indicator-dominant-color=true
 running-indicator-style='DEFAULT'
 scroll-action='cycle-windows'
+shift-click-action='minimize'
+shift-middle-click-action='launch'
 show-trash=false
 transparency-mode='FIXED'
+unity-backlit-items=false
 
 [dash2dock-lite]
 animation-bounce-height=0.75
@@ -213,7 +228,7 @@ clock-menu-position=1
 clock-menu-position-offset=10
 controls-manager-spacing-size=0
 dash=true
-dash-icon-size=32
+dash-icon-size=40
 dash-separator=false
 double-super-to-appgrid=true
 events-button=false
@@ -253,16 +268,16 @@ workspace-wrap-around=false
 workspaces-in-app-grid=false
 
 [notification-timeout]
-timeout=1000
+timeout=3000
 
 [rounded-window-corners-reborn]
 blacklist=@as []
 border-width=-1
-custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 5>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>, 'org.gnome.Ptyxis': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 13>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <false>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 7>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>, 'vlc': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}>}
+custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 5>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>, 'org.gnome.Ptyxis': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 13>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 0, 'right': 1, 'top': 0, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': true, 'fullscreen': true}>, 'borderRadius': <uint32 7>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>, 'vlc': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 5>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>, 'brave-browser': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>, 'code': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 8>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}>}
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
-global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 25>, 'smoothing': <0.0>, 'borderColor': <(0.46666666865348816, 0.46274510025978088, 0.48235294222831726, 1.0)>, 'enabled': <true>}
+global-rounded-corner-settings={'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 25>, 'smoothing': <0.0>, 'borderColor': <(0.36862745881080627, 0.36078432202339172, 0.39215686917304993, 1.0)>, 'enabled': <true>}
 keep-shadow-for-maximized-fullscreen=false
 settings-version=uint32 9
 skip-libadwaita-app=false
@@ -331,7 +346,7 @@ app-menu-ellipsize-mode='start'
 autofocus-windows=true
 extend-left-box=false
 greyscale-tray-icons=false
-hide-activities-button='always'
+hide-activities-button='never'
 hide-app-menu-icon=false
 hide-window-titlebars='always'
 notifications-position='right'
@@ -352,7 +367,7 @@ name='MacTahoe-Dark'
 [vitals]
 fixed-widths=true
 hide-zeros=false
-hot-sensors=['__temperature_avg__', '_memory_allocated_']
+hot-sensors=['__temperature_avg__', '_memory_allocated_', '_processor_usage_']
 icon-style=0
 include-static-gpu-info=true
 include-static-info=true
