@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 -- Appearance
 config.initial_cols = 98
 config.initial_rows = 32
-config.font_size = 11
+config.font_size = 10.5
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.default_cursor_style = "BlinkingBar"
 config.cursor_blink_rate = 1600
