@@ -1,6 +1,6 @@
 [blur-my-shell]
-hacks-level=0
-pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_89876332914833'>, 'params': <{'unscaled_radius': <15>, 'brightness': <0.45000000000000001>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_01825400281714'>, 'params': <{'unscaled_radius': <15>, 'brightness': <0.45000000000000001>}>}>, <{'type': <'corner'>, 'id': <'effect_11077624768431'>, 'params': <{'radius': <28>}>}>]>}}
+hacks-level=2
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_89876332914833'>, 'params': <{'unscaled_radius': <15>, 'brightness': <0.45000000000000001>}>}>]>}, 'pipeline_69709734494983': {'name': <'New pipeline'>, 'effects': <[<{'type': <'corner'>, 'id': <'effect_11077624768431'>, 'params': <{'radius': <28>}>}>, <{'type': <'native_static_gaussian_blur'>, 'id': <'effect_42782897161213'>, 'params': <{'brightness': <0.80000000000000004>, 'unscaled_radius': <20>}>}>]>}}
 rounded-blur-found=true
 settings-version=2
 
@@ -11,16 +11,17 @@ sigma=15
 style-dialogs=3
 
 [blur-my-shell/applications]
-blacklist=@as []
+blacklist=['Plank', 'com.desktop.ding', 'Conky']
 blur=true
-blur-on-overview=false
+blur-on-overview=true
 brightness=1.0
 corner-radius=25
+corner-when-maximized=false
 dynamic-opacity=false
 enable-all=true
 opacity=255
 pipeline='pipeline_69709734494983'
-sigma=7
+sigma=15
 static-blur=false
 whitelist=@as []
 
@@ -28,11 +29,12 @@ whitelist=@as []
 pipeline='pipeline_default'
 
 [blur-my-shell/dash-to-dock]
-blur=false
-brightness=0.59999999999999998
+blur=true
+brightness=0.45000000000000001
+corner-radius=25
 override-background=true
 pipeline='pipeline_default'
-sigma=30
+sigma=15
 static-blur=true
 style-dash-to-dock=2
 unblur-in-overview=true
@@ -67,8 +69,8 @@ unblur-in-overview=false
 pipeline='pipeline_default'
 
 [blur-my-shell/window-list]
-brightness=0.40000000000000002
-sigma=30
+brightness=0.45000000000000001
+sigma=15
 
 [clipboard-indicator]
 blink-icon-on-copy=true
@@ -94,7 +96,7 @@ apply-custom-theme=false
 apply-glossy-effect=false
 autohide=false
 background-color='rgb(0,0,0)'
-background-opacity=0.40000000000000002
+background-opacity=0.65000000000000002
 custom-background-color=true
 custom-theme-customize-running-dots=false
 custom-theme-running-dots-border-width=0
@@ -275,7 +277,7 @@ timeout=8000
 [rounded-window-corners-reborn]
 blacklist=['org.wezfurlong.wezterm', 'code', 'google-chrome', 'brave-browser', 'org.strawberrymusicplayer.strawberry', 'audacious', 'com.obsproject.Studio', 'discord', 'com.github.wwmm.easyeffects', 'vlc', 'localsend']
 border-width=-1
-custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'code': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'brave-browser': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.strawberrymusicplayer.strawberry': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'audacious': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.obsproject.Studio': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.github.wwmm.easyeffects': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>}
+custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'code': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'brave-browser': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.strawberrymusicplayer.strawberry': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'audacious': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.obsproject.Studio': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.github.wwmm.easyeffects': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.mattjakeman.ExtensionManager': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 25>, 'smoothing': <0.0>, 'borderColor': <(0.0, 0.0, 0.0, 1.0)>, 'enabled': <true>}>}
 debug-mode=true
 enable-preferences-entry=true
 focused-shadow={'verticalOffset': 4, 'horizontalOffset': 0, 'blurOffset': 12, 'spreadRadius': 7, 'opacity': 100}
