@@ -232,7 +232,7 @@ clock-menu-position=1
 clock-menu-position-offset=10
 controls-manager-spacing-size=0
 dash=true
-dash-icon-size=32
+dash-icon-size=40
 dash-separator=false
 double-super-to-appgrid=true
 events-button=false
@@ -272,10 +272,10 @@ workspace-wrap-around=false
 workspaces-in-app-grid=false
 
 [notification-timeout]
-timeout=8000
+timeout=6000
 
 [rounded-window-corners-reborn]
-blacklist=['org.wezfurlong.wezterm', 'code', 'google-chrome', 'brave-browser', 'org.strawberrymusicplayer.strawberry', 'audacious', 'com.obsproject.Studio', 'discord', 'com.github.wwmm.easyeffects', 'vlc', 'localsend']
+blacklist=['org.wezfurlong.wezterm', 'code', 'google-chrome', 'brave-browser', 'org.strawberrymusicplayer.strawberry', 'audacious', 'com.obsproject.Studio', 'discord', 'com.github.wwmm.easyeffects', 'vlc']
 border-width=-1
 custom-rounded-corner-settings={'google-chrome': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'code': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.wezfurlong.wezterm': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'brave-browser': <{'padding': <{'left': uint32 0, 'right': 0, 'top': 0, 'bottom': 0}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 6>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'org.strawberrymusicplayer.strawberry': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'audacious': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.obsproject.Studio': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.github.wwmm.easyeffects': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 10>, 'smoothing': <0.0>, 'borderColor': <(0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)>, 'enabled': <true>}>, 'com.mattjakeman.ExtensionManager': <{'padding': <{'left': uint32 1, 'right': 1, 'top': 1, 'bottom': 1}>, 'keepRoundedCorners': <{'maximized': false, 'fullscreen': false}>, 'borderRadius': <uint32 25>, 'smoothing': <0.0>, 'borderColor': <(0.0, 0.0, 0.0, 1.0)>, 'enabled': <true>}>}
 debug-mode=true
