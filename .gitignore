@@ -1,3 +1,5 @@
+.git
+
 # Setup state — gitignored so progress is machine-local
 state/
 
@@ -19,4 +21,3 @@ id_rsa
 configs/micro/micro/backups/
 configs/micro/micro/buffers/
 configs/micro/micro/settings.json
-configs/google-chrome-stable-flags.conf/
