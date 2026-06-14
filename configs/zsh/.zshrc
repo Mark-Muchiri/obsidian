@@ -37,6 +37,20 @@ source <(fzf --zsh)                  # FZF key bindings and completions
 # ===== Shell Options =====
 setopt CORRECT
 
+# ===== History =====
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt HIST_IGNORE_DUPS      # Don't save consecutive duplicates
+setopt HIST_IGNORE_ALL_DUPS  # Remove older duplicate entries from history
+setopt HIST_IGNORE_SPACE     # Don't save commands prefixed with a space
+setopt HIST_SAVE_NO_DUPS     # Don't write duplicates to the history file
+setopt HIST_REDUCE_BLANKS    # Strip superfluous whitespace
+setopt EXTENDED_HISTORY      # Save timestamp and duration with each entry
+setopt INC_APPEND_HISTORY    # Write to HISTFILE immediately, not on shell exit
+setopt SHARE_HISTORY         # Share history across all active sessions
+
 # ===== FZF Configuration =====
 export FZF_DEFAULT_OPTS='
   --reverse

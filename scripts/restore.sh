@@ -30,6 +30,7 @@ declare -A CONFIG_MAP=(
   ["configs/btop/btop.conf"]="${HOME}/.config/btop/btop.conf"
   ["configs/yazi/yazi.toml"]="${HOME}/.config/yazi/yazi.toml"
   ["configs/nvim"]="${HOME}/.config/nvim"
+  ["configs/chrome-flags.conf"]="${HOME}/.config/chrome-flags.conf"
 )
 
 do_link() {
