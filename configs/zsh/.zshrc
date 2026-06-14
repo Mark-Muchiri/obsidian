@@ -1,26 +1,8 @@
-# ===== Core Shell Configuration =====
-export ZSH="$HOME/.oh-my-zsh"  # Oh My Zsh installation path
-zstyle ':omz:update' mode auto # Automatic updates
-
-# Plugins
-plugins=(
-  sudo
-  fast-syntax-highlighting
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-history-substring-search
-)
-source $ZSH/oh-my-zsh.sh
-
-# ===== Editor Configuration =====
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='micro' # Remote editor
-else
-  export EDITOR='nvim' # Local editor
-fi
-export VISUAL="$EDITOR" # GUI applications
-
 # ===== Path Configuration =====
+# Homebrew (must come first — other tools depend on it)
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/usr/local/bin:${HOME}/.local/bin:$PATH"
+
 # PNPM
 export PNPM_HOME="$HOME/.local/share/pnpm"
 [[ ":$PATH:" != *":$PNPM_HOME:"* ]] && export PATH="$PNPM_HOME:$PATH"
@@ -30,9 +12,40 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PATH="/usr/local/bin:$PATH"
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# ===== Plugin Management (Antidote) =====
+source /home/linuxbrew/.linuxbrew/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
+# ===== Editor Configuration =====
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='micro' # Remote editor
+else
+  export EDITOR='nvim'  # Local editor
+fi
+export VISUAL="$EDITOR"
+
+# ===== Terminal Enhancements =====
+eval "$(starship init zsh)"          # Starship prompt
+eval "$(zoxide init --cmd cd zsh)"   # Smarter cd
+source <(fzf --zsh)                  # FZF key bindings and completions
+
+# ===== Shell Options =====
+setopt CORRECT
+
+# ===== FZF Configuration =====
+export FZF_DEFAULT_OPTS='
+  --reverse
+  --height 85%
+  --border=rounded
+  --scrollbar=" "
+  --preview-window bottom:75%
+  '
+export FZF_COMPLETION_TRIGGER='~~'
 
 # ===== Aliases =====
 ## System Utilities
@@ -65,15 +78,15 @@ alias install="sudo dnf5 install -y"
 alias remove="sudo dnf5 remove -y"
 alias search="sudo dnf5 search"
 
-## Bat Enhancements
+## Bat
 alias bat="bat --theme=base16"
 alias b="bat"
 
-# ===== Git Configuration =====
+# ===== Git =====
 ## Core Commands
 alias gcl='git clone'
 alias gco='git checkout'
-alias gc='git commit -v' # Commit with diff preview
+alias gc='git commit -v'          # Commit with diff preview
 alias ga='git add'
 alias gps='git push'
 alias gpl='git pull --rebase'     # Rebase instead of merge
@@ -89,27 +102,16 @@ alias gca='git commit -v --amend'       # Amend commit
 alias grh='git reset --hard'            # Hard reset
 alias gfp='git push --force-with-lease' # Safer force push
 
-## Git Functions
+## Workflows
 alias gsync='git add -A && git commit -v && git push'
 alias gsmartsync='git fetch --all --prune && git rebase && git push'
 alias gclean='git clean -fd && git reset --hard'
 alias sync-config="cd ~/repo/obsidian/ && gsync && gl && cd ~"
 
-# ===== FZF Configuration =====
-## Custom fzf configurations
-export FZF_DEFAULT_OPTS='
-  --reverse
-  --height 85%
-  --border=rounded
-  --scrollbar=" "
-  --preview-window bottom:75%
-  '
-# Use ~~ as the trigger sequence instead of the default **
-export FZF_COMPLETION_TRIGGER='~~'
-
-## File Search Utilities
+# ===== Functions =====
+## FZF Utilities
 # File search with preview
-ffile() { 
+ffile() {
   local file
   file=$(fd --type f --hidden --no-ignore --exclude={.git,.cache,node_modules} . ~/ 2>/dev/null |
     fzf -m --preview="bat --style=plain --theme=base16 --color=always {}")
@@ -138,7 +140,6 @@ cdf() {
   [[ -n "$file" ]] && cd "$(dirname "$file")"
 }
 
-# ===== Terminal Enhancements =====
 ## Yazi Terminal File Manager
 f() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -148,40 +149,14 @@ f() {
   rm -f "$tmp"
 }
 
-## Zoxide (Smarter cd)
-eval "$(zoxide init --cmd cd zsh)"
-
-## Starship Prompt
-eval "$(starship init zsh)"
-
-## zsh correction
-setopt CORRECT
-
-## Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # ===== System Tweaks =====
 ## Manual Page Viewer
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"Solarized (dark)\" --color=always'"
 export MANROFFOPT="-c"
-# theme=\"Solarized (dark)\"
-# theme=\"base16\"
 
-# Dotfiles sync
-alias sync-dots="bash /home/obsidian/repo/obsidian/sync.sh"
-alias restore-dots="bash /home/obsidian/repo/obsidian/restore.sh"
-
-# bun completions
-[ -s "/home/obsidian/.bun/_bun" ] && source "/home/obsidian/.bun/_bun"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Postgress / Obsidian repo 
-# !important ( Do not touch this )
+## Environment
 export TERM=xterm-256color
-export PATH="${HOME}/.local/bin:${PATH}"
+export LIBVA_DRIVER_NAME=i965
 
 # ── Obsidian dotfiles ─────────────────────────────────────────────────────────
 # Resolve the repo root dynamically from the .zshrc symlink target so these
@@ -190,4 +165,3 @@ _obsidian_dir="$(cd "$(dirname "$(readlink -f "${HOME}/.zshrc")")/../.." && pwd)
 
 alias sync-dots='bash "${_obsidian_dir}/scripts/sync.sh"'
 alias restore-dots='bash "${_obsidian_dir}/scripts/restore.sh"'
-export LIBVA_DRIVER_NAME=i965
